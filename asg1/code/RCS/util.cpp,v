@@ -1,0 +1,301 @@
+head	1.10;
+access;
+symbols;
+locks;
+comment	@// @;
+
+
+1.10
+date	2014.06.11.20.34.25;	author -;	state -;
+branches;
+next	1.9;
+
+1.9
+date	2014.04.10.00.04.58;	author -;	state -;
+branches;
+next	1.8;
+
+1.8
+date	2014.03.27.01.39.40;	author -;	state -;
+branches;
+next	1.7;
+
+1.7
+date	2014.03.27.00.34.08;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2014.03.27.00.15.54;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2013.06.24.19.47.07;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2013.06.24.19.46.53;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2013.06.24.19.46.32;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2013.06.19.00.49.43;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2013.06.19.00.31.29;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.10
+log
+@-
+@
+text
+@// $Id: util.cpp,v 1.9 2014-04-09 17:04:58-07 - - $
+
+#include <cstdlib>
+#include <unistd.h>
+
+using namespace std;
+
+#include "util.h"
+#include "debug.h"
+
+yshell_exn::yshell_exn (const string& what): runtime_error (what) {
+}
+
+int exit_status::status = EXIT_SUCCESS;
+static string execname_string;
+
+void exit_status::set (int new_status) {
+   status = new_status;
+}
+
+int exit_status::get() {
+   return status;
+}
+
+void execname (const string& name) {
+   execname_string =  name.substr (name.rfind ('/') + 1);
+   DEBUGF ('u', execname_string);
+}
+
+string& execname() {
+   return execname_string;
+}
+
+bool want_echo() {
+   constexpr int CIN_FD {0};
+   constexpr int COUT_FD {1};
+   bool cin_is_not_a_tty = not isatty (CIN_FD);
+   bool cout_is_not_a_tty = not isatty (COUT_FD);
+   DEBUGF ('u', "cin_is_not_a_tty = " << cin_is_not_a_tty
+          << ", cout_is_not_a_tty = " << cout_is_not_a_tty);
+   return cin_is_not_a_tty or cout_is_not_a_tty;
+}
+
+
+wordvec split (const string& line, const string& delimiters) {
+   wordvec words;
+   size_t end = 0;
+
+   // Loop over the string, splitting out words, and for each word
+   // thus found, append it to the output wordvec.
+   for (;;) {
+      size_t start = line.find_first_not_of (delimiters, end);
+      if (start == string::npos) break;
+      end = line.find_first_of (delimiters, start);
+      words.push_back (line.substr (start, end - start));
+   }
+   DEBUGF ('u', words);
+   return words;
+}
+
+ostream& complain() {
+   exit_status::set (EXIT_FAILURE);
+   cerr << execname() << ": ";
+   return cerr;
+}
+
+@
+
+
+1.9
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: util.cpp,v 1.8 2014-03-26 18:39:40-07 - - $
+d25 1
+a25 1
+void setexecname (const string& name) {
+d35 7
+a41 7
+   const int CIN_FD {0};
+   const int COUT_FD {1};
+   bool cin_isatty = isatty (CIN_FD);
+   bool cout_isatty = isatty (COUT_FD);
+   DEBUGF ('u', "cin_isatty = " << cin_isatty
+          << ", cout_isatty = " << cout_isatty);
+   return ! cin_isatty || ! cout_isatty;
+@
+
+
+1.8
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: util.cpp,v 1.7 2014-03-26 17:34:08-07 - - $
+d35 2
+a36 2
+   const int CIN_FD = 0;
+   const int COUT_FD = 1;
+@
+
+
+1.7
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: util.cpp,v 1.6 2014-03-26 17:15:54-07 - - $
+d9 1
+d27 1
+a27 1
+   TRACE ('u', execname_string);
+d39 1
+a39 1
+   TRACE ('u', "cin_isatty = " << cin_isatty
+d57 1
+a57 1
+   TRACE ('u', words);
+@
+
+
+1.6
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: util.cpp,v 1.5 2013-06-24 12:47:07-07 - - $
+a65 12
+template <typename item_t>
+ostream& operator<< (ostream& out, const vector<item_t>& vec) {
+   bool want_space = false;
+   for (typename vector<item_t>::const_iterator itor = vec.cbegin();
+        itor != vec.cend(); ++itor) {
+      if (want_space) out << " ";
+                 else want_space = true;
+      out << *itor;
+   }
+   return out;
+}
+
+@
+
+
+1.5
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: util.cpp,v 1.4 2013-06-24 12:46:53-07 - - $
+d10 1
+a10 1
+yshell_exn::yshell_exn (const string &what): runtime_error (what) {
+d24 1
+a24 1
+void setexecname (const string &name) {
+d29 1
+a29 1
+string &execname() {
+d44 1
+a44 1
+wordvec split (const string &line, const string &delimiters) {
+d60 1
+a60 1
+ostream &complain() {
+d67 1
+a67 1
+ostream &operator<< (ostream &out, const vector<item_t> &vec) {
+@
+
+
+1.4
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: util.cpp,v 1.3 2013-06-24 12:46:32-07 - - $
+d69 2
+a70 1
+   for (typename vector<item_t>::const_iterator itor = vec.cbegin(); itor != vec.cend(); ++itor) {
+@
+
+
+1.3
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: util.cpp,v 1.2 2013-06-18 17:49:43-07 - - $
+d69 1
+a69 1
+   for (vector<item_t>::const_iterator itor = vec.cbegin(); itor != vec.cend(); ++itor) {
+@
+
+
+1.2
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: util.cpp,v 1.1 2013-06-18 17:31:29-07 - - $
+d69 1
+a69 1
+   for (auto itor = vec.cbegin(); itor != vec.cend(); ++itor) {
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: util.cpp,v 1.7 2013-01-02 19:40:39-08 - - $
+a29 1
+   TRACE ('u', execname_string);
+@

@@ -1,0 +1,165 @@
+head	1.5;
+access;
+symbols;
+locks;
+comment	@// @;
+
+
+1.5
+date	2014.06.11.20.34.25;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2014.03.27.02.49.30;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2014.03.27.02.01.09;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2014.03.27.01.43.29;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2014.03.27.01.39.40;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@-
+@
+text
+@// $Id: debug.cpp,v 1.4 2014-03-26 19:49:30-07 - - $
+
+#include <cassert>
+#include <climits>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+#include "debug.h"
+#include "util.h"
+
+vector<bool> debugflags::flags (UCHAR_MAX + 1, false);
+
+void debugflags::setflags (const string& initflags) {
+   for (const char flag: initflags) {
+      if (flag == '@@') flags.assign (flags.size(), true);
+                  else flags[flag] = true;
+   }
+}
+
+//
+// getflag -
+//    Check to see if a certain flag is on.
+//
+
+bool debugflags::getflag (char flag) {
+   // WARNING: Don't TRACE this function or the stack will blow up.
+   unsigned uflag = (unsigned char) flag;
+   assert (uflag < flags.size());
+   return flags[uflag];
+}
+
+void debugflags::where (char flag, const char* file, int line,
+                        const char* func) {
+   cout << execname() << ": DEBUG(" << flag << ") "
+        << file << "[" << line << "] " << func << "()" << endl;
+}
+
+@
+
+
+1.4
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: debug.cpp,v 1.3 2014-03-26 19:01:09-07 - - $
+a19 8
+   // Note that DEBUGF can trace setflags.
+   if (getflag ('x')) {
+      string flag_chars;
+      for (size_t index = 0; index < flags.size(); ++index) {
+         if (getflag (index)) flag_chars += (char) index;
+      }
+      DEBUGF ('x', "debugflags::flags = " << flag_chars);
+   }
+@
+
+
+1.3
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: debug.cpp,v 1.2 2014-03-26 18:43:29-07 - - $
+d45 1
+a45 1
+        << file << "[" << line << "]" << func << endl;
+@
+
+
+1.2
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: debug.cpp,v 1.1 2014-03-26 18:39:40-07 - - $
+d3 1
+d21 7
+a27 1
+   DEBUGF ('t', "flags = " << flags);
+d37 3
+a39 1
+   return flags[flag];
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: trace.cpp,v 1.9 2014-03-26 17:34:07-07 - - $
+d12 1
+a12 1
+vector<bool> traceflags::flags (UCHAR_MAX + 1, false);
+d14 1
+a14 1
+void traceflags::setflags (const string& initflags) {
+d19 2
+a20 2
+   // Note that TRACE can trace setflags.
+   TRACE ('t', "flags = " << flags);
+d28 1
+a28 1
+bool traceflags::getflag (char flag) {
+d33 2
+a34 2
+void traceflags::show_where (char flag, const char* file, int line,
+                             const char* func) {
+d36 1
+a36 1
+        << file << "[" << line << "]" func << endl;
+@
