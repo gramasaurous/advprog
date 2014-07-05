@@ -45,6 +45,8 @@ class inode_state {
       string prompt {"% "};
    public:
       inode_state();
+      string get_prompt();
+      void set_prompt(string new_prompt);
 };
 
 
