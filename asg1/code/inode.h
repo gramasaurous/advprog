@@ -47,7 +47,7 @@ class inode_state {
       inode_state();
 };
 
-
+
 //
 // class inode -
 //
@@ -97,7 +97,7 @@ class file_base {
       friend directory_ptr directory_ptr_of (file_base_ptr);
 };
 
-
+
 //
 // class plain_file -
 //

@@ -38,7 +38,6 @@ void scan_options (int argc, char** argv) {
    }
 }
 
-
 //
 // main -
 //    Main program which loops reading commands until end of file.
@@ -75,9 +74,15 @@ int main (int argc, char** argv) {
             // function.  Complain or call it.
             wordvec words = split (line, " \t");
             DEBUGF ('y', "words = " << words);
+
+            // Check for comments and ignore those lines
+            if (words.at(0)[0] == '#') {
+               DEBUGF ('y', "Comment:" << words);
+               continue;
+            }
             command_fn fn = cmdmap.at(words.at(0));
             fn (state, words);
-         }catch (yshell_exn& exn) {
+         } catch (yshell_exn& exn) {
             // If there is a problem discovered in any function, an
             // exn is thrown and printed here.
             complain() << exn.what() << endl;

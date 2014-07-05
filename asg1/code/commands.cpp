@@ -28,7 +28,6 @@ command_fn commands::at (const string& cmd) {
    return result->second;
 }
 
-
 void fn_cat (inode_state& state, const wordvec& words){
    DEBUGF ('c', state);
    DEBUGF ('c', words);
@@ -60,7 +59,7 @@ void fn_lsr (inode_state& state, const wordvec& words){
    DEBUGF ('c', words);
 }
 
-
+
 void fn_make (inode_state& state, const wordvec& words){
    DEBUGF ('c', state);
    DEBUGF ('c', words);

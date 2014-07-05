@@ -29,7 +29,7 @@ class debugflags {
                          const char* func);
 };
 
-
+
 //
 // DEBUGF -
 //    Macro which expands into trace code.  First argument is a

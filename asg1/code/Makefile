@@ -2,7 +2,7 @@
 
 MKFILE      = Makefile
 DEPFILE     = ${MKFILE}.dep
-NOINCL      = ci clean spotless
+NOINCL      = submit git clean spotless
 NEEDINCL    = ${filter ${NOINCL}, ${MAKECMDGOALS}}
 GMAKE       = ${MAKE} --no-print-directory
 
@@ -17,38 +17,44 @@ OTHERS      = ${MKFILE} README
 ALLSOURCES  = ${CPPHEADER} ${CPPSOURCE} ${OTHERS}
 LISTING     = Listing.ps
 
-all : ${EXECBIN}
-	- checksource ${ALLSOURCES}
+all: ${EXECBIN}
+#	- checksource ${ALLSOURCES}
 
-${EXECBIN} : ${OBJECTS}
+${EXECBIN}: ${OBJECTS}
 	${COMPILECPP} -o $@ ${OBJECTS}
 
-%.o : %.cpp
+%.o: %.cpp
 	${COMPILECPP} -c $<
 
-ci : ${ALLSOURCES}
-	cid + ${ALLSOURCES}
-	- checksource ${ALLSOURCES}
+#ci: ${ALLSOURCES}
+#	cid + ${ALLSOURCES}
+#	- checksource ${ALLSOURCES}
 
-lis : ${ALLSOURCES}
+lis: ${ALLSOURCES}
 	mkpspdf ${LISTING} ${ALLSOURCES} ${DEPFILE}
 
-clean :
+clean:
 	- rm ${OBJECTS} ${DEPFILE} core ${EXECBIN}.errs
 
-spotless : clean
+spotless: clean
 	- rm ${EXECBIN} ${LISTING} ${LISTING:.ps=.pdf}
 
-dep : ${CPPSOURCE} ${CPPHEADER}
+dep: ${CPPSOURCE} ${CPPHEADER}
 	@ echo "# ${DEPFILE} created `LC_TIME=C date`" >${DEPFILE}
 	${MAKEDEPCPP} ${CPPSOURCE} >>${DEPFILE}
 
-${DEPFILE} : ${MAKEFILE}
+${DEPFILE}: ${MKFILE}
 	@ touch ${DEPFILE}
 	${GMAKE} dep
 
-again :
-	${GMAKE} spotless dep ci all lis
+again:
+	${GMAKE} spotless dep all lis
+
+git:
+	git commit
+
+submit: spotless
+	submit 
 
 ifeq (${NEEDINCL}, )
 include ${DEPFILE}

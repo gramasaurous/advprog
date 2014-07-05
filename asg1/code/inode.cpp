@@ -41,7 +41,7 @@ directory_ptr directory_ptr_of (file_base_ptr ptr) {
    return dirptr;
 }
 
-
+
 size_t plain_file::size() const {
    size_t size {0};
    DEBUGF ('i', "size = " << size);

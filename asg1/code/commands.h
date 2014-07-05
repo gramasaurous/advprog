@@ -5,12 +5,15 @@
 
 #include <map>
 using namespace std;
-
+// in a library header, don't do this
+// but this is a project header, so it's OK
+// library files are included before user header files
 #include "inode.h"
 #include "util.h"
 
 //
 // A couple of convenient usings to avoid verbosity.
+// using == typedef
 //
 
 using command_fn = void (*)(inode_state& state, const wordvec& words);
@@ -33,11 +36,11 @@ class commands {
       commands& operator= (const inode&) = delete; // operator=
       command_map map;
    public:
-      commands();
+      commands(); // default constructor
       command_fn at (const string& cmd);
 };
 
-
+
 //
 // execution functions -
 //    See the man page for a description of each of these functions.

@@ -1,15 +1,19 @@
 TODO:
 
-[ ] comment
-[ ] cat
-[ ] cd
-[ ] echo
-[ ] exit
-[ ] ls
-[ ] lsr
-[ ] make
-[ ] mkdir
-[ ] prompt
-[ ] pwd
-[ ] rm
-[ ] rmr
+commands.cpp:
+	[ ] comment
+	[ ] cat
+	[ ] cd
+	[ ] echo
+	[ ] exit
+	[ ] ls
+	[ ] lsr
+	[ ] make
+	[ ] mkdir
+	[ ] prompt
+	[ ] pwd
+	[ ] rm
+	[ ] rmr
+
+inode.cpp:
+	[ ] 
