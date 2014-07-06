@@ -45,7 +45,6 @@ bool want_echo() {
 wordvec split (const string& line, const string& delimiters) {
    wordvec words;
    size_t end = 0;
-
    // Loop over the string, splitting out words, and for each word
    // thus found, append it to the output wordvec.
    for (;;) {

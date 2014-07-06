@@ -51,7 +51,7 @@ int main (int argc, char** argv) {
    scan_options (argc, argv);
    bool need_echo = want_echo();
    commands cmdmap;
-//   string prompt = "%";
+// string prompt = "%";
    inode_state state;
    try {
       for (;;) {
@@ -69,10 +69,11 @@ int main (int argc, char** argv) {
                break;
             }
             if (need_echo) cout << line << endl;
-   
             // Split the line into words and lookup the appropriate
             // function.  Complain or call it.
             wordvec words = split (line, " \t");
+            // Don't try to execute empty lines
+            if (words.size() == 0) continue;
             DEBUGF ('y', "words = " << words);
 
             // Check for comments and ignore those lines
