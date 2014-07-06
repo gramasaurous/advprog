@@ -8,6 +8,10 @@ using namespace std;
 #include "debug.h"
 #include "inode.h"
 
+
+/*
+  *** inode ***
+*/
 int inode::next_inode_nr {1};
 
 inode::inode(inode_t init_type):
@@ -29,6 +33,9 @@ int inode::get_inode_nr() const {
    return inode_nr;
 }
 
+/*
+  *** plain_file ***
+*/
 plain_file_ptr plain_file_ptr_of (file_base_ptr ptr) {
    plain_file_ptr pfptr = dynamic_pointer_cast<plain_file> (ptr);
    assert (pfptr != nullptr);
@@ -40,7 +47,6 @@ directory_ptr directory_ptr_of (file_base_ptr ptr) {
    assert (dirptr != nullptr);
    return dirptr;
 }
-
 
 size_t plain_file::size() const {
    size_t size {0};
@@ -57,6 +63,9 @@ void plain_file::writefile (const wordvec& words) {
    DEBUGF ('i', words);
 }
 
+/*
+  *** directory ***
+*/
 size_t directory::size() const {
    size_t size {0};
    DEBUGF ('i', "size = " << size);
@@ -67,6 +76,9 @@ void directory::remove (const string& filename) {
    DEBUGF ('i', filename);
 }
 
+/*
+  *** inode_state ***
+*/
 inode_state::inode_state() {
    DEBUGF ('i', "root = " << root << ", cwd = " << cwd
           << ", prompt = \"" << prompt << "\"");

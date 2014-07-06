@@ -47,6 +47,8 @@ class inode_state {
       inode_state();
       string get_prompt();
       void set_prompt(string new_prompt);
+      inode_ptr get_root();
+      inode_ptr get_cwd();
 };
 
 
