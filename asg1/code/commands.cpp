@@ -51,7 +51,7 @@ void fn_exit (inode_state& state, const wordvec& words){
    DEBUGF ('c', state);
    DEBUGF ('c', words);
    if (words.size() != 1) {
-      int new_status = stoi(words.at(1), nullptr, 10);
+      int new_status = stoi(words.at(1));
       exit_status::set(new_status);
    }
    throw ysh_exit_exn();

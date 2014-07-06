@@ -90,10 +90,6 @@ ostream& operator<< (ostream& out, const inode_state& state) {
    return out;
 }
 
-string inode_state::get_prompt() {
-   return prompt;
-}
-
 void inode_state::set_prompt(string new_prompt) {
   if (new_prompt.size() != 0) {
     prompt = new_prompt;

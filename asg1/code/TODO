@@ -1,11 +1,11 @@
 TODO:
 
 commands.cpp:
-	[ ] comment
+	[x] comment
 	[ ] cat
 	[ ] cd
-	[ ] echo
-	[ ] exit
+	[x] echo
+	[x] exit
 	[ ] ls
 	[ ] lsr
 	[ ] make
