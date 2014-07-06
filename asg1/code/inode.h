@@ -45,9 +45,13 @@ class inode_state {
       string prompt {"% "};
    public:
       inode_state();
+      string get_prompt();
+      void set_prompt(string new_prompt);
+      inode_ptr get_root();
+      inode_ptr get_cwd();
 };
 
-
+
 //
 // class inode -
 //
@@ -97,7 +101,7 @@ class file_base {
       friend directory_ptr directory_ptr_of (file_base_ptr);
 };
 
-
+
 //
 // class plain_file -
 //

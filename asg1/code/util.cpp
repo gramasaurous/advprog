@@ -41,11 +41,10 @@ bool want_echo() {
    return cin_is_not_a_tty or cout_is_not_a_tty;
 }
 
-
+
 wordvec split (const string& line, const string& delimiters) {
    wordvec words;
    size_t end = 0;
-
    // Loop over the string, splitting out words, and for each word
    // thus found, append it to the output wordvec.
    for (;;) {

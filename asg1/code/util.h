@@ -43,7 +43,6 @@ class yshell_exn: public runtime_error {
 void execname (const string&);
 string& execname();
 
-
 //
 // want_echo -
 //    We want to echo all of cin to cout if either cin or cout
@@ -87,7 +86,7 @@ wordvec split (const string& line, const string& delimiter);
 
 ostream& complain();
 
-
+
 //
 // operator<< (vector) -
 //    An overloaded template operator which allows vectors to be

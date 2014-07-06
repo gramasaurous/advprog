@@ -28,7 +28,6 @@ command_fn commands::at (const string& cmd) {
    return result->second;
 }
 
-
 void fn_cat (inode_state& state, const wordvec& words){
    DEBUGF ('c', state);
    DEBUGF ('c', words);
@@ -42,6 +41,10 @@ void fn_cd (inode_state& state, const wordvec& words){
 void fn_echo (inode_state& state, const wordvec& words){
    DEBUGF ('c', state);
    DEBUGF ('c', words);
+   for (size_t i = 1; i < words.size(); i++) {
+      cout << words.at(i) << ' ';
+   }
+   cout << endl;
 }
 
 void fn_exit (inode_state& state, const wordvec& words){
@@ -53,6 +56,7 @@ void fn_exit (inode_state& state, const wordvec& words){
 void fn_ls (inode_state& state, const wordvec& words){
    DEBUGF ('c', state);
    DEBUGF ('c', words);
+   cout << state << endl;
 }
 
 void fn_lsr (inode_state& state, const wordvec& words){
@@ -60,7 +64,7 @@ void fn_lsr (inode_state& state, const wordvec& words){
    DEBUGF ('c', words);
 }
 
-
+
 void fn_make (inode_state& state, const wordvec& words){
    DEBUGF ('c', state);
    DEBUGF ('c', words);
@@ -74,6 +78,11 @@ void fn_mkdir (inode_state& state, const wordvec& words){
 void fn_prompt (inode_state& state, const wordvec& words){
    DEBUGF ('c', state);
    DEBUGF ('c', words);
+   if (words.size() == 1) {
+      throw yshell_exn ("Bad prompt.");
+   } else {
+      state.set_prompt(words.at(1));
+   }
 }
 
 void fn_pwd (inode_state& state, const wordvec& words){
