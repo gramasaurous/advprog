@@ -83,5 +83,7 @@ string inode_state::get_prompt() {
 }
 
 void inode_state::set_prompt(string new_prompt) {
-  prompt = new_prompt;
+  if (new_prompt.size() != 0) {
+    prompt = new_prompt;
+  }
 }

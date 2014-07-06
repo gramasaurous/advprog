@@ -73,10 +73,10 @@ void fn_mkdir (inode_state& state, const wordvec& words){
 void fn_prompt (inode_state& state, const wordvec& words){
    DEBUGF ('c', state);
    DEBUGF ('c', words);
-   if (words.at(1) != "") {
-      state.set_prompt(words.at(1));
+   if (words.size() == 1) {
+      throw yshell_exn ("Bad prompt.");
    } else {
-      throw yshell_exn ("bad prompt");
+      state.set_prompt(words.at(1));
    }
 }
 
