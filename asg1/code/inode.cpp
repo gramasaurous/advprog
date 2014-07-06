@@ -79,7 +79,7 @@ ostream& operator<< (ostream& out, const inode_state& state) {
 }
 
 string inode_state::get_prompt() {
-  return prompt;
+   return prompt;
 }
 
 void inode_state::set_prompt(string new_prompt) {
