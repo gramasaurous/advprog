@@ -1,7 +1,7 @@
-// $Id: inode.cpp,v 1.10 2014-06-12 18:16:45-07 - - $
+// $Id: inode.cpp,v 1.12 2014-07-03 13:29:57-07 - - $
 
-#include <cassert>
 #include <iostream>
+#include <stdexcept>
 
 using namespace std;
 
@@ -31,13 +31,13 @@ int inode::get_inode_nr() const {
 
 plain_file_ptr plain_file_ptr_of (file_base_ptr ptr) {
    plain_file_ptr pfptr = dynamic_pointer_cast<plain_file> (ptr);
-   assert (pfptr != nullptr);
+   if (pfptr == nullptr) throw invalid_argument ("plain_file_ptr_of");
    return pfptr;
 }
 
 directory_ptr directory_ptr_of (file_base_ptr ptr) {
    directory_ptr dirptr = dynamic_pointer_cast<directory> (ptr);
-   assert (dirptr != nullptr);
+   if (dirptr == nullptr) throw invalid_argument ("directory_ptr_of");
    return dirptr;
 }
 

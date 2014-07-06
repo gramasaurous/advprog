@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.13 2014-06-13 19:26:01-07 - - $
+# $Id: Makefile,v 1.14 2014-06-25 17:42:27-07 - - $
 
 MKFILE      = Makefile
 DEPFILE     = ${MKFILE}.dep
@@ -43,7 +43,7 @@ dep : ${CPPSOURCE} ${CPPHEADER}
 	@ echo "# ${DEPFILE} created `LC_TIME=C date`" >${DEPFILE}
 	${MAKEDEPCPP} ${CPPSOURCE} >>${DEPFILE}
 
-${DEPFILE} : ${MAKEFILE}
+${DEPFILE} : ${MKFILE}
 	@ touch ${DEPFILE}
 	${GMAKE} dep
 
