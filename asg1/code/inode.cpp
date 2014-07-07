@@ -76,10 +76,25 @@ void directory::remove (const string& filename) {
    DEBUGF ('i', filename);
 }
 
+inode& directory::mkdir (const string& dirname) {
+  DEBUGF ('i', dirname);
+  if (dirents.find(dirname) != dirents.end()) {
+    throw invalid_argument("mkdir");
+  } else {
+    inode_ptr new_dir = make_shared<inode>(DIR_INODE);
+    // populate the new_dir with nullptr entries "." and ".."
+    // insert the new_dir into the dirents map with key dirname
+    return *new_dir;
+  }
+  
+}
+
 /*
   *** inode_state ***
 */
 inode_state::inode_state() {
+   root = make_shared<inode>(DIR_INODE);
+   cwd = root;
    DEBUGF ('i', "root = " << root << ", cwd = " << cwd
           << ", prompt = \"" << prompt << "\"");
 }
