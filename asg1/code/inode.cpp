@@ -34,7 +34,7 @@ int inode::get_inode_nr() const {
 }
 
 /*
-  *** plain_file ***
+  *** file_ptrs ***
 */
 plain_file_ptr plain_file_ptr_of (file_base_ptr ptr) {
    plain_file_ptr pfptr = dynamic_pointer_cast<plain_file> (ptr);
@@ -48,6 +48,9 @@ directory_ptr directory_ptr_of (file_base_ptr ptr) {
    return dirptr;
 }
 
+/*
+  *** plain_file ***
+*/
 size_t plain_file::size() const {
    size_t size {0};
    DEBUGF ('i', "size = " << size);
@@ -76,12 +79,16 @@ void directory::remove (const string& filename) {
    DEBUGF ('i', filename);
 }
 
+
 /*
   *** inode_state ***
 */
 inode_state::inode_state() {
    DEBUGF ('i', "root = " << root << ", cwd = " << cwd
           << ", prompt = \"" << prompt << "\"");
+   cout << "created the inode_state" << endl;
+   // Create the root directory
+   // Point the current directory at the root dir
 }
 
 ostream& operator<< (ostream& out, const inode_state& state) {
