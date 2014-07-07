@@ -1,0 +1,6 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ mkc: starting powerint.cpp
+powerint.cpp:
+     $Id: powerint.cpp,v 1.13 2014-04-09 17:39:43-07 - - $
+g++ -g -O0 -Wall -Wextra -rdynamic -std=gnu++11 powerint.cpp -o powerint -lglut -lGLU -lGL -lX11 -lrt -lm
+rm -f powerint.o
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ mkc: finished powerint.cpp

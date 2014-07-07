@@ -1,0 +1,6 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ mkc: starting teststack.cpp
+teststack.cpp:
+     $Id: teststack.cpp,v 1.12 2014-04-15 19:16:24-07 - - $
+g++ -g -O0 -Wall -Wextra -rdynamic -std=gnu++11 teststack.cpp -o teststack -lglut -lGLU -lGL -lX11 -lrt -lm
+rm -f teststack.o
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ mkc: finished teststack.cpp

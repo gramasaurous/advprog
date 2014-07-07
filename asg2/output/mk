@@ -1,0 +1,9 @@
+#!/bin/bash
+# $Id: mk,v 1.5 2013-06-27 14:10:10-07 - - $
+
+for test in ../.score/test*
+do
+   output=$(basename $test).output
+   echo test=$test output=$output
+   /usr/bin/dc <$test 2>&1 >$output
+done

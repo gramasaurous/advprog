@@ -1,0 +1,113 @@
+$Id: SCORE,v 1.1 2012-04-10 21:03:01-07 - - $
+
+Copy all of the files in this directory into the student's
+directory.  For each point deduction, give a reason.  Numbers in
+parens are the max points for each check.
+
+*****************************************************************
+
+SOURCE CODE.
+
+     Run mk.build
+
+     (3) Checksource was silent, did not complain.  No extra
+	 files were submitted, except as per asgt spec.
+         Header files are all *.h and implementation files
+         are consistently *.cc or *.cpp.
+
+     (3) Used good consistent indentation.  Did not use any
+	 one-letter idents, used only meaningful idents.
+
+     Most of the work was in bigint.cc
+
+     (3) Has the constructor code been replaced properly?
+         bigint::bigint ()
+         bigint::bigint (int that)
+         bigint::bigint (const string &that)
+
+     (3) Does it look like op= and copy ctor do the same thing
+         Most likely, one just leverages the other.
+         bigint &bigint::operator= (const bigint &that)
+         bigint::bigint (const bigint &that)
+
+     (3) Do op+ and op- just check for signs and then call
+         bigadd and bigsub to do the work?
+         bigint bigint::operator+
+         bigint bigint::operator-
+
+     (3) operator* implemented and uses a stack of pairs of 
+         bigints.  code properly implemented
+
+     (3) operator/ and operator% call div_rem, which uses a
+         stack of pair of bigints.  code properly implemented
+
+     (3) Is compare properly implemented?  It should first check
+         signs, then only magnitudes when necessary.
+         int bigint::compare (const bigint &that)
+
+     (3) Do bigint and bigsub properly link down the vector to
+         make a new vector?  The signatures will vary from one
+         solution to another, since they were not present in
+         the original.
+         bigint::bigadd
+         bigint::bigsub
+
+     (3) Operator<< properly split up output lines as for dc?
+         ostream &operator<< (ostream &out, const bigint &that)
+
+source points: /30
+min 1, max 30
+
+*****************************************************************
+
+PROGRAM TESTING:
+
+     If mk.build failed to produce an executable binary, use
+        g++ -g -Wall -Wextra *.cpp -o ydc
+        g++ -g -Wall -Wextra *.cc -o ydc
+     depending which ending they use.  If this still does not
+     because of errors in the C++ source code, assign 0 for
+     this section.  If it was an error in the Makefile, deduct
+     an extra 6 points from testing points below.
+
+     Run mk.tests
+
+     Check each .out file for reasonable output.  Use eyes,
+     not just diff.  Output should be substantially the same
+     as dc output.
+
+     (3) test0-stk.in
+
+     (3) test1-stk.in
+
+     (3) test2-add.in
+
+     (3) test3-sub.in
+
+     (3) test4-mul.in
+
+     (3) test5-div.in
+
+     (3) test6-exp.in
+
+     (9) Segmentation fault and leak check.
+         Multiply the number of the above tests that resulted
+         in a segmentation fault or other abort = (a)
+         Assign (b) = 4 points if the valgrind indicated leaks.
+         Set (c) = (a) + (b)
+         Deduct (c) points or 9 points, whichever is smaller.
+
+testing points: /30
+min 0, max 30.
+
+*****************************************************************
+
+SUBTOTAL=
+min 1, max 60
+
+If pair programming, TOTALSCORE = SUBTOTAL - TOTAL1.
+If not, TOTALSCORE = SUBTOTAL.
+
+TOTALSCORE=
+min 1, max 60
+

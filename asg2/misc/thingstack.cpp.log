@@ -1,0 +1,6 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ mkc: starting thingstack.cpp
+thingstack.cpp:
+     $Id: thingstack.cpp,v 1.19 2013-01-23 19:35:49-08 - - $
+g++ -g -O0 -Wall -Wextra -rdynamic -std=gnu++11 thingstack.cpp -o thingstack -lglut -lGLU -lGL -lX11 -lrt -lm
+rm -f thingstack.o
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ mkc: finished thingstack.cpp

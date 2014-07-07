@@ -1,0 +1,5 @@
+$Id: README,v 1.1 2011-01-20 18:28:31-08 - - $
+
+This directory contains sample output created by running
+/usr/bin/dc against the test data.  Your program's output,
+when diff'd against this should be identical.

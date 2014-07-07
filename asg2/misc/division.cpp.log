@@ -1,0 +1,6 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ mkc: starting division.cpp
+division.cpp:
+     $Id: division.cpp,v 1.6 2014-05-29 19:11:29-07 - - $
+g++ -g -O0 -Wall -Wextra -rdynamic -std=gnu++11 division.cpp -o division -lglut -lGLU -lGL -lX11 -lrt -lm
+rm -f division.o
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ mkc: finished division.cpp

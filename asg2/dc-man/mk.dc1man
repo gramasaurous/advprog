@@ -1,0 +1,9 @@
+#!/bin/sh -x
+# $Id: mk.dc1man,v 1.4 2013-01-23 19:16:59-08 - - $
+cid + $0
+zcat /usr/share/man/man1/dc.1.gz >dc.1.man
+groff -man -st -rL1000i -Tlatin1 -P-cbuo dc.1.man | perl -00pe0 >dc.1.tt
+groff -man -spte -Tps dc.1.man >dc.1.ps
+letterbbox dc.1.ps
+mkpdf dc.1.ps &
+gv -antialias -center -media=Letter dc.1.ps &

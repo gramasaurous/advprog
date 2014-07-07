@@ -1,0 +1,8 @@
+#!/bin/sh
+# $Id: mk.build,v 1.2 2013-01-23 19:06:33-08 - - $
+# Checksource and do the build.
+PATH=$PATH:/afs/cats.ucsc.edu/courses/cmps012b-wm/bin/
+export PATH
+partnercheck 2>&1 | tee partnercheck.log
+checksource Makefile README* *.h *.c* >checksource.log 2>&1
+gmake >gmake.log 2>&1

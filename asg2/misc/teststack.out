@@ -1,0 +1,15 @@
+Pushing: foo
+Pushing: bar
+Pushing: baz
+Pushing: qux
+Pushing: quux
+Iteration: quux
+Iteration: qux
+Iteration: baz
+Iteration: bar
+Iteration: foo
+Popping: quux
+Popping: qux
+Popping: baz
+Popping: bar
+Popping: foo

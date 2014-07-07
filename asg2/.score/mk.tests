@@ -1,0 +1,21 @@
+#!/bin/sh
+# $Id: mk.tests,v 1.4 2014-06-26 17:24:49-07 - - $
+#
+# This program just runs ydc from input to output.
+# It, like dc, does not bother with exit status or stdout/stderr.
+#
+export PATH=$PATH:/afs/cats.ucsc.edu/courses/cmps012b-wm/bin
+ulimit -f 32
+ulimit -t 120
+
+PROG=./ydc
+GRIND="valgrind --leak-check=full --show-reachable=yes"
+
+for test in test[0-9]-*.ydc
+do
+   $PROG <$test 1>$test.out 2>$test.err
+   echo status = $? >$test.status
+done
+
+$GRIND $PROG <testx-leaks.ydc 1>leaks-test.out 2>leaks-test.err
+
