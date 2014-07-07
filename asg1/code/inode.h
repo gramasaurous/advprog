@@ -156,4 +156,3 @@ class directory: public file_base {
 };
 
 #endif
-

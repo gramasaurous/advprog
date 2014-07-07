@@ -41,10 +41,10 @@ void fn_cd (inode_state& state, const wordvec& words){
 void fn_echo (inode_state& state, const wordvec& words){
    DEBUGF ('c', state);
    DEBUGF ('c', words);
-   for (size_t i = 1; i < words.size(); i++) {
+/*   for (size_t i = 1; i < words.size(); i++) {
       cout << words.at(i) << ' ';
    }
-   cout << endl;
+   cout << endl;*/
 }
 
 void fn_exit (inode_state& state, const wordvec& words){
