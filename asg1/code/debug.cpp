@@ -1,4 +1,5 @@
-// $Id: debug.cpp,v 1.6 2014-06-26 16:01:04-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
 
 #include <climits>
 #include <iostream>

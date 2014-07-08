@@ -1,4 +1,5 @@
-// $Id: main.cpp,v 1.3 2014-06-11 13:52:31-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
 
 #include <cstdlib>
 #include <iostream>

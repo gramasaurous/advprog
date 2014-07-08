@@ -1,4 +1,5 @@
-// $Id: commands.cpp,v 1.11 2014-06-11 13:49:31-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
 
 #include "commands.h"
 #include "debug.h"
