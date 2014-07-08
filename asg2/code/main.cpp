@@ -51,7 +51,7 @@ void do_dup (bigint_stack& stack, const char) {
    stack.push (top);
 }
 
-
+
 void do_printall (bigint_stack& stack, const char) {
    for (const auto &elem: stack) cout << elem << endl;
 }
@@ -87,7 +87,7 @@ fn_map do_functions = {
    {"q", do_quit},
 };
 
-
+
 //
 // scan_options
 //    Options analysis:  The only option is -Dflags. 
@@ -113,7 +113,7 @@ void scan_options (int argc, char** argv) {
       complain() << "operand not permitted" << endl;
    }
 }
-
+
 //
 // Main function.
 //

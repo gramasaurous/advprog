@@ -34,7 +34,7 @@ class ydc_exn: public runtime_error {
 
 const string octal (long decimal);
 
-
+
 //
 // sys_info -
 //    Keep track of execname and exit status.  Must be initialized

@@ -27,7 +27,7 @@ bigint::bigint (const string& that) {
    DEBUGF ('~', this << " -> " << long_value)
 }
 
-
+
 bigint operator+ (const bigint& left, const bigint& right) {
    return left.long_value + right.long_value;
 }
@@ -74,7 +74,7 @@ void divide_by_2 (bigint::unumber& unumber_value) {
    unumber_value /= 2;
 }
 
-
+
 bigint::quot_rem divide (const bigint& left, const bigint& right) {
    if (right == 0) throw domain_error ("divide by 0");
    using unumber = unsigned long;
@@ -120,7 +120,7 @@ ostream& operator<< (ostream& out, const bigint& that) {
    return out;
 }
 
-
+
 bigint pow (const bigint& base, const bigint& exponent) {
    DEBUGF ('^', "base = " << base << ", exponent = " << exponent);
    if (base == 0) return 0;

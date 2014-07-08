@@ -48,7 +48,7 @@ class bigint {
       friend bigint operator+ (const bigint&);
       friend bigint operator- (const bigint&);
       long to_long() const;
-
+
       //
       // Extended operators implemented with add/sub.
       //
