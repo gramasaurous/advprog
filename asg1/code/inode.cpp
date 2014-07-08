@@ -34,7 +34,7 @@ int inode::get_inode_nr() const {
 }
 
 /*
-  *** plain_file ***
+  *** file_ptrs ***
 */
 plain_file_ptr plain_file_ptr_of (file_base_ptr ptr) {
    plain_file_ptr pfptr = dynamic_pointer_cast<plain_file> (ptr);
@@ -48,6 +48,9 @@ directory_ptr directory_ptr_of (file_base_ptr ptr) {
    return dirptr;
 }
 
+/*
+  *** plain_file ***
+*/
 size_t plain_file::size() const {
    size_t size {0};
    DEBUGF ('i', "size = " << size);
@@ -76,22 +79,36 @@ void directory::remove (const string& filename) {
    DEBUGF ('i', filename);
 }
 
+
+inode& directory::mkdir (const string& dirname) {
+  DEBUGF ('i', dirname);
+  if (dirents.find(dirname) != dirents.end()) {
+    throw invalid_argument("mkdir");
+  } else {
+    inode_ptr new_dir = make_shared<inode>(DIR_INODE);
+    // populate the new_dir with nullptr entries "." and ".."
+    // insert the new_dir into the dirents map with key dirname
+    return *new_dir;
+  }  
+}
+
 /*
   *** inode_state ***
 */
 inode_state::inode_state() {
+   root = make_shared<inode>(DIR_INODE);
+   cwd = root;
    DEBUGF ('i', "root = " << root << ", cwd = " << cwd
           << ", prompt = \"" << prompt << "\"");
+   cout << "created the inode_state" << endl;
+   // Create the root directory
+   // Point the current directory at the root dir
 }
 
 ostream& operator<< (ostream& out, const inode_state& state) {
    out << "inode_state: root = " << state.root
        << ", cwd = " << state.cwd;
    return out;
-}
-
-string inode_state::get_prompt() {
-   return prompt;
 }
 
 void inode_state::set_prompt(string new_prompt) {

@@ -1,0 +1,93 @@
+$Id: SCORE,v 1.3 2014-06-17 20:27:18-07 - - $
+
+Copy all of the files in this directory into the student's
+directory.  For each point deduction, give a reason.  Numbers in
+parens are the max points for each check.
+
+Grade only one partner's code and assign them the same score.
+
+*****************************************************************
+
+SOURCE CODE.
+
+     Run mk.build
+
+     (3) Checksource was silent, did not complain.  No extra
+	 files were submitted, except as per asgt spec.
+         Header files must end with .h and implementation files
+         with either .cc or .cpp.
+
+     (3) Used good consistent indentation.  Did not use any
+	 one-letter idents, used only meaningful idents.
+
+     (3) In both commands.cc(cpp) and inode.cc(cpp), used a throw to
+         report errors, which is caught in main().
+
+     In the module commands.cc(cpp):  Check for reasonable code and a
+     proper implementation of:
+
+     (3) fn_cd, fn_echo, fn_exit, fn_prompt, fn_pwd
+
+     (3) fn_cat, fn_make, fn_makedir
+
+     (3) fn_ls, fn_lsr
+
+     (3) fn_rm, fn_rmr
+
+     In inode.cc(cpp):  Check for reasonable code in:
+
+     (3) readfile, writefile
+
+     (3) mkdir, mkfile (but it is also OK if these are done
+         in the constructor instead.
+
+     (3) Proper additions to inode_state
+
+source points: /30
+min 1, max 30
+
+*****************************************************************
+
+PROGRAM TESTING:
+
+     (3) If gmake failed, try to compile manually with:
+         g++ -o yshell *.cc >compile.log 2>&1
+         g++ -o yshell *.cpp >compile.log 2>&1
+         If that worked, deduct these three 3 points.
+         If not, assign 0 for this section.
+
+     Run mk.tests
+     Check each test run *.out and *.err for the expected output.
+
+     (4) test0.ysh
+
+     (4) test1.ysh
+
+     (4) test2.ysh
+
+     (4) test3.ysh
+
+     (4) test4.ysh
+
+     Other checks.
+
+     (2) Were all of the exit status codes correct? (*.log)
+
+     (5) Deduct 3 points here if any test run seg faulted,
+         dumped core, or otherwise terminated abnormally.
+         Deduct 5 points if more than one test did so.
+
+testing points: /30
+min 0, max 30.
+
+*****************************************************************
+
+SUBTOTAL=
+min 1, max 60
+
+If pair programming, TOTALSCORE = SUBTOTAL - TOTAL1.
+If not, TOTALSCORE = SUBTOTAL.
+
+TOTALSCORE=
+min 1, max 60
+

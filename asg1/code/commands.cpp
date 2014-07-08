@@ -1,4 +1,5 @@
-// $Id: commands.cpp,v 1.11 2014-06-11 13:49:31-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
 
 #include "commands.h"
 #include "debug.h"
@@ -41,15 +42,19 @@ void fn_cd (inode_state& state, const wordvec& words){
 void fn_echo (inode_state& state, const wordvec& words){
    DEBUGF ('c', state);
    DEBUGF ('c', words);
-   for (size_t i = 1; i < words.size(); i++) {
+/*   for (size_t i = 1; i < words.size(); i++) {
       cout << words.at(i) << ' ';
    }
-   cout << endl;
+   cout << endl;*/
 }
 
 void fn_exit (inode_state& state, const wordvec& words){
    DEBUGF ('c', state);
    DEBUGF ('c', words);
+   if (words.size() != 1) {
+      int new_status = stoi(words.at(1));
+      exit_status::set(new_status);
+   }
    throw ysh_exit_exn();
 }
 

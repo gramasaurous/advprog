@@ -1,4 +1,5 @@
-// $Id: commands.h,v 1.8 2014-06-11 13:49:31-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
 
 #ifndef __COMMANDS_H__
 #define __COMMANDS_H__

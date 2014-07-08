@@ -1,4 +1,5 @@
-// $Id: inode.h,v 1.13 2014-06-12 18:10:25-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
 
 #ifndef __INODE_H__
 #define __INODE_H__
@@ -45,10 +46,10 @@ class inode_state {
       string prompt {"% "};
    public:
       inode_state();
-      string get_prompt();
+      string get_prompt() {return prompt;}
       void set_prompt(string new_prompt);
-      inode_ptr get_root();
-      inode_ptr get_cwd();
+      inode_ptr get_root() {return root;}
+      inode_ptr get_cwd() {return cwd;}
 };
 
 
@@ -156,4 +157,3 @@ class directory: public file_base {
 };
 
 #endif
-
