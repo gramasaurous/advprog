@@ -29,7 +29,6 @@ bigint::bigint (const string& that) {
    DEBUGF ('~', this << " -> " << long_value)
 }
 
-
 bigint operator+ (const bigint& left, const bigint& right) {
    return left.long_value + right.long_value;
 }

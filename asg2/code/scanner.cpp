@@ -23,16 +23,16 @@ void scanner::advance() {
 
 token_t scanner::scan() {
    token_t result;
-   while (not seen_eof and isspace (lookahead)) advance();
+   while ( !seen_eof && isspace (lookahead) ) advance();
    if (seen_eof) {
       result.symbol = SCANEOF;
-   }else if (lookahead == '_' or isdigit (lookahead)) {
+   } else if (lookahead == '_' || isdigit (lookahead)) {
       result.symbol = NUMBER;
       do {
          result.lexinfo += lookahead;
          advance();
-      }while (not seen_eof and isdigit (lookahead));
-   }else {
+      } while ( !seen_eof && isdigit (lookahead) );
+   } else {
       result.symbol = OPERATOR;
       result.lexinfo += lookahead;
       advance();

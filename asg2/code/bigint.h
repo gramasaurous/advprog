@@ -18,7 +18,13 @@ using namespace std;
 class bigint {
       friend ostream& operator<< (ostream&, const bigint&);
    private:
-      long long_value {};
+      long long_value {}; // trivial implementation
+      // begin real implementation
+      using digit_t = unsigned char;
+      using bigvalue_t = vector<digit_t>;
+      bool negative;
+      bigvalue_t big_value;
+      
       using quot_rem = pair<bigint,bigint>;
       using unumber = unsigned long;
       friend quot_rem divide (const bigint&, const bigint&);
