@@ -1,4 +1,6 @@
-// $Id: scanner.cpp,v 1.7 2014-04-08 18:43:33-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg2: scanner.cpp
 
 #include <iostream>
 #include <locale>

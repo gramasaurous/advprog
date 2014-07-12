@@ -1,4 +1,6 @@
-# $Id: Makefile,v 1.11 2014-07-02 20:01:17-07 - - $
+# Graham Greving
+# ggreving@ucsc.edu
+# asg2: Makefile
 
 MKFILE      = Makefile
 DEPFILE     = ${MKFILE}.dep
@@ -29,6 +31,9 @@ ${EXECBIN} : ${OBJECTS}
 ci : ${ALLSOURCES}
 	- checksource ${ALLSOURCES}
 	cid + ${ALLSOURCES}
+
+git :
+	- git commit -a -m "make commit:`LC_TIME=C date`"
 
 lis : ${ALLSOURCES}
 	mkpspdf ${LISTING} ${ALLSOURCES} ${DEPFILE}

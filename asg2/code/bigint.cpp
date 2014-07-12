@@ -1,4 +1,6 @@
-// $Id: bigint.cpp,v 1.61 2014-06-26 17:06:06-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg2: bigint.cpp
 
 #include <cstdlib>
 #include <exception>

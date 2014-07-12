@@ -1,4 +1,6 @@
-// $Id: bigint.h,v 1.16 2014-07-02 20:01:17-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg2: bigint.h
 
 #ifndef __BIGINT_H__
 #define __BIGINT_H__

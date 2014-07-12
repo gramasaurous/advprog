@@ -1,4 +1,6 @@
-// $Id: main.cpp,v 1.41 2014-07-02 20:01:17-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg2: main.cpp
 
 #include <deque>
 #include <iostream>

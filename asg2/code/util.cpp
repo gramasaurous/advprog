@@ -1,4 +1,6 @@
-// $Id: util.cpp,v 1.10 2014-04-09 16:45:33-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg2: util.cpp
 
 #include <cstdlib>
 #include <sstream>
