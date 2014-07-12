@@ -17,10 +17,15 @@ EXECBIN     = ydc
 OBJECTS     = ${CPPSOURCE:.cpp=.o}
 OTHERS      = ${MKFILE} README
 ALLSOURCES  = ${CPPHEADER} ${CPPSOURCE} ${OTHERS}
-LISTING     = Listing.ps
+
+HOST = $(findstring ucsc,$(shell hostname))
+WARNING = $(error CANNOT SUBMIT, NOT ON UNIX.UCSC)
+SUBMIT = submit cmps109-wm.u14 asg2
 
 all : ${EXECBIN}
+ifeq ($(HOST),ucsc)
 	- checksource ${ALLSOURCES}
+endif
 
 ${EXECBIN} : ${OBJECTS}
 	${COMPILECPP} -o $@ ${OBJECTS}
@@ -28,15 +33,8 @@ ${EXECBIN} : ${OBJECTS}
 %.o : %.cpp
 	${COMPILECPP} -c $<
 
-ci : ${ALLSOURCES}
-	- checksource ${ALLSOURCES}
-	cid + ${ALLSOURCES}
-
 git :
-	- git commit -a -m "make commit:`LC_TIME=C date`"
-
-lis : ${ALLSOURCES}
-	mkpspdf ${LISTING} ${ALLSOURCES} ${DEPFILE}
+	- git commit -a
 
 clean :
 	- rm ${OBJECTS} ${DEPFILE} core ${EXECBIN}.errs
@@ -48,6 +46,11 @@ dep : ${CPPSOURCE} ${CPPHEADER}
 	@ echo "# ${DEPFILE} created `LC_TIME=C date`" >${DEPFILE}
 	${MAKEDEPCPP} ${CPPSOURCE} >>${DEPFILE}
 
+submit : spotless
+ifeq ($(HOST),ucsc)
+	${SUBMIT} ${CPPSOURCE} ${CPPHEADER} ${OTHERS}
+endif
+
 ${DEPFILE} :
 	@ touch ${DEPFILE}
 	${GMAKE} dep
@@ -58,4 +61,3 @@ again :
 ifeq (${NEEDINCL}, )
 include ${DEPFILE}
 endif
-
