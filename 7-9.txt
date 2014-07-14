@@ -1,0 +1,50 @@
+Polymorphism
+-> ad hoc : conversion : overloading
+-> universal : inheritance : templates -> { .h .cpp .tcc }
+
+Generic Programming:
+
+Templates
+	- completely static
+	- completely compiletime
+	- require recompiatiion
+	== macros
+	- can lead to code bloat
+	- faster
+	- use less data space
+	- templates understand scope, macros do not
+
+Containers and Inheritance
+	vector <base*> OK (base is a base class)
+	vector <base> fails due to slicing
+
+Integer Templates
+templete <typename, T, size_t N>
+class array {
+		T a[N];
+
+}
+
+Arrays:
+	array <int, 10> a; // actually an array class
+	int a[10];  // chunk of storage (C style)
+				// dimension is part of a type
+
+Inheritance - dynamic
+			- runtime dispatch
+
+
+(containers) -> (iterators) <- (algorithms)
+{ search algorithm only needs begin, end, + forward iterator }
+
+iterators: input, output, forward - bidirectional - direct access
+forward  can do ++
+reverse iterator = forward iterator (begin is end) (end is begin - 1) ++ is --
+
+
+	throwable
+	/		\
+errors		exceptions
+				|
+		  runtime errors
+
