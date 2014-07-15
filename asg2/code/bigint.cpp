@@ -31,22 +31,22 @@ bigint::bigint (const string& that) {
       big_value.push_back(*itor++ - '0');
    }
    //long_value = isnegative ? - newval : + newval;
-   //DEBUGF ('~', this << " -> " << );
-   for (unsigned int i = 0; i < big_value.size(); i++) {
-      cout << i << ": " << static_cast<unsigned>(big_value.at(i)) << endl;
-   }
    DEBUGF('~', "front: " << static_cast<unsigned>(big_value.front()) << endl);
    DEBUGF('~', "back: " << static_cast<unsigned>(big_value.back()) << endl);
    DEBUGF('~', "size: " << static_cast<unsigned>(big_value.size()) << endl);
 }
 
 bigint operator+ (const bigint& left, const bigint& right) {
-   auto itor_l = left.big_value.begin();
-   auto itor_r = right.big_value.begin();
+   if (left.negative == true) {
+      return (do_sub(right, left));
+   } else if (right.negative == true) {
+      return (do_sub(left, right));
+   }
+   size_t l = left.big_value.size();
+   size_t r = right.big_value.size();
+   bigint sum{};
 
-   cout << "l: " <<  *itor_l << "r: " *itor_r << endl;
-
-   return left.long_value + right.long_value;
+   //return left.long_value + right.long_value;
 }
 
 bigint operator- (const bigint& left, const bigint& right) {
@@ -73,6 +73,25 @@ bool abs_less (const long& left, const long& right) {
 }
 
 //
+// Addition Algorithm.
+//
+
+bigint do_add(const bigint& top, const bigint& bottom) {
+   bigint sum {};
+   cout << "do_add: " << top << " + " << bottom << endl;
+   return sum;
+}
+
+//
+// Subtraction algorithm.
+//
+bigint do_sub(const bigint& top, const bigint& bottom) {
+   bigint diff {};
+   cout << "do_sub: " << top << " - " << bottom << endl;
+   return diff;
+}
+
+//
 // Multiplication algorithm.
 //
 bigint operator* (const bigint& left, const bigint& right) {
@@ -90,6 +109,7 @@ void multiply_by_2 (bigint::unumber& unumber_value) {
 void divide_by_2 (bigint::unumber& unumber_value) {
    unumber_value /= 2;
 }
+
 
 
 bigint::quot_rem divide (const bigint& left, const bigint& right) {
@@ -134,7 +154,9 @@ bool operator< (const bigint& left, const bigint& right) {
 
 ostream& operator<< (ostream& out, const bigint& that) {
    //out << that.long_value;
-
+   if (that.negative == true) {
+      out << '-';
+   }
    for (auto i : that.big_value) {
       out << static_cast<unsigned>(i);
    }

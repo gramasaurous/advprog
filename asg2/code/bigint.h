@@ -22,7 +22,7 @@ class bigint {
       // begin real implementation
       using digit_t = unsigned char;
       using bigvalue_t = vector<digit_t>;
-      bool negative;
+      bool negative = false;
       bigvalue_t big_value {};
 
       using quot_rem = pair<bigint,bigint>;
@@ -30,6 +30,8 @@ class bigint {
       friend quot_rem divide (const bigint&, const bigint&);
       friend void multiply_by_2 (unumber&);
       friend void divide_by_2 (unumber&);
+      friend bigint do_add(const bigint&, const bigint&);
+      friend bigint do_sub(const bigint&, const bigint&);
    public:
 
       //
