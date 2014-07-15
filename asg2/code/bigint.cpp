@@ -38,15 +38,18 @@ bigint::bigint (const string& that) {
 
 bigint operator+ (const bigint& left, const bigint& right) {
    if (left.negative == true) {
-      return (do_sub(right, left));
+      return (do_sub(right, +left));
    } else if (right.negative == true) {
-      return (do_sub(left, right));
+      return (do_sub(left, +right));
    }
    size_t l = left.big_value.size();
    size_t r = right.big_value.size();
    bigint sum{};
-
-   //return left.long_value + right.long_value;
+   if (l > r) {
+      return (do_add(left, right));
+   } else {
+      return (do_add(right, left));
+   }
 }
 
 bigint operator- (const bigint& left, const bigint& right) {
@@ -54,10 +57,15 @@ bigint operator- (const bigint& left, const bigint& right) {
 }
 
 bigint operator+ (const bigint& right) {
-   return +right.long_value;
+   //if (right.negative == true) right.negative = false;
+   bigint new_big = right;
+   new_big.negative = false;
+   return new_big;
 }
 
 bigint operator- (const bigint& right) {
+   //right.negative = true;
+   //return (right);
    return -right.long_value;
 }
 
