@@ -147,7 +147,7 @@ int main (int argc, char** argv) {
                default:
                   break;
             }
-         }catch (ydc_exn& exn) {
+         } catch (ydc_exn& exn) {
             cout << exn.what() << endl;
          }
       }

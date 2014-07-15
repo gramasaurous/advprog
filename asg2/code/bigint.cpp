@@ -18,18 +18,34 @@ bigint::bigint (long that): long_value (that) {
 
 bigint::bigint (const string& that) {
    auto itor = that.cbegin();
-   bool isnegative = false;
+   //bool isnegative = false;
    if (itor != that.cend() and *itor == '_') {
-      isnegative = true;
+      //isnegative = true;
+      //++itor;
+      negative = true;
       ++itor;
    }
-   int newval = 0;
-   while (itor != that.end()) newval = newval * 10 + *itor++ - '0';
-   long_value = isnegative ? - newval : + newval;
-   DEBUGF ('~', this << " -> " << long_value)
+   //int newval = 0;
+   while (itor != that.end()) {
+      //newval = newval * 10 + *itor++ - '0';
+      big_value.push_back(*itor++ - '0');
+   }
+   //long_value = isnegative ? - newval : + newval;
+   //DEBUGF ('~', this << " -> " << );
+   for (unsigned int i = 0; i < big_value.size(); i++) {
+      cout << i << ": " << static_cast<unsigned>(big_value.at(i)) << endl;
+   }
+   DEBUGF('~', "front: " << static_cast<unsigned>(big_value.front()) << endl);
+   DEBUGF('~', "back: " << static_cast<unsigned>(big_value.back()) << endl);
+   DEBUGF('~', "size: " << static_cast<unsigned>(big_value.size()) << endl);
 }
 
 bigint operator+ (const bigint& left, const bigint& right) {
+   auto itor_l = left.big_value.begin();
+   auto itor_r = right.big_value.begin();
+
+   cout << "l: " <<  *itor_l << "r: " *itor_r << endl;
+
    return left.long_value + right.long_value;
 }
 
@@ -117,7 +133,11 @@ bool operator< (const bigint& left, const bigint& right) {
 }
 
 ostream& operator<< (ostream& out, const bigint& that) {
-   out << that.long_value;
+   //out << that.long_value;
+
+   for (auto i : that.big_value) {
+      out << static_cast<unsigned>(i);
+   }
    return out;
 }
 
