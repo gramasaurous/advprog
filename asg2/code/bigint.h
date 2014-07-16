@@ -22,16 +22,16 @@ class bigint {
       // begin real implementation
       using digit_t = unsigned char;
       using bigvalue_t = vector<digit_t>;
-      bool negative = false;
+      
       bigvalue_t big_value {};
-
+      bool negative = false;
       using quot_rem = pair<bigint,bigint>;
       using unumber = unsigned long;
       friend quot_rem divide (const bigint&, const bigint&);
       friend void multiply_by_2 (unumber&);
       friend void divide_by_2 (unumber&);
-      friend bigint do_add(const bigint&, const bigint&);
-      friend bigint do_sub(const bigint&, const bigint&);
+      friend bigvalue_t do_add(const bigvalue_t&, const bigvalue_t&);
+      friend bigvalue_t do_sub(const bigvalue_t&, const bigvalue_t&);
    public:
 
       //
