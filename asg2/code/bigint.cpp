@@ -41,17 +41,55 @@ bigint::bigint (const string& that) {
 //
 
 bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top, const bigint::bigvalue_t& bottom) {
-   bigint::bigvalue_t sum{};
+   bigint::bigvalue_t sum{};     // return value
+   bigint::digit_t digit{0};      // digit marker
+   bigint::digit_t carry{0};      // carryover marker
+
+   // iterators
+   auto itor_top = top.rbegin();
+   auto itor_bottom = bottom.rbegin();
+   while(itor_top != top.rend() && itor_bottom != bottom.rend()) {
+      //cout << static_cast<unsigned>(*itor_top++);
+      digit = static_cast<unsigned>(*itor_top);
+      digit += static_cast<unsigned>(*itor_bottom);
+      digit += carry;
+      if (digit > 9) {
+         carry = 1;
+         digit = (static_cast<unsigned>(*itor_top) - static_cast<unsigned>(*itor_bottom));
+      } else {
+         carry = 0;
+      }
+      sum.push_front(digit);
+      itor_top++;
+      itor_bottom++;
+   }
    return sum;
 }
-bigint::bigvalue_t do_bigsub(const bigint::bigvalue_t& top, const bigint::bigvalue_t& bottomm) {
+
+bigint::bigvalue_t do_bigsub(const bigint::bigvalue_t& top, const bigint::bigvalue_t& bottom) {
    bigint::bigvalue_t sum{};
+
    return sum;
+}
+
+//
+// do_bigless()
+//
+bool do_bigless (const bigint::bigvalue_t& left, const bigint::bigvalue_t& right) {
+   return false;
 }
 
 bigint operator+ (const bigint& left, const bigint& right) {
    bigint sum{};
-   do_bigadd(left.big_value, right.big_value);
+   if (left.negative && right.negative) {
+      sum.big_value = do_bigadd(left.big_value, right.big_value);
+      sum.negative = left.negative;
+   } else if (do_bigless(left.big_value, right.big_value)) {
+      sum.big_value = do_bigadd(right.big_value, left.big_value);
+   } else {
+      sum.big_value = do_bigadd(left.big_value, right.big_value);
+   }
+   cout << "added: " << sum;
    return sum;
    //return left.long_value + right.long_value;
 }
@@ -157,7 +195,6 @@ ostream& operator<< (ostream& out, const bigint& that) {
    }
    return out;
 }
-
 
 bigint pow (const bigint& base, const bigint& exponent) {
    DEBUGF ('^', "base = " << base << ", exponent = " << exponent);

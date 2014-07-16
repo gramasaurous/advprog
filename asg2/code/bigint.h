@@ -30,6 +30,7 @@ class bigint {
       friend quot_rem divide (const bigint&, const bigint&);
       friend void multiply_by_2 (unumber&);
       friend void divide_by_2 (unumber&);
+      friend bool do_bigless(const bigvalue_t&, const bigvalue_t&);
       friend bigvalue_t do_bigadd(const bigvalue_t&, const bigvalue_t&);
       friend bigvalue_t do_bigsub(const bigvalue_t&, const bigvalue_t&);
    public:
