@@ -36,35 +36,35 @@ bigint::bigint (const string& that) {
    DEBUGF('~', "size: " << static_cast<unsigned>(big_value.size()) << endl);
 }
 
-bigint operator+ (const bigint& left, const bigint& right) {
-   bigint sum{};
-   bigint::bigvalue_t sum_bigval{};
-   if (left.negative == true) {
-      sum_bigval = do_sub(right.big_value, (+left).big_value);
-      sum = bigint(sum_bigval);
-   } else if (right.negative == true) {
+//
+// Addition/Subtraction
+//
 
-      return (do_sub(left.big_value, (+right).big_value));
-   }
-   size_t l = left.big_value.size();
-   size_t r = right.big_value.size();
-   if (l > r) {
-      return (bigint::do_add(left.big_value, right.big_value));
-   } else {
-      return (bigint::do_add(right.big_value, left.big_value));
-   }
+bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top, const bigint::bigvalue_t& bottom) {
+   bigint::bigvalue_t sum{};
+   return sum;
+}
+bigint::bigvalue_t do_bigsub(const bigint::bigvalue_t& top, const bigint::bigvalue_t& bottomm) {
+   bigint::bigvalue_t sum{};
    return sum;
 }
 
+bigint operator+ (const bigint& left, const bigint& right) {
+   bigint sum{};
+   do_bigadd(left.big_value, right.big_value);
+   return sum;
+   //return left.long_value + right.long_value;
+}
+
 bigint operator- (const bigint& left, const bigint& right) {
-   return left.long_value - right.long_value;
+   bigint diff{};
+   do_bigsub(left.big_value, right.big_value);
+   return (diff);
+   //return left.long_value - right.long_value;
 }
 
 bigint operator+ (const bigint& right) {
-   //if (right.negative == true) right.negative = false;
-   bigint new_big = right;
-   new_big.negative = false;
-   return new_big;
+   return +right.long_value;
 }
 
 bigint operator- (const bigint& right) {
@@ -84,26 +84,7 @@ bool abs_less (const long& left, const long& right) {
    return left < right;
 }
 
-//
-// Addition Algorithm.
-//
 
-bigint::bigvalue_t do_add(const bigint::bigvalue_t& top, const bigint::bigvalue_t& bottom) {
-   bigvalue_t sum {};
-   cout << "do_add: " << top << " + " << bottom << endl;
-   int sum_digit{};
-   int carry{0};
-   return sum;
-}
-
-//
-// Subtraction algorithm.
-//
-bigint::bigvalue_t do_sub(const bigint::bigvalue_t& top, const bigint::bigvalue_t& bottom) {
-   bigint::bigvalue_t diff;
-   //cout << "do_sub: " << top << " - " << bottom << endl;
-   return diff;
-}
 
 //
 // Multiplication algorithm.
