@@ -62,15 +62,42 @@ bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top, const bigint::bigval
       } else {
          carry = 0;
       }
-      sum.insert(sum.begin(),digit);
+      sum.insert(sum.begin(), digit);
    }
    return sum;
 }
 
 bigint::bigvalue_t do_bigsub(const bigint::bigvalue_t& top, const bigint::bigvalue_t& bottom) {
-   bigint::bigvalue_t sum{};
+   bigint::bigvalue_t diff{};
+   auto itor_top = top.rbegin();
+   auto itor_bottom = bottom.rbegin();
 
-   return sum;
+   bigint::digit_t digit_top{0};
+   bigint::digit_t digit_bottom{0};
+   bigint::digit_t digit_diff{0};
+   bigint::digit_t borrow{0};
+
+   while (itor_top != top.rend()) {
+      if (itor_bottom == bottom.rend()) {
+         digit_bottom = 0;
+      } else {
+         digit_bottom = static_cast<unsigned>(*itor_bottom++);
+      }
+      if (borrow == 0) {
+         digit_top = static_cast<unsigned>(*itor_top++);
+      } else {
+         digit_top = borrow;
+         borrow = 0;
+         itor_top++;
+      }
+      if (digit_top < digit_bottom) {
+         borrow = *itor_top - 1; // already set to next digit
+         digit_top += 10;
+      }
+      digit_diff = digit_top - digit_bottom;
+      diff.insert(diff.begin(), digit_diff);
+   }
+   return diff;
 }
 
 //
@@ -107,9 +134,9 @@ bigint operator+ (const bigint& left, const bigint& right) {
       sum.big_value = do_bigadd(left.big_value, right.big_value);
       sum.negative = left.negative;
    } else if (do_bigless(left.big_value, right.big_value)) {
-      sum.big_value = do_bigadd(right.big_value, left.big_value);
+      sum.big_value = do_bigsub(right.big_value, left.big_value);
    } else {
-      sum.big_value = do_bigadd(left.big_value, right.big_value);
+      sum.big_value = do_bigsub(left.big_value, right.big_value);
    }
    cout << "added: " << sum << endl;
    return sum;
@@ -118,7 +145,9 @@ bigint operator+ (const bigint& left, const bigint& right) {
 
 bigint operator- (const bigint& left, const bigint& right) {
    bigint diff{};
-   do_bigsub(left.big_value, right.big_value);
+   diff.big_value = do_bigsub(left.big_value, right.big_value);
+   
+   cout << "subbed: " << diff << endl;
    return (diff);
    //return left.long_value - right.long_value;
 }
