@@ -55,14 +55,15 @@ bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top, const bigint::bigval
       digit += carry;
       if (digit > 9) {
          carry = 1;
-         digit = (static_cast<unsigned>(*itor_top) - static_cast<unsigned>(*itor_bottom));
+         digit -= 10;
       } else {
          carry = 0;
       }
-      sum.push_front(digit);
+      sum.insert(sum.begin(),digit);
       itor_top++;
       itor_bottom++;
    }
+   if (carry == 1) sum.insert(sum.begin(),carry);
    return sum;
 }
 
