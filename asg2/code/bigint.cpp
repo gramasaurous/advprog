@@ -38,6 +38,7 @@ bigint::bigint (const string& that) {
 
 //
 // Addition/Subtraction
+// do_bigadd() assumes top.size > bottom.size
 //
 
 bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top, const bigint::bigvalue_t& bottom) {
@@ -48,10 +49,12 @@ bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top, const bigint::bigval
    // iterators
    auto itor_top = top.rbegin();
    auto itor_bottom = bottom.rbegin();
-   while(itor_top != top.rend() && itor_bottom != bottom.rend()) {
-      //cout << static_cast<unsigned>(*itor_top++);
-      digit = static_cast<unsigned>(*itor_top);
-      digit += static_cast<unsigned>(*itor_bottom);
+
+   while(itor_top != top.rend()) {
+      digit = static_cast<unsigned>(*itor_top++);
+      if (itor_bottom != bottom.rend()) {
+         digit += static_cast<unsigned>(*itor_bottom++);
+      }
       digit += carry;
       if (digit > 9) {
          carry = 1;
@@ -60,10 +63,7 @@ bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top, const bigint::bigval
          carry = 0;
       }
       sum.insert(sum.begin(),digit);
-      itor_top++;
-      itor_bottom++;
    }
-   if (carry == 1) sum.insert(sum.begin(),carry);
    return sum;
 }
 
@@ -75,9 +75,30 @@ bigint::bigvalue_t do_bigsub(const bigint::bigvalue_t& top, const bigint::bigval
 
 //
 // do_bigless()
+// returns true if left < right
+// returns false if left > right or left == right
 //
 bool do_bigless (const bigint::bigvalue_t& left, const bigint::bigvalue_t& right) {
-   return false;
+   if (left.size() < right.size()) {
+      return true;
+   } else if (left.size() > right.size()) {
+      return false;
+   }
+
+   auto itor_left = left.begin();
+   auto itor_right = right.begin();
+
+   while(itor_left != left.end() && itor_right != right.end()) {
+      if (itor_left > itor_left) {
+         return false;
+      } else if (itor_left < itor_right) {
+         return true;
+      } else {
+         itor_left++;
+         itor_right++;
+      }
+   }
+   return true;
 }
 
 bigint operator+ (const bigint& left, const bigint& right) {
@@ -90,7 +111,7 @@ bigint operator+ (const bigint& left, const bigint& right) {
    } else {
       sum.big_value = do_bigadd(left.big_value, right.big_value);
    }
-   cout << "added: " << sum;
+   cout << "added: " << sum << endl;
    return sum;
    //return left.long_value + right.long_value;
 }
