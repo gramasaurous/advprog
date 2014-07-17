@@ -12,6 +12,7 @@ using namespace std;
 #include "bigint.h"
 #include "debug.h"
 
+
 bigint::bigint (long that): long_value (that) {
    DEBUGF ('~', this << " -> " << long_value)
 }
@@ -68,6 +69,13 @@ bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top, const bigint::bigval
       }
       sum.insert(sum.begin(), digit_sum);
    }
+   cout << "do_bigadd(): ";
+   for (auto i : top) cout << static_cast<unsigned>(i);
+   cout << " + ";
+   for (auto i : bottom) cout << static_cast<unsigned>(i);
+   cout << " = ";
+   for (auto i : sum) cout << static_cast<unsigned>(i);
+   cout << endl;
    return sum;
 }
 
@@ -101,6 +109,13 @@ bigint::bigvalue_t do_bigsub(const bigint::bigvalue_t& top, const bigint::bigval
       digit_diff = digit_top - digit_bottom;
       diff.insert(diff.begin(), digit_diff);
    }
+   cout << "do_bigsub(): ";
+   for (auto i : top) cout << static_cast<unsigned>(i);
+   cout << " - ";
+   for (auto i : bottom) cout << static_cast<unsigned>(i);
+   cout << " = ";
+   for (auto i : diff) cout << static_cast<unsigned>(i);
+   cout << endl;
    return diff;
 }
 
@@ -134,18 +149,19 @@ bool do_bigless (const bigint::bigvalue_t& left, const bigint::bigvalue_t& right
 
 bigint operator+ (const bigint& left, const bigint& right) {
    bigint sum{};
+   bool right_is_less = do_bigless(right.big_value, left.big_value);
    if (left.negative == right.negative) {
-      if (do_bigless(right.big_value, left.big_value)) {
+      if (right_is_less) {
          sum.big_value = do_bigadd(left.big_value, right.big_value);
       } else {
          sum.big_value = do_bigadd(right.big_value, left.big_value);
       }
       sum.negative = left.negative;
-   } else if (do_bigless(left.big_value, right.big_value)) {
-      sum.big_value = do_bigsub(right.big_value, left.big_value);
+   } else if (right_is_less) {
+      sum.big_value = do_bigsub(left.big_value, right.big_value);
       sum.negative = true;
    } else {
-      sum.big_value = do_bigsub(left.big_value, right.big_value);
+      sum.big_value = do_bigsub(right.big_value, left.big_value);
       sum.negative = true;
    }
    cout << "operator+():" << left << " + " << right << " = " << sum << endl;
@@ -155,9 +171,21 @@ bigint operator+ (const bigint& left, const bigint& right) {
 
 bigint operator- (const bigint& left, const bigint& right) {
    bigint diff{};
-   
-   diff.big_value = do_bigsub(left.big_value, right.big_value);
-   
+   bool right_is_less = do_bigless(right.big_value, left.big_value);
+   if (left.negative == right.negative) {
+      if (right_is_less) {
+         diff.big_value = do_bigsub(left.big_value, right.big_value);
+      } else {
+         diff.big_value = do_bigsub(right.big_value, left.big_value);
+      }
+      diff.negative = false;
+   } else if (right_is_less) {
+      diff.big_value = do_bigadd(left.big_value, right.big_value);
+      diff.negative = true;
+   } else {
+      diff.big_value = do_bigadd(right.big_value, left.big_value);
+      diff.negative = true;
+   }   
    cout << "operator-():" << left << " - " << right << " = " << diff << endl;
    return (diff);
    //return left.long_value - right.long_value;
@@ -280,3 +308,4 @@ bigint pow (const bigint& base, const bigint& exponent) {
    DEBUGF ('^', "result = " << result);
    return result;
 }
+
