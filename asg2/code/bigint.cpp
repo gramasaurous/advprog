@@ -42,27 +42,31 @@ bigint::bigint (const string& that) {
 //
 
 bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top, const bigint::bigvalue_t& bottom) {
-   bigint::bigvalue_t sum{};     // return value
-   bigint::digit_t digit{0};      // digit marker
-   bigint::digit_t carry{0};      // carryover marker
+   bigint::bigvalue_t sum{};        // return value
+   bigint::digit_t digit_sum{0};    // digit marker
+   bigint::digit_t digit_top{0};
+   bigint::digit_t digit_bottom{0};
+   bigint::digit_t carry{0};        // carryover marker
 
    // iterators
    auto itor_top = top.rbegin();
    auto itor_bottom = bottom.rbegin();
 
    while(itor_top != top.rend()) {
-      digit = static_cast<unsigned>(*itor_top++);
-      if (itor_bottom != bottom.rend()) {
-         digit += static_cast<unsigned>(*itor_bottom++);
+      digit_top = static_cast<unsigned>(*itor_top++);
+      if (itor_bottom  == bottom.rend()) {
+         digit_bottom = 0;
+      } else {
+         digit_bottom = static_cast<unsigned>(*itor_bottom++);
       }
-      digit += carry;
-      if (digit > 9) {
+      digit_sum = digit_bottom + digit_top + carry;
+      if (digit_sum > 9) {
          carry = 1;
-         digit -= 10;
+         digit_sum -= 10;
       } else {
          carry = 0;
       }
-      sum.insert(sum.begin(), digit);
+      sum.insert(sum.begin(), digit_sum);
    }
    return sum;
 }
@@ -130,24 +134,31 @@ bool do_bigless (const bigint::bigvalue_t& left, const bigint::bigvalue_t& right
 
 bigint operator+ (const bigint& left, const bigint& right) {
    bigint sum{};
-   if (left.negative && right.negative) {
-      sum.big_value = do_bigadd(left.big_value, right.big_value);
+   if (left.negative == right.negative) {
+      if (do_bigless(right.big_value, left.big_value)) {
+         sum.big_value = do_bigadd(left.big_value, right.big_value);
+      } else {
+         sum.big_value = do_bigadd(right.big_value, left.big_value);
+      }
       sum.negative = left.negative;
    } else if (do_bigless(left.big_value, right.big_value)) {
       sum.big_value = do_bigsub(right.big_value, left.big_value);
+      sum.negative = true;
    } else {
       sum.big_value = do_bigsub(left.big_value, right.big_value);
+      sum.negative = true;
    }
-   cout << "added: " << sum << endl;
+   cout << "operator+():" << left << " + " << right << " = " << sum << endl;
    return sum;
    //return left.long_value + right.long_value;
 }
 
 bigint operator- (const bigint& left, const bigint& right) {
    bigint diff{};
+   
    diff.big_value = do_bigsub(left.big_value, right.big_value);
    
-   cout << "subbed: " << diff << endl;
+   cout << "operator-():" << left << " - " << right << " = " << diff << endl;
    return (diff);
    //return left.long_value - right.long_value;
 }

@@ -4,3 +4,5 @@ asg1/code/yshell
 *.o
 
 *.dep
+
+asg2/code/ydc
