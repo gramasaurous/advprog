@@ -235,31 +235,31 @@ bigint operator* (const bigint& left, const bigint& right) {
 // Division algorithm.
 //
 
-void multiply_by_2 (bigint::unumber& unumber_value) {
-   unumber_value *= 2;
+void multiply_by_2 (bigint& unumber_value) {
+   //unumber_value *= 2;
+
 }
 
-void divide_by_2 (bigint::unumber& unumber_value) {
-   unumber_value /= 2;
+void divide_by_2 (bigint& unumber_value) {
+   //unumber_value /= 2;
 }
 
 
 
 bigint::quot_rem divide (const bigint& left, const bigint& right) {
    if (right == 0) throw domain_error ("divide by 0");
-   using unumber = unsigned long;
-   static unumber zero = 0;
+   static bigint zero = 0;
    if (right == 0) throw domain_error ("bigint::divide");
-   unumber divisor = right.long_value;
-   unumber quotient = 0;
-   unumber remainder = left.long_value;
-   unumber power_of_2 = 1;
-   while (abs_less (divisor, remainder)) {
+   bigint divisor = right;
+   bigint quotient = 0;
+   bigint remainder = left;
+   bigint power_of_2 = 1;
+   while (do_bigless (divisor.big_value, remainder.big_value)) {
       multiply_by_2 (divisor);
       multiply_by_2 (power_of_2);
    }
-   while (abs_less (zero, power_of_2)) {
-      if (not abs_less (remainder, divisor)) {
+   while (do_bigless (zero.big_value, power_of_2.big_value)) {
+      if (not do_bigless (remainder.big_value, divisor.big_value)) {
          remainder = remainder - divisor;
          quotient = quotient + power_of_2;
       }
