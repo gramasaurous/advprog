@@ -70,14 +70,18 @@ bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top,
       }
       sum.insert(sum.begin(), digit_sum);
    }
-/*   cout << "do_bigadd(): ";
+   cout << "do_bigadd(): ";
    for (auto i : top) cout << static_cast<unsigned>(i);
    cout << " + ";
    for (auto i : bottom) cout << static_cast<unsigned>(i);
    cout << " = ";
    for (auto i : sum) cout << static_cast<unsigned>(i);
-   cout << endl;*/
-   while (sum.size() != 0 && sum.back() == 0) sum.pop_back();
+   cout << endl;
+
+   for (auto i : sum) {
+      if (i == 0) sum.pop_back();
+      else break;
+   }
    return sum;
 }
 
@@ -121,7 +125,10 @@ bigint::bigvalue_t do_bigsub(const bigint::bigvalue_t& top,
    for (auto i : diff) cout << static_cast<unsigned>(i);
    cout << endl;*/
    // Trim trailing zeros
-   while (diff.size() != 0 && diff.back() == 0) diff.pop_back();
+   for (auto i : diff) {
+      if (i == 0) diff.pop_back();
+      else break;
+   }
    return diff;
 }
 
@@ -202,13 +209,15 @@ bigint operator- (const bigint& left, const bigint& right) {
 }
 
 bigint operator+ (const bigint& right) {
-   return +right.long_value;
+   //return +right.long_value;
+   return right;
 }
 
 bigint operator- (const bigint& right) {
-   //right.negative = true;
-   //return (right);
-   return -right.long_value;
+   bool sign = right.negative;
+   bigint retval = right;
+   retval.negative = !sign;
+   return retval;
 }
 
 long bigint::to_long() const {
@@ -222,26 +231,57 @@ bool abs_less (const long& left, const long& right) {
    return left < right;
 }
 
+bigint::bigvalue_t do_bigmult(const bigint::bigvalue_t& top,
+      const bigint::bigvalue_t& bottom) {
 
+   bigint::bigvalue_t product{};
+
+   auto itor_bottom = bottom.rbegin();
+
+   while (itor_bottom != bottom.rend()) {
+      unsigned char carry {0};
+      auto itor_top = top.rbegin();
+      while (itor_top != top.rend()) {
+         unsigned char digit = *itor_top++ * *itor_bottom++;
+         digit += carry;
+         product.insert(product.begin(), digit % 10);
+         carry = digit / 10;
+      }
+   }
+   return product;
+}
 
 //
 // Multiplication algorithm.
 //
 bigint operator* (const bigint& left, const bigint& right) {
-   return left.long_value * right.long_value;
+   //return left.long_value * right.long_value;
+   bool right_is_less = do_bigless(right.big_value, left.big_value);
+   bigint product {};
+   if (right_is_less) {
+      product.big_value = do_bigmult(left.big_value, right.big_value);
+   } else {
+      product.big_value = do_bigmult(right.big_value, left.big_value);
+   }
+   if (left.negative == right.negative) {
+      product.negative = false;
+   } else {
+      product.negative = true;
+   }
+   return product;
 }
 
 //
 // Division algorithm.
 //
 
-void multiply_by_2 (bigint& unumber_value) {
-   //unumber_value *= 2;
-
+void multiply_by_2 (bigint& big) {
+   big = big * 2;   
+   return;
 }
 
-void divide_by_2 (bigint& unumber_value) {
-   //unumber_value /= 2;
+void divide_by_2 (bigint&) {
+
 }
 
 
@@ -310,10 +350,18 @@ bool operator< (const bigint& left, const bigint& right) {
 
 ostream& operator<< (ostream& out, const bigint& that) {
    //out << that.long_value;
+   int c{0};
    if (that.negative == true) {
       out << '-';
+      ++c;
    }
    for (auto i : that.big_value) {
+      if (c == 69) {
+         c = 0;
+         cout << "\\" << endl;
+      } else {
+         c++;
+      }
       out << static_cast<unsigned>(i);
    }
    return out;
@@ -341,4 +389,3 @@ bigint pow (const bigint& base, const bigint& exponent) {
    DEBUGF ('^', "result = " << result);
    return result;
 }
-

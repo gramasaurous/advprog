@@ -31,8 +31,9 @@ class bigint {
       friend void multiply_by_2 (bigvalue_t&);
       friend void divide_by_2 (bigvalue_t&);
       friend bool do_bigless(const bigvalue_t&, const bigvalue_t&);
-      friend bigvalue_t do_bigadd(const bigvalue_t&, const bigvalue_t&);
-      friend bigvalue_t do_bigsub(const bigvalue_t&, const bigvalue_t&);
+      friend bigvalue_t do_bigadd(const bigvalue_t&,const bigvalue_t&);
+      friend bigvalue_t do_bigsub(const bigvalue_t&,const bigvalue_t&);
+      friend bigvalue_t do_bigmult(const bigvalue_t&,const bigvalue_t&);
    public:
 
       //
