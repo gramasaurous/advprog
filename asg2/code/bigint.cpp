@@ -77,10 +77,7 @@ bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top,
    cout << " = ";
    for (auto i : sum) cout << static_cast<unsigned>(i);
    cout << endl;*/
-   for (auto i : sum) {
-      if (i == 0) sum.pop_back();
-      else break;
-   }
+   while (sum.size() != 0 && sum.back() == 0) sum.pop_back();
    return sum;
 }
 
@@ -124,10 +121,7 @@ bigint::bigvalue_t do_bigsub(const bigint::bigvalue_t& top,
    for (auto i : diff) cout << static_cast<unsigned>(i);
    cout << endl;*/
    // Trim trailing zeros
-   for (auto i : diff) {
-      if (i == 0) diff.pop_back();
-      else break;
-   }
+   while (diff.size() != 0 && diff.back() == 0) diff.pop_back();
    return diff;
 }
 
@@ -177,7 +171,8 @@ bigint operator+ (const bigint& left, const bigint& right) {
       sum.big_value = do_bigsub(right.big_value, left.big_value);
       sum.negative = true;
    }
-   cout<<"operator+():"<<left<<" + "<< right << " = " << sum << endl;
+   //cout<<"operator+():"<<left<<" + "<< right << " = " << sum << endl;
+   if (sum.big_value.size() == 0) sum.negative = false;
    return sum;
    //return left.long_value + right.long_value;
 }
@@ -200,7 +195,8 @@ bigint operator- (const bigint& left, const bigint& right) {
       diff.big_value = do_bigadd(right.big_value, left.big_value);
       diff.negative = true;
    }   
-   cout<<"operator-():"<<left<<" - "<< right << " = " << diff << endl;
+   //cout<<"operator-():"<<left<<" - "<< right << " = " << diff << endl;
+   if (diff.big_value.size() == 0) diff.negative = false;
    return (diff);
    //return left.long_value - right.long_value;
 }
@@ -282,7 +278,23 @@ bigint operator% (const bigint& left, const bigint& right) {
 }
 
 bool operator== (const bigint& left, const bigint& right) {
-   return left.long_value == right.long_value;
+   //return left.long_value == right.long_value;
+   bool retval {true};
+   if (left.negative != right.negative) {
+      retval = false;
+   } else if (left.big_value.size() != right.big_value.size()) {
+      retval = false;
+   } else {
+      auto l = left.big_value.begin();
+      auto r = right.big_value.begin();
+      while (l != left.big_value.end()) {
+         if (*l++ != *r++) {
+            retval = false;
+            break;
+         }
+      }
+   }
+   return retval;
 }
 
 bool operator< (const bigint& left, const bigint& right) {
