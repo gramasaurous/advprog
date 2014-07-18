@@ -6,3 +6,5 @@ asg1/code/yshell
 *.dep
 
 asg2/code/ydc
+
+*.gz

@@ -18,9 +18,11 @@ OBJECTS     = ${CPPSOURCE:.cpp=.o}
 OTHERS      = ${MKFILE} README
 ALLSOURCES  = ${CPPHEADER} ${CPPSOURCE} ${OTHERS}
 
-HOST = $(findstring ucsc,$(shell hostname))
-WARNING = $(error CANNOT SUBMIT, NOT ON UNIX.UCSC)
-SUBMIT = submit cmps109-wm.u14 asg2
+HOST 		= $(findstring ucsc,$(shell hostname))
+WARNING 	= $(error CANNOT SUBMIT, NOT ON UNIX.UCSC)
+SUBMIT 		= submit cmps109-wm.u14 asg2
+
+TARFILE		= asg2.tar.gz
 
 all : ${EXECBIN}
 ifeq ($(HOST),ucsc)
@@ -50,6 +52,12 @@ submit : spotless
 ifeq ($(HOST),ucsc)
 	${SUBMIT} ${CPPSOURCE} ${CPPHEADER} ${OTHERS}
 endif
+
+cp : tar
+	scp ${TARFILE} ggreving@unix.ucsc.edu:Private/
+
+tar : 
+	tar cvf ${TARFILE} ${ALLSOURCES}
 
 ${DEPFILE} :
 	@ touch ${DEPFILE}

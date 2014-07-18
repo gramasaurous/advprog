@@ -32,9 +32,9 @@ bigint::bigint (const string& that) {
       big_value.push_back(*itor++ - '0');
    }
    //long_value = isnegative ? - newval : + newval;
-   DEBUGF('~', "front: " << static_cast<unsigned>(big_value.front()) << endl);
-   DEBUGF('~', "back: " << static_cast<unsigned>(big_value.back()) << endl);
-   DEBUGF('~', "size: " << static_cast<unsigned>(big_value.size()) << endl);
+   DEBUGF('~',"f:"<<static_cast<unsigned>(big_value.front())<<endl);
+   DEBUGF('~',"b"<<static_cast<unsigned>(big_value.back())<<endl);
+   DEBUGF('~',"s"<<static_cast<unsigned>(big_value.size())<<endl);
 }
 
 //
@@ -42,7 +42,8 @@ bigint::bigint (const string& that) {
 // do_bigadd() assumes top.size > bottom.size
 //
 
-bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top, const bigint::bigvalue_t& bottom) {
+bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top,
+      const bigint::bigvalue_t& bottom) {
    bigint::bigvalue_t sum{};        // return value
    bigint::digit_t digit_sum{0};    // digit marker
    bigint::digit_t digit_top{0};
@@ -79,34 +80,36 @@ bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top, const bigint::bigval
    return sum;
 }
 
-bigint::bigvalue_t do_bigsub(const bigint::bigvalue_t& top, const bigint::bigvalue_t& bottom) {
+bigint::bigvalue_t do_bigsub(const bigint::bigvalue_t& top,
+      const bigint::bigvalue_t& bottom) {
    bigint::bigvalue_t diff{};
    auto itor_top = top.rbegin();
    auto itor_bottom = bottom.rbegin();
 
-   bigint::digit_t digit_top{0};
-   bigint::digit_t digit_bottom{0};
-   bigint::digit_t digit_diff{0};
-   bigint::digit_t borrow{0};
+// use signed integers so we don't end up with -1 == 255
+   int digit_top{0};
+   int digit_bottom{0};
+   int digit_diff{0};
+   int borrow{0};
 
    while (itor_top != top.rend()) {
-      if (itor_bottom == bottom.rend()) {
+      digit_top = static_cast<int>(*itor_top++);
+      if (itor_bottom  == bottom.rend()) {
          digit_bottom = 0;
       } else {
-         digit_bottom = static_cast<unsigned>(*itor_bottom++);
+         digit_bottom = static_cast<int>(*itor_bottom++);
       }
-      if (borrow == 0) {
-         digit_top = static_cast<unsigned>(*itor_top++);
-      } else {
-         digit_top = borrow;
-         borrow = 0;
-         itor_top++;
-      }
+      digit_top -= borrow;
       if (digit_top < digit_bottom) {
-         borrow = *itor_top - 1; // already set to next digit
+         borrow = 1;
          digit_top += 10;
+      } else {
+         borrow = 0;
       }
       digit_diff = digit_top - digit_bottom;
+      cout << "do_bigsub():digit:"<< static_cast<unsigned>(digit_top);
+      cout << " - " << static_cast<unsigned>(digit_bottom);
+      cout << " = " << static_cast<unsigned>(digit_diff) << endl;
       diff.insert(diff.begin(), digit_diff);
    }
    cout << "do_bigsub(): ";
@@ -124,7 +127,8 @@ bigint::bigvalue_t do_bigsub(const bigint::bigvalue_t& top, const bigint::bigval
 // returns true if left < right
 // returns false if left > right or left == right
 //
-bool do_bigless (const bigint::bigvalue_t& left, const bigint::bigvalue_t& right) {
+bool do_bigless (const bigint::bigvalue_t& left,
+      const bigint::bigvalue_t& right) {
    if (left.size() < right.size()) {
       return true;
    } else if (left.size() > right.size()) {
@@ -164,7 +168,7 @@ bigint operator+ (const bigint& left, const bigint& right) {
       sum.big_value = do_bigsub(right.big_value, left.big_value);
       sum.negative = true;
    }
-   cout << "operator+():" << left << " + " << right << " = " << sum << endl;
+   cout<<"operator+():"<<left<<" + "<< right << " = " << sum << endl;
    return sum;
    //return left.long_value + right.long_value;
 }
@@ -175,10 +179,11 @@ bigint operator- (const bigint& left, const bigint& right) {
    if (left.negative == right.negative) {
       if (right_is_less) {
          diff.big_value = do_bigsub(left.big_value, right.big_value);
+         diff.negative = left.negative;
       } else {
          diff.big_value = do_bigsub(right.big_value, left.big_value);
+         diff.negative = !left.negative;
       }
-      diff.negative = false;
    } else if (right_is_less) {
       diff.big_value = do_bigadd(left.big_value, right.big_value);
       diff.negative = true;
@@ -186,7 +191,7 @@ bigint operator- (const bigint& left, const bigint& right) {
       diff.big_value = do_bigadd(right.big_value, left.big_value);
       diff.negative = true;
    }   
-   cout << "operator-():" << left << " - " << right << " = " << diff << endl;
+   cout<<"operator-():"<<left<<" - "<< right << " = " << diff << endl;
    return (diff);
    //return left.long_value - right.long_value;
 }
