@@ -298,7 +298,14 @@ bool operator== (const bigint& left, const bigint& right) {
 }
 
 bool operator< (const bigint& left, const bigint& right) {
-   return left.long_value < right.long_value;
+   //return left.long_value < right.long_value;
+   bool retval{true};
+   if (left.negative != right.negative) {
+      if (right.negative) retval = false;
+   } else if (do_bigless(right.big_value, left.big_value)) {
+      retval = false;
+   }
+   return retval;
 }
 
 ostream& operator<< (ostream& out, const bigint& that) {

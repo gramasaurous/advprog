@@ -34,6 +34,7 @@ void do_arith (bigint_stack& stack, const char oper) {
       case '*': result = left * right; break;
       case '/': result = left / right; break;
       case '%': result = left % right; break;
+      case '<': cout << (left < right); cout << endl; break;
       case '^': result = pow (left, right); break;
       default: throw invalid_argument (
                      string ("do_arith operator is ") + oper);
@@ -81,6 +82,7 @@ fn_map do_functions = {
    {"/", do_arith},
    {"%", do_arith},
    {"^", do_arith},
+   {"<", do_arith},
    {"Y", do_debug},
    {"c", do_clear},
    {"d", do_dup},
