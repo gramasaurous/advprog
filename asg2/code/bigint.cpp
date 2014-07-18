@@ -70,13 +70,17 @@ bigint::bigvalue_t do_bigadd(const bigint::bigvalue_t& top,
       }
       sum.insert(sum.begin(), digit_sum);
    }
-   cout << "do_bigadd(): ";
+/*   cout << "do_bigadd(): ";
    for (auto i : top) cout << static_cast<unsigned>(i);
    cout << " + ";
    for (auto i : bottom) cout << static_cast<unsigned>(i);
    cout << " = ";
    for (auto i : sum) cout << static_cast<unsigned>(i);
-   cout << endl;
+   cout << endl;*/
+   for (auto i : sum) {
+      if (i == 0) sum.pop_back();
+      else break;
+   }
    return sum;
 }
 
@@ -107,18 +111,23 @@ bigint::bigvalue_t do_bigsub(const bigint::bigvalue_t& top,
          borrow = 0;
       }
       digit_diff = digit_top - digit_bottom;
-      cout << "do_bigsub():digit:"<< static_cast<unsigned>(digit_top);
+/*      cout << "do_bigsub():digit:"<< static_cast<unsigned>(digit_top);
       cout << " - " << static_cast<unsigned>(digit_bottom);
-      cout << " = " << static_cast<unsigned>(digit_diff) << endl;
+      cout << " = " << static_cast<unsigned>(digit_diff) << endl;*/
       diff.insert(diff.begin(), digit_diff);
    }
-   cout << "do_bigsub(): ";
+/*   cout << "do_bigsub(): ";
    for (auto i : top) cout << static_cast<unsigned>(i);
    cout << " - ";
    for (auto i : bottom) cout << static_cast<unsigned>(i);
    cout << " = ";
    for (auto i : diff) cout << static_cast<unsigned>(i);
-   cout << endl;
+   cout << endl;*/
+   // Trim trailing zeros
+   for (auto i : diff) {
+      if (i == 0) diff.pop_back();
+      else break;
+   }
    return diff;
 }
 
