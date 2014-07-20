@@ -21,7 +21,7 @@ CPPSOURCE   = trace.cpp util.cpp main.cpp
 ALLCPPSRC   = ${CPPHEADER} ${TEMPLATES} ${CPPSOURCE}
 OBJECTS     = ${CPPSOURCE:.cpp=.o}
 EXECBIN     = keyvalue
-OTHERS      = ${MKFILE}
+OTHERS      = ${MKFILE} README
 ALLSOURCES  = ${ALLCPPSRC} ${OTHERS}
 LISTING     = Listing.ps
 
