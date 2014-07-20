@@ -1,4 +1,6 @@
-// $Id: listmap.h,v 1.9 2014-07-09 11:50:34-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// listmap.h
 
 #ifndef __LISTMAP_H__
 #define __LISTMAP_H__

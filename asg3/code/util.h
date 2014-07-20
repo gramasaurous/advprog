@@ -1,4 +1,6 @@
-// $Id: util.h,v 1.3 2014-04-24 18:14:51-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// util.h
 
 //
 // util -

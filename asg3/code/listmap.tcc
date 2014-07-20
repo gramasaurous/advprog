@@ -1,4 +1,6 @@
-// $Id: listmap.tcc,v 1.5 2014-07-09 11:50:34-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// listmap.tcc
 
 #include "listmap.h"
 #include "trace.h"

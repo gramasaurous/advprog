@@ -1,4 +1,6 @@
-// $Id: util.cpp,v 1.4 2014-04-24 18:14:51-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// util.cpp
 
 #include <cerrno>
 #include <cstdlib>

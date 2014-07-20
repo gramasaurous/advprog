@@ -1,4 +1,6 @@
-// $Id: xpair.h,v 1.4 2014-06-27 17:39:08-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// xpair.h
 
 #ifndef __XPAIR_H__
 #define __XPAIR_H__

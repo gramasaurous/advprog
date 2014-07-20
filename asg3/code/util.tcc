@@ -1,4 +1,6 @@
-// $Id: util.tcc,v 1.3 2014-06-27 17:49:07-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// util.tcc
 
 #include <sstream>
 #include <typeinfo>
