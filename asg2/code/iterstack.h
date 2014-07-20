@@ -1,6 +1,7 @@
-// $Id: iterstack.h,v 1.13 2014-06-26 17:21:55-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg2: iterstack.h
 
-// 
 // The class std::stack does not provide an iterator, which is
 // needed for this class.  So, like std::stack, class iterstack
 // is implemented on top of a container.

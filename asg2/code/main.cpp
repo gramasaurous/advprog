@@ -1,4 +1,6 @@
-// $Id: main.cpp,v 1.41 2014-07-02 20:01:17-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg2: main.cpp
 
 #include <deque>
 #include <iostream>
@@ -32,6 +34,7 @@ void do_arith (bigint_stack& stack, const char oper) {
       case '*': result = left * right; break;
       case '/': result = left / right; break;
       case '%': result = left % right; break;
+      case '<': cout << (left < right); cout << endl; break;
       case '^': result = pow (left, right); break;
       default: throw invalid_argument (
                      string ("do_arith operator is ") + oper);
@@ -79,6 +82,7 @@ fn_map do_functions = {
    {"/", do_arith},
    {"%", do_arith},
    {"^", do_arith},
+   {"<", do_arith},
    {"Y", do_debug},
    {"c", do_clear},
    {"d", do_dup},
@@ -145,7 +149,7 @@ int main (int argc, char** argv) {
                default:
                   break;
             }
-         }catch (ydc_exn& exn) {
+         } catch (ydc_exn& exn) {
             cout << exn.what() << endl;
          }
       }

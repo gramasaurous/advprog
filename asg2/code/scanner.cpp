@@ -1,4 +1,6 @@
-// $Id: scanner.cpp,v 1.7 2014-04-08 18:43:33-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg2: scanner.cpp
 
 #include <iostream>
 #include <locale>
@@ -21,16 +23,16 @@ void scanner::advance() {
 
 token_t scanner::scan() {
    token_t result;
-   while (not seen_eof and isspace (lookahead)) advance();
+   while ( !seen_eof && isspace (lookahead) ) advance();
    if (seen_eof) {
       result.symbol = SCANEOF;
-   }else if (lookahead == '_' or isdigit (lookahead)) {
+   } else if (lookahead == '_' || isdigit (lookahead)) {
       result.symbol = NUMBER;
       do {
          result.lexinfo += lookahead;
          advance();
-      }while (not seen_eof and isdigit (lookahead));
-   }else {
+      } while ( !seen_eof && isdigit (lookahead) );
+   } else {
       result.symbol = OPERATOR;
       result.lexinfo += lookahead;
       advance();

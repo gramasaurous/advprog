@@ -1,4 +1,6 @@
-# $Id: Makefile,v 1.11 2014-07-02 20:01:17-07 - - $
+# Graham Greving
+# ggreving@ucsc.edu
+# asg2: Makefile
 
 MKFILE      = Makefile
 DEPFILE     = ${MKFILE}.dep
@@ -15,10 +17,17 @@ EXECBIN     = ydc
 OBJECTS     = ${CPPSOURCE:.cpp=.o}
 OTHERS      = ${MKFILE} README
 ALLSOURCES  = ${CPPHEADER} ${CPPSOURCE} ${OTHERS}
-LISTING     = Listing.ps
+
+HOST 		= $(findstring ucsc,$(shell hostname))
+WARNING 	= $(error CANNOT SUBMIT, NOT ON UNIX.UCSC)
+SUBMIT 		= submit cmps109-wm.u14 asg2
+
+TARFILE		= asg2.tar.gz
 
 all : ${EXECBIN}
+ifeq ($(HOST),ucsc)
 	- checksource ${ALLSOURCES}
+endif
 
 ${EXECBIN} : ${OBJECTS}
 	${COMPILECPP} -o $@ ${OBJECTS}
@@ -26,12 +35,8 @@ ${EXECBIN} : ${OBJECTS}
 %.o : %.cpp
 	${COMPILECPP} -c $<
 
-ci : ${ALLSOURCES}
-	- checksource ${ALLSOURCES}
-	cid + ${ALLSOURCES}
-
-lis : ${ALLSOURCES}
-	mkpspdf ${LISTING} ${ALLSOURCES} ${DEPFILE}
+git :
+	- git commit -a
 
 clean :
 	- rm ${OBJECTS} ${DEPFILE} core ${EXECBIN}.errs
@@ -43,6 +48,17 @@ dep : ${CPPSOURCE} ${CPPHEADER}
 	@ echo "# ${DEPFILE} created `LC_TIME=C date`" >${DEPFILE}
 	${MAKEDEPCPP} ${CPPSOURCE} >>${DEPFILE}
 
+submit : spotless
+ifeq ($(HOST),ucsc)
+	${SUBMIT} ${CPPSOURCE} ${CPPHEADER} ${OTHERS}
+endif
+
+cp : tar
+	scp ${TARFILE} ggreving@unix.ucsc.edu:Private/
+
+tar : 
+	tar cvf ${TARFILE} ${ALLSOURCES}
+
 ${DEPFILE} :
 	@ touch ${DEPFILE}
 	${GMAKE} dep
@@ -53,4 +69,3 @@ again :
 ifeq (${NEEDINCL}, )
 include ${DEPFILE}
 endif
-

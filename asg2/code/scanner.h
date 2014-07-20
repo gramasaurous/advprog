@@ -1,4 +1,6 @@
-// $Id: scanner.h,v 1.2 2014-04-08 19:04:03-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg2: scanner.h
 
 #ifndef __SCANNER_H__
 #define __SCANNER_H__

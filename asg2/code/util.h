@@ -1,6 +1,7 @@
-// $Id: util.h,v 1.5 2014-04-09 17:03:58-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg2: util.h
 
-//
 // util -
 //    A utility class to provide various services not conveniently
 //    included in other modules.

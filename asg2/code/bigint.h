@@ -1,4 +1,6 @@
-// $Id: bigint.h,v 1.16 2014-07-02 20:01:17-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg2: bigint.h
 
 #ifndef __BIGINT_H__
 #define __BIGINT_H__
@@ -16,12 +18,22 @@ using namespace std;
 class bigint {
       friend ostream& operator<< (ostream&, const bigint&);
    private:
-      long long_value {};
+      long long_value {}; // trivial implementation
+      // begin real implementation
+      using digit_t = unsigned char;
+      using bigvalue_t = vector<digit_t>;
+      
+      bigvalue_t big_value {};
+      bool negative = false;
       using quot_rem = pair<bigint,bigint>;
-      using unumber = unsigned long;
+      //using unumber = unsigned long;
       friend quot_rem divide (const bigint&, const bigint&);
-      friend void multiply_by_2 (unumber&);
-      friend void divide_by_2 (unumber&);
+      friend void multiply_by_2 (bigvalue_t&);
+      friend void divide_by_2 (bigvalue_t&);
+      friend bool do_bigless(const bigvalue_t&, const bigvalue_t&);
+      friend bigvalue_t do_bigadd(const bigvalue_t&,const bigvalue_t&);
+      friend bigvalue_t do_bigsub(const bigvalue_t&,const bigvalue_t&);
+      friend bigvalue_t do_bigmult(const bigvalue_t&,const bigvalue_t&);
    public:
 
       //
