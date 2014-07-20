@@ -281,7 +281,7 @@ void multiply_by_2 (bigint& big) {
 }
 
 void divide_by_2 (bigint&) {
-
+   return;
 }
 
 
@@ -313,8 +313,10 @@ bigint operator/ (const bigint& left, const bigint& right) {
    return divide (left, right).first;
 }
 
-bigint operator% (const bigint& left, const bigint& right) {
-   return divide (left, right).second;
+bigint operator% (const bigint&, const bigint&) {
+   //return divide (left, right).second;
+   bigint that;
+   return that;
 }
 
 bool operator== (const bigint& left, const bigint& right) {
