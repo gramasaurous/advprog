@@ -1,0 +1,6 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ mkc: starting insertlist.cpp
+insertlist.cpp:
+     $Id: insertlist.cpp,v 1.42 2014-04-24 14:10:53-07 - - $
+g++ -g -O0 -Wall -Wextra -rdynamic -std=gnu++11 insertlist.cpp -o insertlist -lglut -lGLU -lGL -lX11 -lrt -lm
+rm -f insertlist.o
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ mkc: finished insertlist.cpp

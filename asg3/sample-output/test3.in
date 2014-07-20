@@ -1,0 +1,7 @@
+# Comments should be ignored
+
+
+also ignore blank lines
+this file contains nonexistent keys
+all output should be error messages
+# $Id: test3.in,v 1.1 2010-02-09 20:31:28-08 - - $

@@ -1,0 +1,26 @@
+
+line  = "    # comment   "
+Comment or blank line.
+
+line  = "                  "
+Comment or blank line.
+
+line  = "    No equal in this line.           "
+key   = "No equal in this line."
+No value in this line.
+
+line  = "   key key key  =  value value value  "
+key   = "key key key"
+value = "value value value"
+
+line  = "only key here =     "
+key   = "only key here"
+value = ""
+
+line  = "  = only value here     "
+key   = ""
+value = "only value here"
+
+line  = "   =   "
+key   = ""
+value = ""

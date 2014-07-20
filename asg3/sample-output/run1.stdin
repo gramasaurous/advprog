@@ -1,0 +1,13 @@
+-: 1: a=b
+a = b
+-: 2: key=value
+key = value
+-: 3: this=is a test
+this = is a test
+-: 4: this
+this = is a test
+-: 5: key
+key = value
+-: 6: a
+a = b
+-: 7: # $Id: test1.in,v 1.1 2010-02-09 20:31:28-08 - - $

@@ -1,0 +1,112 @@
+$Id: SCORE,v 1.4 2013-07-31 17:52:43-07 - - $
+
+Copy all of the files in this directory into the student's
+directory.  For each point deduction, give a reason.  Numbers in
+parens are the max points for each check.
+
+Check to see if they are working alone or doing pair
+programming.  If pair programming, they should have a symlink to
+their partner's directory.  If it is not there, you should make
+one.
+
+Make sure PARTNER is a symlink, not a file.  Example: charles
+and ada are working together.
+. dir charles/ should have a symlink PARTNER -> ../ada
+. dir ada/ should have a symlink PARTNER -> ../charles
+
+Grade only one partner's code and assign them the same score.
+
+*****************************************************************
+
+SOURCE CODE.
+
+     Run mk.build
+
+     (3) Checksource was silent, did not complain.  No extra
+	 files were submitted, except as per asgt spec.
+         C++ source are all called .h or .cc as appropriate.
+
+     (3) Used good consistent indentation.  Did not use any
+	 one-letter idents, used only meaningful idents.
+
+     (3) Used xless, xpair in code, and did not
+         use anything prohibited from the STL.
+
+     (3) main.cc handles files correctly.  Does options analysis
+         and parses input lines
+
+     (3) Main input line dispatch to appropriate function.
+
+     The most significant work was building listmap.
+
+     (3) General good appearance and implementation of listmap.
+
+     (3) good code for listmap::put
+
+     (3) good code for listmap::find
+
+     (3) listmap::iterator::erase
+
+     (3) listmap::iterator::operator++ 
+
+source points: /30
+min 1, max 30
+
+*****************************************************************
+
+PROGRAM TESTING:
+
+     (3) If gmake failed, try to compile manually with:
+         CC -g -features=extensions -o ydc *.cc
+         If that worked, deduct these three 3 points.
+         If not, assign 0 for this section.
+         If gmake succeeded in building keyvalue, keep these 3 points.
+
+     Run mk.tests
+
+     (3) Leaks check showed no memory leaks.
+
+     Look at the other tests and check output for correctness.
+     Each should work in the same way as pkeyvalue.perl
+
+     (3) run1.stdin
+
+     (3) run2.stdin
+
+     (3) run3.files
+
+     (3) run4.files
+
+     (3) run5.files
+
+     (3) run6.files
+
+     (3) run7.nofiles
+
+     Unix correctness:
+
+     (3) was the exit status 0 for good tests and non-0 for bad?
+         were error messages sent to stderr (cerr)?
+
+     subtotal = /30 (max 30).
+
+     If there were no core dumps during testing, or if the
+     subtotal is less than 24, transfer this subtotal to the
+     line below.  If there were any core dumps, the maximum
+     testing points here will be 24.
+
+testing points: /30
+min 0, max 30.
+
+*****************************************************************
+
+SUBTOTAL=
+min 1, max 60
+
+If pair programming, TOTALSCORE = SUBTOTAL - TOTAL1.
+If not, TOTALSCORE = SUBTOTAL.
+
+TOTALSCORE=
+min 1, max 60
+
+

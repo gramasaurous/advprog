@@ -1,0 +1,6 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ mkc: starting splitline.cpp
+splitline.cpp:
+     $Id: splitline.cpp,v 1.26 2014-04-24 14:18:14-07 - - $
+g++ -g -O0 -Wall -Wextra -rdynamic -std=gnu++11 splitline.cpp -o splitline -lglut -lGLU -lGL -lX11 -lrt -lm
+rm -f splitline.o
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ mkc: finished splitline.cpp

@@ -1,0 +1,12 @@
+hello <  world = false
+hello == world = false
+hello >  world = true
+
+qwert <  qwert = false
+qwert == qwert = true
+qwert >  qwert = false
+
+zxcvb <  asdfg = false
+zxcvb == asdfg = false
+zxcvb >  asdfg = true
+
