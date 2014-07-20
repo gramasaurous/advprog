@@ -40,7 +40,6 @@ class listmap {
       bool empty() const;
 };
 
-
 template <typename Key, typename Value, class Less=xless<Key>>
 class listmap<Key,Value,Less>::iterator {
    private:

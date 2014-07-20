@@ -18,7 +18,6 @@ listmap<Key,Value,Less>::node::node (link* next, link* prev,
             link (next, prev), value (value) {
 }
 
-
 //
 /////////////////////////////////////////////////////////////////
 // Operations on listmap.
@@ -59,7 +58,6 @@ listmap<Key,Value,Less>::end() {
    return iterator (anchor());
 }
 
-
 //
 // iterator listmap::insert (const value_type&)
 //
@@ -90,7 +88,6 @@ listmap<Key,Value,Less>::erase (iterator position) {
    return iterator();
 }
 
-
 //
 /////////////////////////////////////////////////////////////////
 // Operations on listmap::iterator.
@@ -139,7 +136,6 @@ listmap<Key,Value,Less>::iterator::operator--() {
    return *this;
 }
 
-
 //
 // bool listmap::iterator::operator== (const iterator&)
 //

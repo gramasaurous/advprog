@@ -51,7 +51,6 @@ const string datestring () {
    return timebuf;
 }
 
-
 list<string> split (const string& line, const string& delimiters) {
    list<string> words;
    size_t end = 0;
