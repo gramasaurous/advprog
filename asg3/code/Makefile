@@ -23,7 +23,16 @@ OTHERS      = ${MKFILE}
 ALLSOURCES  = ${ALLCPPSRC} ${OTHERS}
 LISTING     = Listing.ps
 
+HOST 		= $(findstring ucsc,$(shell hostname))
+WARNING 	= $(error CANNOT SUBMIT, NOT ON UNIX.UCSC)
+SUBMIT 		= submit cmps109-wm.u14 asg2
+
+TARFILE		= asg2.tar.gz
+
 all : ${EXECBIN}
+ifeq ($(HOST),ucsc)
+	- checksource ${ALLSOURCES}
+endif
 
 ${EXECBIN} : ${OBJECTS}
 	${COMPILECPP} -o $@ ${OBJECTS}
@@ -31,12 +40,8 @@ ${EXECBIN} : ${OBJECTS}
 %.o : %.cpp
 	${COMPILECPP} -c $<
 
-ci : ${ALLSOURCES}
-	- checksource ${ALLSOURCES}
-	cid + ${ALLSOURCES}
-
-lis : ${ALLSOURCES}
-	mkpspdf ${LISTING} ${ALLSOURCES} ${DEPFILE}
+git :
+	- git commit -a
 
 clean :
 	- rm ${OBJECTS} ${DEPFILE} core
@@ -47,6 +52,17 @@ spotless : clean
 dep : ${ALLCPPSRC}
 	@ echo "# ${DEPFILE} created `LC_TIME=C date`" >${DEPFILE}
 	${MAKEDEPCPP} ${CPPSOURCE} >>${DEPFILE}
+
+submit : spotless
+ifeq ($(HOST),ucsc)
+	${SUBMIT} ${CPPSOURCE} ${CPPHEADER} ${OTHERS}
+endif
+
+cp : tar
+	scp ${TARFILE} ggreving@unix.ucsc.edu:Private/
+
+tar : 
+	tar cvf ${TARFILE} ${ALLSOURCES}
 
 ${DEPFILE} :
 	@ touch ${DEPFILE}
