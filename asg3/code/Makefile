@@ -27,9 +27,9 @@ LISTING     = Listing.ps
 
 HOST 		= $(findstring ucsc,$(shell hostname))
 WARNING 	= $(error CANNOT SUBMIT, NOT ON UNIX.UCSC)
-SUBMIT 		= submit cmps109-wm.u14 asg2
+SUBMIT 		= submit cmps109-wm.u14 asg3
 
-TARFILE		= asg2.tar.gz
+TARFILE		= asg3.tar.gz
 
 all : ${EXECBIN}
 ifeq ($(HOST),ucsc)
