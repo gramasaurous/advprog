@@ -1,0 +1,120 @@
+$Id: SCORE,v 1.1 2014-05-20 15:42:30-07 - - $
+
+Copy all of the files in this directory into the student's
+directory.  For each point deduction, give a reason.  Numbers in
+parens are the max points for each check.
+
+Check to see if they are working alone or doing pair
+programming.  If pair programming, they should have a symlink to
+their partner's directory.  If it is not there, you should make
+one.  Grade only one partner's code and assign them the same score.
+
+*****************************************************************
+
+SOURCE CODE.
+
+     Run mk.build
+
+     (3) Checksource was silent, did not complain.  No extra
+	 files were submitted, except as per asgt spec.
+         C++ source are all called .h or .cc as appropriate.
+         Indentation, formatting, and identifier names readable.
+
+     Properly implemented constructors for each of the shape
+     classes, analyzing the arg list before making the object
+     and calling the base class ctor when appropriate.
+     Analysis done in the factory make_* functions.  (12 points)
+     (1)  shape
+     (1)     text
+     (1)     ellipse
+     (1)        circle
+     (1)     polygon
+     (1)        rectangle
+     (1)           square
+     (1)        diamond
+     (1)        triangle
+     (1)           right_triangle
+     (1)           isosceles
+     (1)           equilateral
+
+     Graphics.
+
+     Implemented drawing functions in shape.cpp and allowed
+     others to inherit.  (6 points)
+     (2) text::draw
+     (2) ellipse::draw
+     (2) polygon::draw
+     Interactive functions once scene is drawn (9 points)
+     (1) `Q', `q', Escape|Close the window.
+     (1) `H', `h', Left Arrow|Move the selected object left.
+     (1) `J', `j', Down Arrow|Move the selected object down.
+     (1) `K', `k', Up Arrow|Move the selected object up.
+     (1) `L', `l', Right Arrow|Move the selected object right.
+     (1) `N', `n', Space, Tab|Set the selection to the next object.
+     (1) `P', `p', Backspace|Set the selection to the previous object.
+     (1) `0' ... `9'|Set the selection to objects 0 through 9
+     (1) F1 ... F12|Set the slection to objects 1 through 12
+
+source points: /30
+min 1, max 30
+
+*****************************************************************
+
+PROGRAM TESTING:
+
+     Run mk.build - if an executable was not built, assign 0
+     points to this section.
+
+     Note to grader:  You must be sitting in front of a workstation
+     that is running an X11 client.  ssh -X will be necessary
+     when logging into the server.
+
+     Static display checking:
+
+     Type the following commands in at the command line,
+     and a 640x480 window should come up with the appropriate
+     figures in it.  When you run the xwd command, a cursor
+     cross will show up.  Move it to the student's window and
+     click.  That will dump an image of the window into the
+     output file.
+
+     (4) gdraw ellipse-etc.gd
+         xwd >ellipse-etc.gd.output
+
+     (4) gdraw font-test.gd
+         xwd >font-test.gd.output
+
+     (4) gdraw movable.gd
+         xwd >movable.gd.output
+
+     (4) gdraw nested.gd
+         xwd >nested.gd.output
+
+     (4) gdraw rectilinear.gd
+         xwd >rectilinear.gd.output
+
+     Dynamic display checking:
+     Test the interactive features on
+          gdraw movable.gd
+     (2) previous and next keys select objects, show border
+     (2) arrow keys can move objects
+     (2) digit keys and function keys can select objects
+     (2) escape key exits the program.
+     (2) border is shown around selected object
+
+
+testing points: /30
+min 0, max 30.
+
+*****************************************************************
+
+SUBTOTAL=
+min 1, max 60
+
+If pair programming, TOTALSCORE = SUBTOTAL - TOTAL1.
+If not, TOTALSCORE = SUBTOTAL.
+
+TOTALSCORE=
+min 1, max 60
+
+

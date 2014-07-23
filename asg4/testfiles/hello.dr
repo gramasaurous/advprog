@@ -1,0 +1,3 @@
+# $Id: hello.dr,v 1.1 2013-02-01 17:00:06-08 - - $
+define hello text 100 Times-BoldItalic Hello, world!
+draw hello 0.25 5

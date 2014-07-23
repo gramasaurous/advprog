@@ -1,0 +1,20 @@
+# $Id: round.dr,v 1.1 2013-02-01 17:00:06-08 - - $
+define elli ellipse 2 1 3
+define ille ellipse 1 2 3
+define circe circle 3 5
+define calypso circle 4 10
+define penelope circle 5 15
+draw elli 4 3.5
+draw ille 4 3.5
+draw circe 4 3.5
+draw calypso 4 3.5
+draw penelope 4 3.5
+define wide ellipse 3 .5 2
+draw wide 4 8 0
+draw wide 4 8 45
+draw wide 4 8 90
+draw wide 4 8 135
+draw wide 4 8 180
+draw wide 4 8 225
+draw wide 4 8 270
+draw wide 4 8 315

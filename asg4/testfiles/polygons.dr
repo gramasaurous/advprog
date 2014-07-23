@@ -1,0 +1,10 @@
+# $Id: polygons.dr,v 1.1 2013-02-01 17:00:06-08 - - $
+define pq polygon 1 0 0 1 2 2 -2 -4
+draw pq 1 1
+define octagon polygon -.7 .7 0 1 .7 .7 1 0 .7 -.7 0 -1 -.7 -.7 8
+draw octagon 4 4
+define crown polygon 0 1.2 .2 -1 .2 1 .2 -1 \
+             .2 1.2 .2 -1.2 .2 1 .2 -1 .2 1 0 -1.2
+draw crown 4 8
+define lightning polygon 1 2 -1 0 1 2 -1 0 1 2 -1 0 1 2 15
+draw lightning 1 2

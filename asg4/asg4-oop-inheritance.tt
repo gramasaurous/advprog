@@ -1,0 +1,222 @@
+CMPS-109 · Summer 2014 · Program 4 · OOP and Inheritance        1 of 1
+$Id: asg4-oop-inheritance.mm,v 1.60 2014-07-18 19:03:48-07 - - $
+PWD: /afs/cats.ucsc.edu/courses/cmps109-wm/Assignments/asg4-oop-
+inheritance
+URL: http://www2.ucsc.edu/courses/cmps109-wm/:/Assignments/
+asg4-oop-inheritance/
+
+.EQ
+delim $$
+.EN
+
+1.  Overview
+
+In this assignment you will implement a simple graphics package using
+the OpenGL graphics library.  Using inheritance, geometric objects
+will be displayed in a window.  The lab workstations all run X11 so
+there is no problem there.  When you log into the server remotely, be
+sure to specify the -X option, as in:
+   ssh -X username@unix.ucsc.edu
+Before you log into the server make sure you have an X11 client
+running on your own workstation.
+
+2.  Program Specification
+
+The program is presented in the form of a Unix man(1) page.
+
+NAME
+     gdraw -- drawing program displaying objects in a window
+
+SYNOPSIS
+     gdraw [ options] [filename]
+
+OPTIONS
+     All options are recognized by getopt(3).
+
+     -@ flags
+          The flags specified are passed to the debugging macro.
+          Debug output is printed to the standard error.
+
+     -w width
+          The initial width of the window.  Default:  640.
+
+     -h height
+          The initial height of the window.  Default:  480.
+
+OPERANDS
+     Commands are read from the file whose name is given as an
+     operand.  If no filename is given, commands are read from the
+     standard input.
+
+COMMANDS
+     When the program begins, a window is created for displaying
+     information, which consists of text and geometric objects of
+     various kinds.  The project proceeds in two parts:
+
+      (a) Shapes are defined in terms of their sizes (length, width,
+          or vertices).
+
+      (b) Objects are drawn in the window by drawing commands, after
+          which they may be altered by keyboard commands.
+
+     Sizes, lengths, widths, and coordinates are all floating point
+     numbers, and measure pixels.
+
+     Colors may be specified by name using one of the names in the
+     file rgb.txt, or by their hexadecimal values in the form
+     0xRRGGBB, where RR, GG, and BB are the red, green, and blue
+     components specified as two hexadecimal numbers in the range 00
+     to FF.
+
+     The define command makes a record of the definition of an shape
+     and makes it available later for a draw command.  The draw
+     command creates an object in the screen's object list, to be
+     displayed when the program starts.
+
+     The following commands are recognized.  Each command is on a line
+     by itself and terminates with the newline character.  If the last
+     character on a line is a backslash (\), the command is continued
+     onto the next line.
+
+     # ...
+          A comment line is ignored, as are empty lines and lines
+          consisting only of white space.
+
+     define name text font words...
+          A text object is created by concatenating all of the words
+          together, each separated from the next by spaces.  The font
+          is any of the seven GLUT bitmap fonts:
+             · Fixed-8x13
+             · Fixed-9x15
+             · Helvetica-10
+             · Helvetica-12
+             · Helvetica-18
+             · Times-Roman-10
+             · Times-Roman-24
+
+     define name ellipse width height
+          An ellipse is specified with the major and minor diameters
+          specified.  When drawn, the drawing coordinate is the
+          center.
+
+     define name circle diameter
+          A circle is just an ellipse whose length and width are
+          equal.
+
+     define name polygon x0 y0 x1 y1 x2 y2 ...
+          A polygon is specified with the number of vertices being
+          equal to the number of $ ( x , y ) $ coordinates given.  The
+          polygon must be convex (each interior angle less than 180
+          degrees.  The center of the polygon is at $ ( x bar , y bar
+          ) $, i.e., at the average of all the $x$ coordinates and the
+          average of the $y$ coordinates.  After computing the
+          average, it is subtracted from each of the vertices to
+          normalize them.  For example, if the vertices are specified
+          as shown in the left side of the diagram, they are
+          normalized to that shown on the right side, so that $ ( x
+          bar , y bar ) $ changes from $ ( .5 , .5 ) $ to $ ( 0 , 0 )
+          $.
+
+                    .PS 1i                                                                  .PS 1i
+                    "$ ( 0 , 0 ) $" at 0,-.1                                                "$ ( -.5 , -.5 $)" at 0,-.1
+                    "$ ( 1 , 0 ) $" at 1,-.1                                                "$ ( +.5 , -.5 $)" at 1,-.1
+                    "$ ( 1 , 1 ) $" at 1,1.1                                                "$ ( +.5 , +.5 $)" at 1,1.1
+                    "$ ( 0 , 1 ) $" at 0,1.1                                                "$ ( -.5 , +.5 $)" at 0,1.1
+                    line from 0,0 to 1,0 then to 1,1 then to 0,1 then to 0,0                line from 0,0 to 1,0 then to 1,1 then to 0,1 then to 0,0
+                    "$ ( .5 , .5 ) $" at .5,.5                                              "$ ( 0 , 0 ) $" at .5,.5
+                    .PE                                                                     .PE
+
+     define name rectangle width height
+          A rectangle with the given width and height is defined with
+          strictly horizontal and vertical lines with the given
+          thickness.  When drawn, the drawing coordinates will be the
+          center.
+
+     define name square width
+          A square is a rectangle with equal width and height.
+
+     define name diamond width height
+          A diamond's width is from the leftmost to rightmost point
+          and its height is from topmost to bottommost height.  The
+          draw command specifies its center.
+
+     define name triangle x0 y0 x1 y1 x2 y2
+          A triangle is just another name for a polygon.
+
+     define name right_triangle width height
+          Define a right triangle with width the horizontal bar
+          extending to the right and height the vertical bar.
+
+     define name isosceles width height
+          The width specifies the width of the base, and the height
+          specifies the perpendicular distance from the base to the
+          apex.
+
+     define name equilateral width
+          Makes an isosceles triangle that is also equilateral.
+
+     border color thickness
+          Specifies the thickness in pixels of the border surrounding
+          the selected object, and its color.  Defaults:  red, 4.
+
+     moveby pixels
+          The move parameter indicates how many pixels an object moves
+          when directed by one keystroke.  Default:  4.
+
+     draw color name xcenter ycenter
+          Draws an object with the center at $ ( x , y ) $ using the
+          color specified.
+
+KEYBOARD INPUT
+     Once the input file is finished, the keyboard is used to command
+     the movements of the objects.  The following keystrokes control
+     the program:
+
+     +----------------------+---------------------------------------------------------+
+     |`Q', `q', Escape      | Close the window.                                       |
+     +----------------------+---------------------------------------------------------+
+     |`H', `h', Left Arrow  | Move the selected object left.                          |
+     +----------------------+---------------------------------------------------------+
+     |`J', `j', Down Arrow  | Move the selected object down.                          |
+     +----------------------+---------------------------------------------------------+
+     |`K', `k', Up Arrow    | Move the selected object up.                            |
+     +----------------------+---------------------------------------------------------+
+     |`L', `l', Right Arrow | Move the selected object right.                         |
+     +----------------------+---------------------------------------------------------+
+     |`N', `n', Space, Tab  | Set the selection to the next object.                   |
+     +----------------------+---------------------------------------------------------+
+     |`P', `p', Backspace   | Set the selection to the previous object.               |
+     +----------------------+---------------------------------------------------------+
+     |`0' ... `9'           | Set the selection to objects 0 through 9, respectively. |
+     +----------------------+---------------------------------------------------------+
+     |F1 ... F12            | Set the slection to objects 1 through 12, respectively. |
+     +----------------------+---------------------------------------------------------+
+     An object is always displayed using the coordinates of the
+     center.  If an object is moved off the window, it appears at the
+     other end of the window.  That is, if the $x$ or $y$ coordinate
+     exceeds the width (height) of the windor, it is set to 0.  If it
+     becomes negative, it is set to the width (height).  The selected
+     object is always surrounded by a border to make it visible.  For
+     objects 0 through 12, the object's number is displayed in the
+     center of the object.
+
+EXIT STATUS
+
+     0    No errors were detected.
+
+     1    Errors were detected and messages printed to the standard
+          error.
+
+3.  Code
+
+OpenGL and GLUT will be used to display the window.  See the short
+example programs in the misc/ subdirectory.  Starter code is in the
+code/ subdirectory.  For documentation, Google using the terms
+``OpenGL'' and/or ``GLUT'' and the name of the function, then look for
+results naming the web pages in www.opengl.org/documentation.
+
+4.  What to Submit
+
+Submit all C++ source files and the Makefile.  If you are doing pair
+programming, also submit the PARTNER file.
+

@@ -1,0 +1,27 @@
+#
+# Do some error checking.
+#
+define name text 30 Courier
+define name text Courier
+define name ellipse height width [thick]
+define name ellipse height width
+define name ellipse 30
+define name circle diameter [thick]
+define name circle diameter
+define name circle 
+define name polygon x1 y1 x2 y2 x3 y3 ... [thick]
+define name polygon 
+define name rectangle height width [thick]
+define name rectangle 30
+define name square width [thick]
+define name square 
+define name line length [thick]
+define name line 
+define obj text Courier Hello, World!
+draw obj x0 y0 [angle]
+draw obj 10
+draw obj
+draw obj 2 2
+draw foobar 10 20
+newpage 6
+# $Id: errors.dr,v 1.1 2013-02-01 17:00:06-08 - - $

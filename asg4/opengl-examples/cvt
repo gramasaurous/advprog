@@ -1,0 +1,6 @@
+#!/bin/sh -x
+for file in *.xwd
+do
+   ps=$(echo $file | sed 's/xwd$/pdf/')
+   convert -page Letter+36+144 $file $ps
+done

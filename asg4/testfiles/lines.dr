@@ -1,0 +1,33 @@
+# $Id: lines.dr,v 1.1 2013-02-01 17:00:06-08 - - $
+define i line 1 1
+define ii line 2 2
+define iii line 3 3
+define iv line 4 4
+define v line 5 5
+define vi line 6 6
+define vii line 7 7
+define viii line 8 8
+define ix line 9 9
+define x line 10 10
+define xi line 10 10
+define xii line 10 10
+define xiii line 10 10
+define xiv line 10 10
+define xv line 10 10
+define page rectangle 10.5 8 1
+draw i 4 4 0
+draw ii 4 4 15
+draw iii 4 4 30
+draw iv 4 4 45
+draw v 4 4 60
+draw vi 4 4 75
+draw vii 4 4 90
+draw viii 4 4 105
+draw ix 4 4 120
+draw x 4 4 135
+draw xi 4 4 150
+draw xii 4 4 165
+draw xiii 4 4 180
+draw xiv 4 4 195
+draw xv 4 4 210
+draw page 0 0

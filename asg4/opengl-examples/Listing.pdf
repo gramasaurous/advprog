@@ -1,0 +1,3041 @@
+%PDF-1.4
+5 0 obj
+<</Length 6 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:06)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(1)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/2)Tj
+/R12 14 Tf
+-263.357 -2.7 Td
+(ellipses.cpp)Tj
+-159.617 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 70.4 718 Tm
+[(1:)-600(// $Id: ellipses.cpp,v 1.8 2014-07-22 16:38:06-07 - - $)]TJ
+12 TL
+(2:)'
+T*[(3:)-600(// Draw several ellipses in window.)]TJ
+(4:)'
+T*[(5:)-600(#include <cmath>)]TJ
+T*[(6:)-600(#include <iostream>)]TJ
+T*[(7:)-600(#include <string>)]TJ
+T*[(8:)-600(using namespace std;)]TJ
+(9:)'
+-6.6 -12 Td
+[(10:)-600(#include <GL/freeglut.h>)]TJ
+T*[(11:)-600(#include <libgen.h>)]TJ
+(12:)'
+T*[(13:)-600(using uchar = unsigned char;)]TJ
+(14:)'
+T*[(15:)-600(// Characteristics of the window.)]TJ
+T*[(16:)-600(struct window {)]TJ
+T*[(17:)-600(   string name;)]TJ
+T*[(18:)-600(   int width {512};)]TJ
+T*[(19:)-600(   int height {384};)]TJ
+T*[(20:)-600(} window;)]TJ
+(21:)'
+T*[(22:)-600(const uchar RED[] = {0xFF, 0x00, 0x00};)]TJ
+T*[(23:)-600(const uchar CYAN[] = {0x00, 0xFF, 0xFF};)]TJ
+T*[(24:)-600(const uchar BLUE[] = {0x00, 0x00, 0xFF};)]TJ
+T*[(25:)-600(const uchar YELLOW[] = {0xFF, 0xFF, 0x00};)]TJ
+(26:)'
+T*[(27:)-600(void draw_ellipse \(int kind, const uchar* color, float scale\) {)]TJ
+T*[(28:)-600(   glBegin \(kind\);)]TJ
+T*[(29:)-600(   glEnable \(GL_LINE_SMOOTH\);)]TJ
+T*[(30:)-600(   glColor3ubv \(color\);)]TJ
+T*[(31:)-600(   const float delta = 2 * M_PI / 32;)]TJ
+T*[(32:)-600(   float width = window.width / 3 * scale;)]TJ
+T*[(33:)-600(   float height = window.height / 3 * scale;)]TJ
+T*[(34:)-600(   for \(float theta = 0; theta < 2 * M_PI; theta += delta\) {)]TJ
+T*[(35:)-600(      float xpos = width * cos \(theta\) + window.width / 2;)]TJ
+T*[(36:)-600(      float ypos = height * sin \(theta\) + window.height / 2;)]TJ
+T*[(37:)-600(      glVertex2f \(xpos, ypos\);)]TJ
+T*[(38:)-600(   })]TJ
+T*[(39:)-600(   glEnd\(\);)]TJ
+T*[(40:)-600(})]TJ
+(41:)'
+T*[(42:)-600(// Called by glutMainLoop to display window contents.)]TJ
+T*[(43:)-600(void display\(\) {)]TJ
+T*[(44:)-600(   cout << __func__ << "\(\)" << endl;)]TJ
+T*[(45:)-600(   glClearColor \(0.25, 0.25, 0.25, 1.0\);)]TJ
+T*[(46:)-600(   glClear \(GL_COLOR_BUFFER_BIT\);)]TJ
+T*[(47:)-600(   glLineWidth \(4\);)]TJ
+T*[(48:)-600(   draw_ellipse \(GL_POLYGON, CYAN, 1.0\);)]TJ
+T*[(49:)-600(   draw_ellipse \(GL_LINE_LOOP, RED, 1.0\);)]TJ
+T*[(50:)-600(   draw_ellipse \(GL_POLYGON, YELLOW, 0.5\);)]TJ
+T*[(51:)-600(   draw_ellipse \(GL_LINE_LOOP, BLUE, 0.5\);)]TJ
+T*[(52:)-600(   glutSwapBuffers\(\);)]TJ
+T*[(53:)-600(})]TJ
+(54:)'
+ET
+Q
+Q
+endstream
+endobj
+6 0 obj
+2859
+endobj
+19 0 obj
+<</Length 20 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:06)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(2)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/2)Tj
+/R12 14 Tf
+-263.357 -2.7 Td
+(ellipses.cpp)Tj
+-159.617 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 63.8 718 Tm
+(55:)Tj
+12 TL
+T*[(56:)-600(void reshape \(int width, int height\) {)]TJ
+T*[(57:)-600(   cout << __func__ << "\(" << width << "," << height << "\)" << endl;)]TJ
+T*[(58:)-600(   window.width = width;)]TJ
+T*[(59:)-600(   window.height = height;)]TJ
+T*[(60:)-600(   glMatrixMode \(GL_PROJECTION\);)]TJ
+T*[(61:)-600(   glLoadIdentity\(\);)]TJ
+T*[(62:)-600(   glOrtho \(0, window.width, 0, window.height, -1, +1\);)]TJ
+T*[(63:)-600(   glMatrixMode \(GL_MODELVIEW\);)]TJ
+T*[(64:)-600(   glViewport \(0, 0, window.width, window.height\);)]TJ
+T*[(65:)-600(   glutPostRedisplay\(\);)]TJ
+T*[(66:)-600(})]TJ
+(67:)'
+T*[(68:)-600(void close\(\) {)]TJ
+T*[(69:)-600(   cout << __func__ << "\(\)" << endl;)]TJ
+T*[(70:)-600(})]TJ
+(71:)'
+T*[(72:)-600(void entry \(int state\) {)]TJ
+T*[(73:)-600(   cout << __func__ << "\(";)]TJ
+T*[(74:)-600(   switch \(state\) {)]TJ
+T*[(75:)-600(      case GLUT_LEFT: cout << "GLUT_LEFT"; break;)]TJ
+T*[(76:)-600(      case GLUT_ENTERED: cout << "GLUT_ENTERED"; break;)]TJ
+T*[(77:)-600(      default: cout << state; break;)]TJ
+T*[(78:)-600(   })]TJ
+T*[(79:)-600(   cout << "\)" << endl;)]TJ
+T*[(80:)-600(})]TJ
+(81:)'
+T*[(82:)-600(int main \(int argc, char** argv\) {)]TJ
+T*[(83:)-600(   window.name = basename \(argv[0]\);)]TJ
+T*[(84:)-600(   glutInit \(&argc, argv\);)]TJ
+T*[(85:)-600(   glutInitDisplayMode \(GLUT_RGBA | GLUT_DOUBLE\);)]TJ
+T*[(86:)-600(   glutInitWindowSize \(window.width, window.height\);)]TJ
+T*[(87:)-600(   glutInitWindowPosition \(128, 128\);)]TJ
+T*[(88:)-600(   glutCreateWindow \(window.name.c_str\(\)\);)]TJ
+T*[(89:)-600(   glutDisplayFunc \(display\);)]TJ
+T*[(90:)-600(   glutReshapeFunc \(reshape\);)]TJ
+T*[(91:)-600(   glutEntryFunc \(entry\);)]TJ
+T*[(92:)-600(   glutCloseFunc \(close\);)]TJ
+T*[(93:)-600(   glutMainLoop\(\);)]TJ
+T*[(94:)-600(   return 0;)]TJ
+T*[(95:)-600(})]TJ
+(96:)'
+T*[(97:)-600(//TEST// mkpspdf hello-gl.ps hello-gl.cpp*)]TJ
+ET
+Q
+Q
+endstream
+endobj
+20 0 obj
+2466
+endobj
+24 0 obj
+<</Length 25 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:07)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(1)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/3)Tj
+/R12 14 Tf
+-262.966 -2.7 Td
+(glclock.cpp)Tj
+-160.008 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 70.4 718 Tm
+[(1:)-600(// $Id: glclock.cpp,v 1.13 2014-07-22 16:38:07-07 - - $)]TJ
+12 TL
+(2:)'
+T*[(3:)-600(// Show a real-time analog clock.)]TJ
+(4:)'
+T*[(5:)-600(#include <cmath>)]TJ
+T*[(6:)-600(#include <iostream>)]TJ
+T*[(7:)-600(using namespace std;)]TJ
+(8:)'
+T*[(9:)-600(#include <GL/freeglut.h>)]TJ
+-6.6 -12 Td
+[(10:)-600(#include <libgen.h>)]TJ
+T*[(11:)-600(#include <time.h>)]TJ
+(12:)'
+T*[(13:)-600(int window_width = 128;)]TJ
+T*[(14:)-600(int window_height = 128;)]TJ
+T*[(15:)-600(string program_name;)]TJ
+T*[(16:)-600(float radius = 0.9;)]TJ
+(17:)'
+T*[(18:)-600(struct calend {)]TJ
+T*[(19:)-600(   time_t clock;)]TJ
+T*[(20:)-600(   struct tm localtime;)]TJ
+T*[(21:)-600(   char sdate[64];)]TJ
+T*[(22:)-600(   char stime[64];)]TJ
+T*[(23:)-600(   void set\(\) {)]TJ
+T*[(24:)-600(      clock = time \(NULL\);)]TJ
+T*[(25:)-600(      localtime_r \(&clock, &localtime\);)]TJ
+T*[(26:)-600(      strftime \(sdate, sizeof sdate, "%a %b %e", &localtime\);)]TJ
+T*[(27:)-600(      strftime \(stime, sizeof stime, "%T", &localtime\);)]TJ
+T*[(28:)-600(   })]TJ
+T*[(29:)-600(} calend;)]TJ
+(30:)'
+T*[(31:)-600(void show_time\(\) {)]TJ
+T*[(32:)-600(   void* font = GLUT_BITMAP_TIMES_ROMAN_10;)]TJ
+T*[(33:)-600(   glRasterPos2f \(-0.95, -0.95\);)]TJ
+T*[(34:)-600(   glutBitmapString \(font, \(GLubyte*\) calend.sdate\);)]TJ
+T*[(35:)-600(   float timewidth = glutBitmapLength \(font, \(GLubyte*\) calend.stime\);)]TJ
+T*[(36:)-600(   float timexpos = 0.95 - 2 * timewidth / window_width;)]TJ
+T*[(37:)-600(   glRasterPos2f \(timexpos, -.95\);)]TJ
+T*[(38:)-600(   glutBitmapString \(font, \(GLubyte*\) calend.stime\);)]TJ
+T*[(39:)-600(})]TJ
+(40:)'
+T*[(41:)-600(void draw_dots \(int points, int count\) {)]TJ
+T*[(42:)-600(   glEnable \(GL_POINT_SMOOTH\);)]TJ
+T*[(43:)-600(   glPointSize \(points\);)]TJ
+T*[(44:)-600(   glBegin\(GL_POINTS\);)]TJ
+T*[(45:)-600(   for \(float theta = 0; theta < 2 * M_PI; theta += 2 * M_PI / count\) {)]TJ
+T*[(46:)-600(      float xdot = 0.9 * radius * cos \(theta\);)]TJ
+T*[(47:)-600(      float ydot = 0.9 * radius * sin \(theta\);)]TJ
+T*[(48:)-600(      glVertex2f \(xdot, ydot\);)]TJ
+T*[(49:)-600(   })]TJ
+T*[(50:)-600(   glEnd\(\);)]TJ
+T*[(51:)-600(})]TJ
+(52:)'
+ET
+Q
+Q
+endstream
+endobj
+25 0 obj
+2743
+endobj
+29 0 obj
+<</Length 30 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:07)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(2)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/3)Tj
+/R12 14 Tf
+-262.966 -2.7 Td
+(glclock.cpp)Tj
+-160.008 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 63.8 718 Tm
+(53:)Tj
+12 TL
+T*[(54:)-600(void draw_hand \(GLfloat width, GLfloat length, GLfloat clock\) {)]TJ
+T*[(55:)-600(   glEnable \(GL_LINE_SMOOTH\);)]TJ
+T*[(56:)-600(   glEnable \(GL_POLYGON_SMOOTH\);)]TJ
+T*[(57:)-600(   glPushMatrix\(\);)]TJ
+T*[(58:)-600(   glRotatef \(-clock * 6, 0, 0, 1\);)]TJ
+T*[(59:)-600(   glColor3ub \(0x2F, 0xFF, 0x2F\);)]TJ
+T*[(60:)-600(   glBegin \(GL_POLYGON\);)]TJ
+T*[(61:)-600(   glVertex2f \(-width / 2 * radius, 0\);)]TJ
+T*[(62:)-600(   glVertex2f \(+width / 2 * radius, 0\);)]TJ
+T*[(63:)-600(   glVertex2f \(+width / 8, length * radius\);)]TJ
+T*[(64:)-600(   glVertex2f \(-width / 8, length * radius\);)]TJ
+T*[(65:)-600(   glEnd\(\);)]TJ
+T*[(66:)-600(   glPopMatrix\(\);)]TJ
+T*[(67:)-600(})]TJ
+(68:)'
+T*[(69:)-600(void display\(\) {)]TJ
+T*[(70:)-600(   glClear \(GL_COLOR_BUFFER_BIT\);)]TJ
+T*[(71:)-600(   glColor3ub \(0x2F, 0xFF, 0x2F\);)]TJ
+T*[(72:)-600(   draw_dots \(2, 60\);)]TJ
+T*[(73:)-600(   draw_dots \(5, 12\);)]TJ
+T*[(74:)-600(   calend.set\(\);)]TJ
+T*[(75:)-600(   float second = calend.localtime.tm_sec;)]TJ
+T*[(76:)-600(   float minute = calend.localtime.tm_min + second / 60;)]TJ
+T*[(77:)-600(   float hour = calend.localtime.tm_hour + minute / 60;)]TJ
+T*[(78:)-600(   draw_hand \(0.2, 0.5, hour * 5\);)]TJ
+T*[(79:)-600(   draw_hand \(0.1, 0.75, minute\);)]TJ
+T*[(80:)-600(   draw_hand \(0.05, 0.95, second\);)]TJ
+T*[(81:)-600(   show_time\(\);)]TJ
+T*[(82:)-600(   glutSwapBuffers\(\);)]TJ
+T*[(83:)-600(})]TJ
+(84:)'
+T*[(85:)-600(const float frequency = 500;)]TJ
+T*[(86:)-600(void timer \(int\) {)]TJ
+T*[(87:)-600(   glutTimerFunc \(frequency, timer, 100\);)]TJ
+T*[(88:)-600(   glutPostRedisplay\(\);)]TJ
+T*[(89:)-600(})]TJ
+(90:)'
+ET
+Q
+Q
+endstream
+endobj
+30 0 obj
+2245
+endobj
+34 0 obj
+<</Length 35 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:07)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(3)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/3)Tj
+/R12 14 Tf
+-262.966 -2.7 Td
+(glclock.cpp)Tj
+-160.008 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 63.8 718 Tm
+(91:)Tj
+12 TL
+T*[(92:)-600(void reshape \(int width, int height\) {)]TJ
+T*[(93:)-600(   cout << "reshape\(width=" << width << ", height=" << height << endl;)]TJ
+T*[(94:)-600(   window_width = width;)]TJ
+T*[(95:)-600(   window_height = height;)]TJ
+T*[(96:)-600(   glMatrixMode \(GL_PROJECTION\);)]TJ
+T*[(97:)-600(   glLoadIdentity\(\);)]TJ
+T*[(98:)-600(   gluOrtho2D \(-1, +1, -1, +1\);)]TJ
+T*[(99:)-600(   glMatrixMode \(GL_MODELVIEW\);)]TJ
+-6.6 -12 Td
+[(100:)-600(   glHint \(GL_POINT_SMOOTH_HINT, GL_NICEST\);)]TJ
+T*[(101:)-600(   glHint \(GL_LINE_SMOOTH_HINT, GL_NICEST\);)]TJ
+T*[(102:)-600(   glHint \(GL_POLYGON_SMOOTH_HINT, GL_NICEST\);)]TJ
+T*[(103:)-600(   radius = 0.9;)]TJ
+T*[(104:)-600(   glViewport \(0, 0, window_width, window_height\);)]TJ
+T*[(105:)-600(   float gray = 0x2Fp0 / 0xFFp0;)]TJ
+T*[(106:)-600(   glClearColor \(gray, gray, gray, 1.0\);)]TJ
+T*[(107:)-600(})]TJ
+(108:)'
+T*[(109:)-600(int main \(int argc, char** argv\) {)]TJ
+T*[(110:)-600(   program_name = basename \(argv[0]\);)]TJ
+T*[(111:)-600(   glutInit \(&argc, argv\);)]TJ
+T*[(112:)-600(   glutInitDisplayMode \(GLUT_RGBA | GLUT_DOUBLE\);)]TJ
+T*[(113:)-600(   glutInitWindowSize \(window_width, window_height\);)]TJ
+T*[(114:)-600(   glutCreateWindow \(program_name.c_str\(\)\);)]TJ
+T*[(115:)-600(   glutDisplayFunc \(display\);)]TJ
+T*[(116:)-600(   glutReshapeFunc \(reshape\);)]TJ
+T*[(117:)-600(   glutTimerFunc \(frequency, timer, 100\);)]TJ
+T*[(118:)-600(   glutMainLoop\(\);)]TJ
+T*[(119:)-600(   return 0;)]TJ
+T*[(120:)-600(})]TJ
+ET
+Q
+Q
+endstream
+endobj
+35 0 obj
+2087
+endobj
+39 0 obj
+<</Length 40 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:07)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(1)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/2)Tj
+/R12 14 Tf
+-264.135 -2.7 Td
+(hello-gl.cpp)Tj
+-158.839 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 70.4 718 Tm
+[(1:)-600(// $Id: hello-gl.cpp,v 1.29 2014-07-22 16:38:07-07 - - $)]TJ
+12 TL
+(2:)'
+T*[(3:)-600(// Display text "Hello World" in a window.)]TJ
+(4:)'
+T*[(5:)-600(#include <iostream>)]TJ
+T*[(6:)-600(#include <string>)]TJ
+T*[(7:)-600(using namespace std;)]TJ
+(8:)'
+T*[(9:)-600(#include <GL/freeglut.h>)]TJ
+-6.6 -12 Td
+[(10:)-600(#include <libgen.h>)]TJ
+(11:)'
+T*[(12:)-600(// Characteristics of the window.)]TJ
+T*[(13:)-600(struct window {)]TJ
+T*[(14:)-600(   string name;)]TJ
+T*[(15:)-600(   int width {256};)]TJ
+T*[(16:)-600(   int height {192};)]TJ
+T*[(17:)-600(} window;)]TJ
+(18:)'
+T*[(19:)-600(// Called by glutMainLoop to display window contents.)]TJ
+T*[(20:)-600(void display\(\) {)]TJ
+T*[(21:)-600(   cout << __func__ << "\(\)" << endl;)]TJ
+(22:)'
+T*[(23:)-600(   // Glut strings use unsigned char instead of signed char.)]TJ
+T*[(24:)-600(   string hello {"Hello, World"};)]TJ
+(25:)'
+T*[(26:)-600(   // Pointer to one of the bitmap fonts.)]TJ
+T*[(27:)-600(   void* font = GLUT_BITMAP_TIMES_ROMAN_24;)]TJ
+(28:)'
+T*[(29:)-600(   // Width and height in pixels of the bitmap string.)]TJ
+T*[(30:)-600(   int str_width = glutBitmapLength \(font, \(GLubyte*\) hello.c_str\(\)\);)]TJ
+T*[(31:)-600(   int str_height = glutBitmapHeight \(font\);)]TJ
+(32:)'
+T*[(33:)-600(   // Set the background default color and clear the window.)]TJ
+T*[(34:)-600(   glClearColor \(0.25, 0.25, 0.25, 1.0\);)]TJ
+T*[(35:)-600(   glClear \(GL_COLOR_BUFFER_BIT\);)]TJ
+(36:)'
+T*[(37:)-600(   // Set the color of the letters in the message.)]TJ
+T*[(38:)-600(   const GLubyte GREEN[] = {0x00, 0xFF, 0x00};)]TJ
+T*[(39:)-600(   glColor3ubv \(GREEN\);)]TJ
+(40:)'
+T*[(41:)-600(   // Position \(x,y\) of the left end and base of the string.)]TJ
+T*[(42:)-600(   float xpos = window.width / 2.0 - str_width / 2.0;)]TJ
+T*[(43:)-600(   float ypos = window.height / 2.0 - str_height / 4.0;)]TJ
+T*[(44:)-600(   glRasterPos2f \(xpos, ypos\);)]TJ
+(45:)'
+T*[(46:)-600(   // Draw the bitmap in the window.)]TJ
+T*[(47:)-600(   //glutBitmapString \(font, hello.c_str\(\)\);)]TJ
+T*[(48:)-600(   for \(auto ch: hello\) glutBitmapCharacter \(font, ch\);)]TJ
+(49:)'
+T*[(50:)-600(   // Swap the passive and active buffers to display the window.)]TJ
+T*[(51:)-600(   glutSwapBuffers\(\);)]TJ
+T*[(52:)-600(})]TJ
+(53:)'
+ET
+Q
+Q
+endstream
+endobj
+40 0 obj
+2839
+endobj
+44 0 obj
+<</Length 45 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:07)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(2)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/2)Tj
+/R12 14 Tf
+-264.135 -2.7 Td
+(hello-gl.cpp)Tj
+-158.839 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 63.8 718 Tm
+(54:)Tj
+12 TL
+T*[(55:)-600(void reshape \(int width, int height\) {)]TJ
+T*[(56:)-600(   cout << __func__ << "\(" << width << "," << height << "\)" << endl;)]TJ
+T*[(57:)-600(   window.width = width;)]TJ
+T*[(58:)-600(   window.height = height;)]TJ
+T*[(59:)-600(   glMatrixMode \(GL_PROJECTION\);)]TJ
+T*[(60:)-600(   glLoadIdentity\(\);)]TJ
+T*[(61:)-600(   glOrtho \(0, window.width, 0, window.height, -1, +1\);)]TJ
+T*[(62:)-600(   glMatrixMode \(GL_MODELVIEW\);)]TJ
+T*[(63:)-600(   glViewport \(0, 0, window.width, window.height\);)]TJ
+T*[(64:)-600(   glutPostRedisplay\(\);)]TJ
+T*[(65:)-600(})]TJ
+(66:)'
+T*[(67:)-600(void close\(\) {)]TJ
+T*[(68:)-600(   cout << __func__ << "\(\)" << endl;)]TJ
+T*[(69:)-600(})]TJ
+(70:)'
+T*[(71:)-600(void entry \(int state\) {)]TJ
+T*[(72:)-600(   cout << __func__ << "\(";)]TJ
+T*[(73:)-600(   switch \(state\) {)]TJ
+T*[(74:)-600(      case GLUT_LEFT: cout << "GLUT_LEFT"; break;)]TJ
+T*[(75:)-600(      case GLUT_ENTERED: cout << "GLUT_ENTERED"; break;)]TJ
+T*[(76:)-600(      default: cout << state; break;)]TJ
+T*[(77:)-600(   })]TJ
+T*[(78:)-600(   cout << "\)" << endl;)]TJ
+T*[(79:)-600(})]TJ
+(80:)'
+T*[(81:)-600(int main \(int argc, char** argv\) {)]TJ
+T*[(82:)-600(   window.name = basename \(argv[0]\);)]TJ
+T*[(83:)-600(   glutInit \(&argc, argv\);)]TJ
+T*[(84:)-600(   glutInitDisplayMode \(GLUT_RGBA | GLUT_DOUBLE\);)]TJ
+T*[(85:)-600(   glutInitWindowSize \(window.width, window.height\);)]TJ
+T*[(86:)-600(   glutCreateWindow \(window.name.c_str\(\)\);)]TJ
+T*[(87:)-600(   glutDisplayFunc \(display\);)]TJ
+T*[(88:)-600(   glutReshapeFunc \(reshape\);)]TJ
+T*[(89:)-600(   glutEntryFunc \(entry\);)]TJ
+T*[(90:)-600(   glutCloseFunc \(close\);)]TJ
+T*[(91:)-600(   glutMainLoop\(\);)]TJ
+T*[(92:)-600(   return 0;)]TJ
+T*[(93:)-600(})]TJ
+(94:)'
+ET
+Q
+Q
+endstream
+endobj
+45 0 obj
+2349
+endobj
+49 0 obj
+<</Length 50 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:08)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(1)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/3)Tj
+/R12 14 Tf
+-268.405 -2.7 Td
+(keyboard.cpp)Tj
+-154.569 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 70.4 718 Tm
+[(1:)-600(// $Id: keyboard.cpp,v 1.12 2014-07-22 16:38:08-07 - - $)]TJ
+12 TL
+(2:)'
+T*[(3:)-600(// Respond to keystrokes.)]TJ
+(4:)'
+T*[(5:)-600(#include <iostream>)]TJ
+T*[(6:)-600(#include <string>)]TJ
+T*[(7:)-600(#include <unordered_map>)]TJ
+T*[(8:)-600(using namespace std;)]TJ
+(9:)'
+-6.6 -12 Td
+[(10:)-600(#include <GL/freeglut.h>)]TJ
+T*[(11:)-600(#include <libgen.h>)]TJ
+(12:)'
+T*[(13:)-600(unordered_map<int,string> special_keys {)]TJ
+T*[(14:)-600(   {GLUT_KEY_F1       , "GLUT_KEY_F1"       },)]TJ
+T*[(15:)-600(   {GLUT_KEY_F2       , "GLUT_KEY_F2"       },)]TJ
+T*[(16:)-600(   {GLUT_KEY_F3       , "GLUT_KEY_F3"       },)]TJ
+T*[(17:)-600(   {GLUT_KEY_F4       , "GLUT_KEY_F4"       },)]TJ
+T*[(18:)-600(   {GLUT_KEY_F5       , "GLUT_KEY_F5"       },)]TJ
+T*[(19:)-600(   {GLUT_KEY_F6       , "GLUT_KEY_F6"       },)]TJ
+T*[(20:)-600(   {GLUT_KEY_F7       , "GLUT_KEY_F7"       },)]TJ
+T*[(21:)-600(   {GLUT_KEY_F8       , "GLUT_KEY_F8"       },)]TJ
+T*[(22:)-600(   {GLUT_KEY_F9       , "GLUT_KEY_F9"       },)]TJ
+T*[(23:)-600(   {GLUT_KEY_F10      , "GLUT_KEY_F10"      },)]TJ
+T*[(24:)-600(   {GLUT_KEY_F11      , "GLUT_KEY_F11"      },)]TJ
+T*[(25:)-600(   {GLUT_KEY_F12      , "GLUT_KEY_F12"      },)]TJ
+T*[(26:)-600(   {GLUT_KEY_LEFT     , "GLUT_KEY_LEFT"     },)]TJ
+T*[(27:)-600(   {GLUT_KEY_UP       , "GLUT_KEY_UP"       },)]TJ
+T*[(28:)-600(   {GLUT_KEY_RIGHT    , "GLUT_KEY_RIGHT"    },)]TJ
+T*[(29:)-600(   {GLUT_KEY_DOWN     , "GLUT_KEY_DOWN"     },)]TJ
+T*[(30:)-600(   {GLUT_KEY_PAGE_UP  , "GLUT_KEY_PAGE_UP"  },)]TJ
+T*[(31:)-600(   {GLUT_KEY_PAGE_DOWN, "GLUT_KEY_PAGE_DOWN"},)]TJ
+T*[(32:)-600(   {GLUT_KEY_HOME     , "GLUT_KEY_HOME"     },)]TJ
+T*[(33:)-600(   {GLUT_KEY_END      , "GLUT_KEY_END"      },)]TJ
+T*[(34:)-600(   {GLUT_KEY_INSERT   , "GLUT_KEY_INSERT "  },)]TJ
+T*[(35:)-600(};)]TJ
+(36:)'
+T*[(37:)-600(unordered_map<int,string> control_chars {)]TJ
+T*[(38:)-600(   {  0, "NUL"}, {  1, "SOH"}, {  2, "STX"}, {  3, "ETX"},)]TJ
+T*[(39:)-600(   {  4, "EOT"}, {  5, "ENQ"}, {  6, "ACK"}, {  7, "BEL"},)]TJ
+T*[(40:)-600(   {  8, "BS" }, {  9, "HT" }, { 10, "LF" }, { 11, "VT" },)]TJ
+T*[(41:)-600(   { 12, "FF" }, { 13, "CR" }, { 14, "SO" }, { 15, "SI" },)]TJ
+T*[(42:)-600(   { 16, "DLE"}, { 17, "DC1"}, { 18, "DC2"}, { 19, "DC3"},)]TJ
+T*[(43:)-600(   { 20, "DC4"}, { 21, "NAK"}, { 22, "SYN"}, { 23, "ETB"},)]TJ
+T*[(44:)-600(   { 24, "CAN"}, { 25, "EM" }, { 26, "SUB"}, { 27, "ESC"},)]TJ
+T*[(45:)-600(   { 28, "FS" }, { 29, "GS" }, { 30, "RS" }, { 31, "US" },)]TJ
+T*[(46:)-600(   {127, "DEL"},)]TJ
+T*[(47:)-600(};)]TJ
+(48:)'
+ET
+Q
+Q
+endstream
+endobj
+50 0 obj
+3112
+endobj
+54 0 obj
+<</Length 55 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:08)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(2)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/3)Tj
+/R12 14 Tf
+-268.405 -2.7 Td
+(keyboard.cpp)Tj
+-154.569 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 63.8 718 Tm
+(49:)Tj
+12 TL
+T*[(50:)-600(using uchar = unsigned char;)]TJ
+(51:)'
+T*[(52:)-600(// Characteristics of the window.)]TJ
+T*[(53:)-600(struct window {)]TJ
+T*[(54:)-600(   string name;)]TJ
+T*[(55:)-600(   int width {256};)]TJ
+T*[(56:)-600(   int height {192};)]TJ
+T*[(57:)-600(} window;)]TJ
+(58:)'
+T*[(59:)-600(// Called by glutMainLoop to display window contents.)]TJ
+T*[(60:)-600(void display\(\) {)]TJ
+T*[(61:)-600(   cout << __func__ << "\(\)" << endl;)]TJ
+T*[(62:)-600(   glClearColor \(0.25, 0.25, 0.25, 1.0\);)]TJ
+T*[(63:)-600(   glClear \(GL_COLOR_BUFFER_BIT\);)]TJ
+T*[(64:)-600(   glutSwapBuffers\(\);)]TJ
+T*[(65:)-600(})]TJ
+(66:)'
+T*[(67:)-600(void print_special_key \(int key\) {)]TJ
+T*[(68:)-600(   const auto& keyname = special_keys.find \(key\);)]TJ
+T*[(69:)-600(   if \(keyname == special_keys.end\(\)\) cout << "Unknown GLUT_KEY";)]TJ
+T*[(70:)-600(                                 else cout << keyname->second;)]TJ
+T*[(71:)-600(})]TJ
+(72:)'
+T*[(73:)-600(void print_keyboard_key \(int key\) {)]TJ
+T*[(74:)-600(   if \(isgraph \(key\)\) cout << "'" << \(uchar\)key << "'";)]TJ
+T*[(75:)-600(   else {)]TJ
+T*[(76:)-600(      const auto& control = control_chars.find \(key\);)]TJ
+T*[(77:)-600(      if \(control != control_chars.end\(\)\) cout << control->second;)]TJ
+T*[(78:)-600(   })]TJ
+T*[(79:)-600(})]TJ
+(80:)'
+T*[(81:)-600(void special \(int key, int x, int y\) {)]TJ
+T*[(82:)-600(   cout << __func__ << "\(" << key << "," << x << "," << y << "\): ";)]TJ
+T*[(83:)-600(   print_special_key \(key\);)]TJ
+T*[(84:)-600(   cout << endl;)]TJ
+T*[(85:)-600(})]TJ
+(86:)'
+T*[(87:)-600(void specialup \(int key, int x, int y\) {)]TJ
+T*[(88:)-600(   cout << __func__ << "\(" << key << "," << x << "," << y << "\): ";)]TJ
+T*[(89:)-600(   print_special_key \(key\);)]TJ
+T*[(90:)-600(   cout << endl;)]TJ
+T*[(91:)-600(})]TJ
+(92:)'
+T*[(93:)-600(void keyboard \(uchar key, int x, int y\) {)]TJ
+T*[(94:)-600(   cout << __func__ << "\(" << \(int\)key << "," << x << "," << y << "\): ";)]TJ
+T*[(95:)-600(   print_keyboard_key \(key\);)]TJ
+T*[(96:)-600(   cout << endl;)]TJ
+T*[(97:)-600(})]TJ
+(98:)'
+T*[(99:)-600(void keyboardup \(uchar key, int x, int y\) {)]TJ
+-6.6 -12 Td
+[(100:)-600(   cout << __func__ << "\(" << \(int\)key << "," << x << "," << y << "\): ";)]TJ
+T*[(101:)-600(   print_keyboard_key \(key\);)]TJ
+T*[(102:)-600(   cout << endl;)]TJ
+T*[(103:)-600(})]TJ
+(104:)'
+ET
+Q
+Q
+endstream
+endobj
+55 0 obj
+2945
+endobj
+59 0 obj
+<</Length 60 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:08)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(3)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/3)Tj
+/R12 14 Tf
+-268.405 -2.7 Td
+(keyboard.cpp)Tj
+-154.569 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 57.2 718 Tm
+(105:)Tj
+12 TL
+T*[(106:)-600(void reshape \(int width, int height\) {)]TJ
+T*[(107:)-600(   cout << __func__ << "\(" << width << "," << height << "\)" << endl;)]TJ
+T*[(108:)-600(   window.width = width;)]TJ
+T*[(109:)-600(   window.height = height;)]TJ
+T*[(110:)-600(   glMatrixMode \(GL_PROJECTION\);)]TJ
+T*[(111:)-600(   glLoadIdentity\(\);)]TJ
+T*[(112:)-600(   glOrtho \(0, window.width, 0, window.height, -1, +1\);)]TJ
+T*[(113:)-600(   glMatrixMode \(GL_MODELVIEW\);)]TJ
+T*[(114:)-600(   glViewport \(0, 0, window.width, window.height\);)]TJ
+T*[(115:)-600(   glutPostRedisplay\(\);)]TJ
+T*[(116:)-600(})]TJ
+(117:)'
+T*[(118:)-600(void close\(\) {)]TJ
+T*[(119:)-600(   cout << __func__ << "\(\)" << endl;)]TJ
+T*[(120:)-600(})]TJ
+(121:)'
+T*[(122:)-600(void entry \(int state\) {)]TJ
+T*[(123:)-600(   cout << __func__ << "\(";)]TJ
+T*[(124:)-600(   switch \(state\) {)]TJ
+T*[(125:)-600(      case GLUT_LEFT: cout << "GLUT_LEFT"; break;)]TJ
+T*[(126:)-600(      case GLUT_ENTERED: cout << "GLUT_ENTERED"; break;)]TJ
+T*[(127:)-600(      default: cout << state; break;)]TJ
+T*[(128:)-600(   })]TJ
+T*[(129:)-600(   cout << "\)" << endl;)]TJ
+T*[(130:)-600(})]TJ
+(131:)'
+T*[(132:)-600(int main \(int argc, char** argv\) {)]TJ
+T*[(133:)-600(   window.name = basename \(argv[0]\);)]TJ
+T*[(134:)-600(   glutInit \(&argc, argv\);)]TJ
+T*[(135:)-600(   glutInitDisplayMode \(GLUT_RGBA | GLUT_DOUBLE\);)]TJ
+T*[(136:)-600(   glutInitWindowSize \(window.width, window.height\);)]TJ
+T*[(137:)-600(   glutCreateWindow \(window.name.c_str\(\)\);)]TJ
+T*[(138:)-600(   glutDisplayFunc \(display\);)]TJ
+T*[(139:)-600(   glutReshapeFunc \(reshape\);)]TJ
+T*[(140:)-600(   glutEntryFunc \(entry\);)]TJ
+T*[(141:)-600(   glutCloseFunc \(close\);)]TJ
+T*[(142:)-600(   glutKeyboardFunc \(keyboard\);)]TJ
+T*[(143:)-600(   glutKeyboardUpFunc \(keyboardup\);)]TJ
+T*[(144:)-600(   glutSpecialFunc \(special\);)]TJ
+T*[(145:)-600(   glutSpecialUpFunc \(specialup\);)]TJ
+T*[(146:)-600(   glutMainLoop\(\);)]TJ
+T*[(147:)-600(   return 0;)]TJ
+T*[(148:)-600(})]TJ
+(149:)'
+ET
+Q
+Q
+endstream
+endobj
+60 0 obj
+2602
+endobj
+64 0 obj
+<</Length 65 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:09)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(1)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/2)Tj
+/R12 14 Tf
+-260.635 -2.7 Td
+(menus.cpp)Tj
+-162.339 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 70.4 718 Tm
+[(1:)-600(// $Id: menus.cpp,v 1.4 2014-05-09 16:54:10-07 - - $)]TJ
+12 TL
+(2:)'
+T*[(3:)-600(#include <cmath>)]TJ
+T*[(4:)-600(#include <map>)]TJ
+T*[(5:)-600(#include <iostream>)]TJ
+T*[(6:)-600(#include <string>)]TJ
+T*[(7:)-600(using namespace std;)]TJ
+(8:)'
+T*[(9:)-600(#include <GL/freeglut.h>)]TJ
+-6.6 -12 Td
+[(10:)-600(#include <libgen.h>)]TJ
+(11:)'
+T*[(12:)-600(int window_width  = 256;)]TJ
+T*[(13:)-600(int window_height = 192;)]TJ
+T*[(14:)-600(string program_name;)]TJ
+(15:)'
+T*[(16:)-600(enum shape_type {RECTANGLE, SQUARE, DIAMOND, ELLIPSE, CIRCLE};)]TJ
+T*[(17:)-600(map<shape_type,string> shape_map{)]TJ
+T*[(18:)-600(   {RECTANGLE, "Rectangle"},)]TJ
+T*[(19:)-600(   {SQUARE, "Square"},)]TJ
+T*[(20:)-600(   {DIAMOND, "Diamond"},)]TJ
+T*[(21:)-600(   {ELLIPSE, "Ellipse"},)]TJ
+T*[(22:)-600(   {CIRCLE, "Circle"},)]TJ
+T*[(23:)-600(};)]TJ
+(24:)'
+T*[(25:)-600(void main_menu \(int value\) {)]TJ
+T*[(26:)-600(   cout << "main_menu\(" << value << "\)" << endl;)]TJ
+T*[(27:)-600(})]TJ
+(28:)'
+T*[(29:)-600(void shape_menu \(int value\) {)]TJ
+T*[(30:)-600(   shape_type shape = static_cast<shape_type> \(value\);)]TJ
+T*[(31:)-600(   cout << __func__ << "\(" << value << "\) [" << shape_map[shape])]TJ
+T*[(32:)-600(        << "]" << endl;)]TJ
+T*[(33:)-600(})]TJ
+(34:)'
+T*[(35:)-600(void quit_menu \(int value\) {)]TJ
+T*[(36:)-600(    if \(value\) exit \(0\);)]TJ
+T*[(37:)-600(})]TJ
+(38:)'
+ET
+Q
+Q
+endstream
+endobj
+65 0 obj
+1955
+endobj
+69 0 obj
+<</Length 70 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:09)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(2)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/2)Tj
+/R12 14 Tf
+-260.635 -2.7 Td
+(menus.cpp)Tj
+-162.339 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 63.8 718 Tm
+(39:)Tj
+12 TL
+T*[(40:)-600(void createmenu\(\) {)]TJ
+T*[(41:)-600(   int shape_menu_id = glutCreateMenu \(shape_menu\);)]TJ
+T*[(42:)-600(   cout << __func__ << ": shape_menu_id=" << shape_menu_id << endl;)]TJ
+T*[(43:)-600(   glutAddMenuEntry \("Rectangle", RECTANGLE\);)]TJ
+T*[(44:)-600(   glutAddMenuEntry \("Square", SQUARE\);)]TJ
+T*[(45:)-600(   glutAddMenuEntry \("Diamond", DIAMOND\);)]TJ
+T*[(46:)-600(   glutAddMenuEntry \("Ellipse", ELLIPSE\);)]TJ
+T*[(47:)-600(   glutAddMenuEntry \("Circle", CIRCLE\);)]TJ
+T*[(48:)-600(   int quit_menu_id = glutCreateMenu \(quit_menu\);)]TJ
+T*[(49:)-600(   glutAddMenuEntry \("Confirm", true\);)]TJ
+T*[(50:)-600(   glutAddMenuEntry \("Cancel", false\);)]TJ
+T*[(51:)-600(   int main_menu_id = glutCreateMenu \(main_menu\);)]TJ
+T*[(52:)-600(   cout << __func__ << ": main_menu_id=" << main_menu_id << endl;)]TJ
+T*[(53:)-600(   glutAddSubMenu \("Draw", shape_menu_id\);)]TJ
+T*[(54:)-600(   glutAddSubMenu \("Quit", quit_menu_id\);)]TJ
+T*[(55:)-600(   glutAttachMenu \(GLUT_LEFT_BUTTON\);)]TJ
+T*[(56:)-600(})]TJ
+(57:)'
+T*[(58:)-600(void display\(\) {)]TJ
+T*[(59:)-600(   glClear \(GL_COLOR_BUFFER_BIT\);)]TJ
+T*[(60:)-600(   glutSwapBuffers\(\);)]TJ
+T*[(61:)-600(})]TJ
+(62:)'
+T*[(63:)-600(void reshape \(int width, int height\) {)]TJ
+T*[(64:)-600(   cout << width << "x" << height << endl;)]TJ
+T*[(65:)-600(   glMatrixMode \(GL_PROJECTION\);)]TJ
+T*[(66:)-600(   glLoadIdentity\(\);)]TJ
+T*[(67:)-600(   gluOrtho2D \(0, window_width, 0, window_height\);)]TJ
+T*[(68:)-600(   glClearColor \(0.2, 0.2, 0.2, 1.0\);)]TJ
+T*[(69:)-600(   glMatrixMode \(GL_MODELVIEW\);)]TJ
+T*[(70:)-600(})]TJ
+(71:)'
+T*[(72:)-600(int main \(int argc, char** argv\) {)]TJ
+T*[(73:)-600(   program_name = basename \(argv[0]\);)]TJ
+T*[(74:)-600(   glutInit \(&argc, argv\);)]TJ
+T*[(75:)-600(   glutInitDisplayMode \(GLUT_RGBA | GLUT_DOUBLE\);)]TJ
+T*[(76:)-600(   glutInitWindowSize \(window_width, window_height\);)]TJ
+T*[(77:)-600(   glutCreateWindow \(program_name.c_str\(\)\);)]TJ
+T*[(78:)-600(   glutDisplayFunc \(display\);)]TJ
+T*[(79:)-600(   glutReshapeFunc \(reshape\);)]TJ
+T*[(80:)-600(   createmenu\(\);)]TJ
+T*[(81:)-600(   glutMainLoop\(\);)]TJ
+T*[(82:)-600(   return 0;)]TJ
+T*[(83:)-600(})]TJ
+(84:)'
+ET
+Q
+Q
+endstream
+endobj
+70 0 obj
+2789
+endobj
+74 0 obj
+<</Length 75 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:09)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(1)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/3)Tj
+/R12 14 Tf
+-276.189 -2.7 Td
+(mousedepth.cpp)Tj
+-146.786 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 70.4 718 Tm
+[(1:)-600(// $Id: mousedepth.cpp,v 1.24 2014-05-12 18:51:37-07 - - $)]TJ
+12 TL
+(2:)'
+T*[(3:)-600(#include <cmath>)]TJ
+T*[(4:)-600(#include <iostream>)]TJ
+T*[(5:)-600(using namespace std;)]TJ
+(6:)'
+T*[(7:)-600(#include <GL/freeglut.h>)]TJ
+T*[(8:)-600(#include <libgen.h>)]TJ
+(9:)'
+-6.6 -12 Td
+[(10:)-600(struct {)]TJ
+T*[(11:)-600(   string name;)]TJ
+T*[(12:)-600(   int width {256};)]TJ
+T*[(13:)-600(   int height {192};)]TJ
+T*[(14:)-600(   int depth {64};)]TJ
+T*[(15:)-600(   int left_state {GLUT_UP};)]TJ
+T*[(16:)-600(} window;)]TJ
+(17:)'
+T*[(18:)-600(struct color {)]TJ
+T*[(19:)-600(   GLubyte rgb[3];)]TJ
+T*[(20:)-600(};)]TJ
+T*[(21:)-600(const color red    {0xFF, 0x00, 0x00};)]TJ
+T*[(22:)-600(const color yellow {0xFF, 0xFF, 0x00};)]TJ
+T*[(23:)-600(const color green  {0x00, 0xFF, 0x00};)]TJ
+(24:)'
+T*[(25:)-600(struct object {)]TJ
+T*[(26:)-600(   float xpos {0};)]TJ
+T*[(27:)-600(   float ypos {0};)]TJ
+T*[(28:)-600(   float zpos {0};)]TJ
+T*[(29:)-600(   color rgb = green;)]TJ
+T*[(30:)-600(   bool selected {false};)]TJ
+T*[(31:)-600(   void draw\(\) {)]TJ
+T*[(32:)-600(      glPushMatrix\(\);)]TJ
+T*[(33:)-600(      glBegin \(GL_POLYGON\);)]TJ
+T*[(34:)-600(      glColor3ubv \(rgb.rgb\);)]TJ
+T*[(35:)-600(      float wid = window.width / 10;)]TJ
+T*[(36:)-600(      float hgt = window.height / 10;)]TJ
+T*[(37:)-600(      float delta = 2 * M_PI / 64;)]TJ
+T*[(38:)-600(      for \(float theta = 0; theta < 2 * M_PI; theta += delta\) {)]TJ
+T*[(39:)-600(         float x = wid * cos \(theta\) + xpos;)]TJ
+T*[(40:)-600(         float y = hgt * sin \(theta\) + ypos;)]TJ
+T*[(41:)-600(         glVertex3f \(x, y, zpos\);)]TJ
+T*[(42:)-600(      })]TJ
+T*[(43:)-600(      glEnd\(\);)]TJ
+T*[(44:)-600(      glPopMatrix\(\);)]TJ
+T*[(45:)-600(   })]TJ
+T*[(46:)-600(} object;)]TJ
+(47:)'
+T*[(48:)-600(void display\(\) {)]TJ
+T*[(49:)-600(// cout << __func__ << "\(\)" << endl;)]TJ
+T*[(50:)-600(   glClear \(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT\);)]TJ
+T*[(51:)-600(   object.draw\(\);)]TJ
+T*[(52:)-600(   glutSwapBuffers\(\);)]TJ
+T*[(53:)-600(})]TJ
+(54:)'
+T*[(55:)-600(void reshape \(int width, int height\) {)]TJ
+T*[(56:)-600(// cout << __func__ << "\(" << width << "," << height << "\)" << endl;)]TJ
+T*[(57:)-600(   window.width = width;)]TJ
+T*[(58:)-600(   window.height = height;)]TJ
+ET
+Q
+Q
+endstream
+endobj
+75 0 obj
+2857
+endobj
+79 0 obj
+<</Length 80 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:09)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(2)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/3)Tj
+/R12 14 Tf
+-276.189 -2.7 Td
+(mousedepth.cpp)Tj
+-146.786 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 63.8 718 Tm
+[(59:)-600(   glMatrixMode \(GL_PROJECTION\);)]TJ
+12 TL
+T*[(60:)-600(   glLoadIdentity\(\);)]TJ
+T*[(61:)-600(   glOrtho \(0, window.width, 0, window.height, 0, window.depth\);)]TJ
+T*[(62:)-600(   glMatrixMode \(GL_MODELVIEW\);)]TJ
+T*[(63:)-600(   glViewport \(0, 0, window.width, window.height\);)]TJ
+T*[(64:)-600(   glClearColor \(0.25, 0.25, 0.25, 1.0\);)]TJ
+T*[(65:)-600(   object.xpos = window.width / 2;)]TJ
+T*[(66:)-600(   object.ypos = window.height / 2;)]TJ
+T*[(67:)-600(   object.rgb = green;)]TJ
+T*[(68:)-600(   glutPostRedisplay\(\);)]TJ
+T*[(69:)-600(})]TJ
+(70:)'
+T*[(71:)-600(GLuint depth \(int mouse_x, int mouse_y\) {)]TJ
+T*[(72:)-600(// cout << __func__ << "\(" << mouse_x << "," << mouse_y << "\)" << endl;)]TJ
+T*[(73:)-600(   glEnable \(GL_DEPTH_TEST\);)]TJ
+T*[(74:)-600(   GLfloat scale, bias, depth;)]TJ
+T*[(75:)-600(   glGetFloatv \(GL_DEPTH_SCALE, &scale\);)]TJ
+T*[(76:)-600(   glGetFloatv \(GL_DEPTH_BIAS, &bias\);)]TJ
+T*[(77:)-600(   glReadPixels \(mouse_x, window.height - mouse_y, 1, 1,)]TJ
+T*[(78:)-600(                 GL_DEPTH_COMPONENT, GL_FLOAT, &depth\);)]TJ
+T*[(79:)-600(   GLuint intdepth = lrintf \(depth * window.depth\);)]TJ
+T*[(80:)-600(// cout << "scale=" << scale)]TJ
+T*[(81:)-600(//      << ", bias=" << bias)]TJ
+T*[(82:)-600(//      << ", depth=" << depth)]TJ
+T*[(83:)-600(//      << ", intdepth=" << intdepth << endl;)]TJ
+T*[(84:)-600(   return intdepth;)]TJ
+T*[(85:)-600(})]TJ
+(86:)'
+T*[(87:)-600(void mouse \(int button, int state, int mouse_x, int mouse_y\) {)]TJ
+T*[(88:)-600(   \(void\) mouse_x; \(void\) mouse_y;)]TJ
+T*[(89:)-600(// cout << __func__ << "\(" << button << "," << state << "," << mouse_x)]TJ
+T*[(90:)-600(//      << "," << mouse_y << "\)" << endl;)]TJ
+T*[(91:)-600(   switch \(button\) {)]TJ
+T*[(92:)-600(      case GLUT_LEFT:)]TJ
+T*[(93:)-600(         window.left_state = state;)]TJ
+T*[(94:)-600(         break;)]TJ
+T*[(95:)-600(   })]TJ
+T*[(96:)-600(   glutPostRedisplay\(\);)]TJ
+T*[(97:)-600(})]TJ
+(98:)'
+T*[(99:)-600(void motion \(int mouse_x, int mouse_y\) {)]TJ
+-6.6 -12 Td
+[(100:)-600(   if \(depth \(mouse_x, mouse_y\) != 0\) object.rgb = green;)]TJ
+T*[(101:)-600(   else {)]TJ
+T*[(102:)-600(      object.rgb = red;)]TJ
+T*[(103:)-600(      object.xpos = mouse_x;)]TJ
+T*[(104:)-600(      object.ypos = window.height - mouse_y;)]TJ
+T*[(105:)-600(   })]TJ
+T*[(106:)-600(   glutPostRedisplay\(\);)]TJ
+T*[(107:)-600(})]TJ
+(108:)'
+T*[(109:)-600(void passivemotion \(int mouse_x, int mouse_y\) {)]TJ
+T*[(110:)-600(   if \(depth \(mouse_x, mouse_y\) != 0\) object.rgb = green;)]TJ
+T*[(111:)-600(                                 else object.rgb = yellow;)]TJ
+T*[(112:)-600(   glutPostRedisplay\(\);)]TJ
+T*[(113:)-600(})]TJ
+(114:)'
+T*[(115:)-600(int main \(int argc, char** argv\) {)]TJ
+T*[(116:)-600(   window.name = basename \(argv[0]\);)]TJ
+ET
+Q
+Q
+endstream
+endobj
+80 0 obj
+3380
+endobj
+84 0 obj
+<</Length 85 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:09)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(3)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/3)Tj
+/R12 14 Tf
+-276.189 -2.7 Td
+(mousedepth.cpp)Tj
+-146.786 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 57.2 718 Tm
+[(117:)-600(   glutInit \(&argc, argv\);)]TJ
+12 TL
+T*[(118:)-600(   glutInitDisplayMode \(GLUT_RGBA | GLUT_DOUBLE\);)]TJ
+T*[(119:)-600(   glutInitWindowSize \(window.width, window.height\);)]TJ
+T*[(120:)-600(   glutCreateWindow \(window.name.c_str\(\)\);)]TJ
+T*[(121:)-600(   glutDisplayFunc \(display\);)]TJ
+T*[(122:)-600(   glutReshapeFunc \(reshape\);)]TJ
+T*[(123:)-600(   glutMouseFunc \(mouse\);)]TJ
+T*[(124:)-600(   glutMotionFunc \(motion\);)]TJ
+T*[(125:)-600(   glutPassiveMotionFunc \(passivemotion\);)]TJ
+T*[(126:)-600(   glutMainLoop\(\);)]TJ
+T*[(127:)-600(   return 0;)]TJ
+T*[(128:)-600(})]TJ
+(129:)'
+ET
+Q
+Q
+endstream
+endobj
+85 0 obj
+1189
+endobj
+89 0 obj
+<</Length 90 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:10)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(1)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/1)Tj
+/R12 14 Tf
+-259.466 -2.7 Td
+(teapot.cpp)Tj
+-163.508 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 70.4 718 Tm
+[(1:)-600(// $Id: teapot.cpp,v 1.7 2014-05-09 16:55:06-07 - - $)]TJ
+12 TL
+(2:)'
+T*[(3:)-600(#include <iostream>)]TJ
+T*[(4:)-600(using namespace std;)]TJ
+(5:)'
+T*[(6:)-600(#include <GL/freeglut.h>)]TJ
+T*[(7:)-600(#include <libgen.h>)]TJ
+(8:)'
+T*[(9:)-600(bool wantsolid = true;)]TJ
+-6.6 -12 Td
+(10:)Tj
+T*[(11:)-600(void display\(\) {)]TJ
+(12:)'
+T*[(13:)-600(    /* clear window */)]TJ
+T*[(14:)-600(    glClear \(GL_COLOR_BUFFER_BIT\);)]TJ
+(15:)'
+T*[(16:)-600(    /* draw scene */)]TJ
+T*[(17:)-600(    if \(wantsolid\) glutSolidTeapot \(.5\);)]TJ
+T*[(18:)-600(              else glutWireTeapot \(.5\);)]TJ
+(19:)'
+T*[(20:)-600(    /* flush drawing routines to the window */)]TJ
+T*[(21:)-600(    glFlush\(\);)]TJ
+(22:)'
+T*[(23:)-600(})]TJ
+(24:)'
+T*[(25:)-600(void mouse \(int button, int state, int x, int y\) {)]TJ
+T*[(26:)-600(   if \(state == GLUT_DOWN\) wantsolid = not wantsolid;)]TJ
+T*[(27:)-600(   cout << boolalpha;)]TJ
+T*[(28:)-600(   cout << "button=" << button << ", state=" << state)]TJ
+T*[(29:)-600(        << ", x=" << x << ", y=" << y)]TJ
+T*[(30:)-600(        << ", wantsolid=" << wantsolid << endl;)]TJ
+T*[(31:)-600(   glutPostRedisplay\(\);)]TJ
+T*[(32:)-600(})]TJ
+(33:)'
+T*[(34:)-600(int main \(int argc, char** argv\) {)]TJ
+(35:)'
+T*[(36:)-600(    // Initialize GLUT, using any commandline parameters passed.)]TJ
+T*[(37:)-600(    glutInit \(&argc, argv\);)]TJ
+(38:)'
+T*[(39:)-600(    // Setup the size, position, and display mode for new windows.)]TJ
+T*[(40:)-600(    glutInitWindowSize \(500, 500\);)]TJ
+T*[(41:)-600(    glutInitWindowPosition \(0, 0\);)]TJ
+T*[(42:)-600(    glutInitDisplayMode \(GLUT_RGB\);)]TJ
+(43:)'
+T*[(44:)-600(    // Create and set up a window.)]TJ
+T*[(45:)-600(    glutCreateWindow \(basename \(argv[0]\)\);)]TJ
+T*[(46:)-600(    glutDisplayFunc \(display\);)]TJ
+T*[(47:)-600(    glutMouseFunc \(mouse\);)]TJ
+(48:)'
+T*[(49:)-600(    // Tell GLUT to wait for events.)]TJ
+T*[(50:)-600(    glutMainLoop\(\);)]TJ
+T*[(51:)-600(})]TJ
+(52:)'
+ET
+Q
+Q
+endstream
+endobj
+90 0 obj
+2545
+endobj
+94 0 obj
+<</Length 95 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:10)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(1)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/3)Tj
+/R12 14 Tf
+-266.073 -2.7 Td
+(translate.cpp)Tj
+-156.901 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 70.4 718 Tm
+[(1:)-600(// $Id: translate.cpp,v 1.32 2014-05-08 22:00:26-07 - - $)]TJ
+12 TL
+(2:)'
+T*[(3:)-600(#include <iomanip>)]TJ
+T*[(4:)-600(#include <iostream>)]TJ
+T*[(5:)-600(#include <sstream>)]TJ
+T*[(6:)-600(#include <string>)]TJ
+T*[(7:)-600(using namespace std;)]TJ
+(8:)'
+T*[(9:)-600(#include <GL/freeglut.h>)]TJ
+-6.6 -12 Td
+[(10:)-600(#include <libgen.h>)]TJ
+(11:)'
+T*[(12:)-600(struct {)]TJ
+T*[(13:)-600(   string name;)]TJ
+T*[(14:)-600(   int width;)]TJ
+T*[(15:)-600(   int height;)]TJ
+T*[(16:)-600(} window;)]TJ
+(17:)'
+T*[(18:)-600(struct rgbcolor {)]TJ
+T*[(19:)-600(   union { )]TJ
+T*[(20:)-600(      GLubyte ubvec[3];)]TJ
+T*[(21:)-600(      struct {)]TJ
+T*[(22:)-600(         GLubyte red;)]TJ
+T*[(23:)-600(         GLubyte green;)]TJ
+T*[(24:)-600(         GLubyte blue;)]TJ
+T*[(25:)-600(      };)]TJ
+T*[(26:)-600(   };)]TJ
+T*[(27:)-600(};)]TJ
+T*[(28:)-600(const rgbcolor Red     {0xFF, 0x00, 0x00};)]TJ
+T*[(29:)-600(const rgbcolor Green   {0x00, 0xFF, 0x00};)]TJ
+T*[(30:)-600(const rgbcolor Blue    {0x00, 0x00, 0xFF};)]TJ
+T*[(31:)-600(const rgbcolor Cyan    {0x00, 0xFF, 0xFF};)]TJ
+T*[(32:)-600(const rgbcolor Magenta {0xFF, 0x00, 0xFF};)]TJ
+T*[(33:)-600(const rgbcolor Yellow  {0xFF, 0xFF, 0x00};)]TJ
+T*[(34:)-600(const rgbcolor White   {0xFF, 0xFF, 0xFF};)]TJ
+T*[(35:)-600(const rgbcolor Black   {0x00, 0x00, 0x00};)]TJ
+(36:)'
+T*[(37:)-600(string to_string \(const rgbcolor& color\) {)]TJ
+T*[(38:)-600(   ostringstream result; )]TJ
+T*[(39:)-600(   result << "0x" )]TJ
+T*[(40:)-600(          << hex << setiosflags \(ios::uppercase\) << setfill \('0'\))]TJ
+T*[(41:)-600(          << setw\(2\) << \(unsigned\) color.red)]TJ
+T*[(42:)-600(          << setw\(2\) << \(unsigned\) color.green)]TJ
+T*[(43:)-600(          << setw\(2\) << \(unsigned\) color.blue;)]TJ
+T*[(44:)-600(   return result.str\(\);)]TJ
+T*[(45:)-600(})]TJ
+(46:)'
+ET
+Q
+Q
+endstream
+endobj
+95 0 obj
+2405
+endobj
+99 0 obj
+<</Length 100 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:10)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(2)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/3)Tj
+/R12 14 Tf
+-266.073 -2.7 Td
+(translate.cpp)Tj
+-156.901 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 63.8 718 Tm
+(47:)Tj
+12 TL
+T*[(48:)-600(void draw_rectangle \(const rgbcolor& color, const string& name,)]TJ
+T*[(49:)-600(                     GLfloat xcenter, GLfloat ycenter\) {)]TJ
+T*[(50:)-600(   cout << __func__ << "\(" << to_string \(color\) << ", ")]TJ
+T*[(51:)-600(        << xcenter << ", " << ycenter << "\)" << endl;)]TJ
+T*[(52:)-600(   GLfloat delta_x = window.width / 8;)]TJ
+T*[(53:)-600(   GLfloat delta_y = window.height / 4;)]TJ
+T*[(54:)-600(   glPushMatrix\(\);)]TJ
+T*[(55:)-600(   glTranslatef \(xcenter,  ycenter, 0\);)]TJ
+T*[(56:)-600(   glBegin \(GL_POLYGON\);)]TJ
+T*[(57:)-600(   glColor3ubv \(color.ubvec\);)]TJ
+T*[(58:)-600(   glVertex2f \(-delta_x, -delta_y\);)]TJ
+T*[(59:)-600(   glVertex2f \(+delta_x, -delta_y\);)]TJ
+T*[(60:)-600(   glVertex2f \(+delta_x, +delta_y\);)]TJ
+T*[(61:)-600(   glVertex2f \(-delta_x, +delta_y\);)]TJ
+T*[(62:)-600(   glEnd\(\);)]TJ
+T*[(63:)-600(   rgbcolor inverse = {\(GLubyte\) \(0xFF - color.red\),)]TJ
+T*[(64:)-600(                       \(GLubyte\) \(0xFF - color.green\),)]TJ
+T*[(65:)-600(                       \(GLubyte\) \(0xFF - color.blue\)};)]TJ
+T*[(66:)-600(   glColor3ubv \(inverse.ubvec\);)]TJ
+T*[(67:)-600(   void* font = GLUT_BITMAP_TIMES_ROMAN_24;)]TJ
+T*[(68:)-600(   float xpos = - glutBitmapLength \(font, \(GLubyte*\) name.c_str\(\)\) / 2;)]TJ
+T*[(69:)-600(   float ypos = - glutBitmapHeight \(font\) / 2;)]TJ
+T*[(70:)-600(   glRasterPos2f \(xpos, ypos\);)]TJ
+T*[(71:)-600(   glutBitmapString \(font, \(GLubyte*\) name.c_str\(\)\);)]TJ
+T*[(72:)-600(   glPopMatrix\(\);)]TJ
+T*[(73:)-600(   glutSwapBuffers\(\);)]TJ
+T*[(74:)-600(})]TJ
+(75:)'
+T*[(76:)-600(void display\(\) {)]TJ
+T*[(77:)-600(   GLfloat width = window.width;)]TJ
+T*[(78:)-600(   GLfloat height = window.height;)]TJ
+T*[(79:)-600(   glClear \(GL_COLOR_BUFFER_BIT\);)]TJ
+T*[(80:)-600(   draw_rectangle \(Red    , "Red"    ,  width * 0.125, height * 0.75\);)]TJ
+T*[(81:)-600(   draw_rectangle \(Green  , "Green"  ,  width * 0.375, height * 0.75\);)]TJ
+T*[(82:)-600(   draw_rectangle \(Blue   , "Blue"   ,  width * 0.625, height * 0.75\);)]TJ
+T*[(83:)-600(   draw_rectangle \(White  , "White"  ,  width * 0.875, height * 0.75\);)]TJ
+T*[(84:)-600(   draw_rectangle \(Cyan   , "Cyan"   ,  width * 0.125, height * 0.25\);)]TJ
+T*[(85:)-600(   draw_rectangle \(Magenta, "Magenta",  width * 0.375, height * 0.25\);)]TJ
+T*[(86:)-600(   draw_rectangle \(Yellow , "Yellow" ,  width * 0.625, height * 0.25\);)]TJ
+T*[(87:)-600(   draw_rectangle \(Black  , "Black"  ,  width * 0.875, height * 0.25\);)]TJ
+T*[(88:)-600(})]TJ
+(89:)'
+ET
+Q
+Q
+endstream
+endobj
+100 0 obj
+3114
+endobj
+104 0 obj
+<</Length 105 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:10)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(3)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/3)Tj
+/R12 14 Tf
+-266.073 -2.7 Td
+(translate.cpp)Tj
+-156.901 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 63.8 718 Tm
+(90:)Tj
+12 TL
+T*[(91:)-600(void reshape \(int width, int height\) {)]TJ
+T*[(92:)-600(   cout << __func__ << "\(" << width << ", " << height << "\)" << endl;)]TJ
+T*[(93:)-600(   window.width = width;)]TJ
+T*[(94:)-600(   window.height = height;)]TJ
+T*[(95:)-600(   ostringstream title;)]TJ
+T*[(96:)-600(   title << window.name << "\(" << window.width << ",")]TJ
+T*[(97:)-600(         << window.height << "\)";)]TJ
+T*[(98:)-600(   glutSetWindowTitle \(title.str\(\).c_str\(\)\);)]TJ
+T*[(99:)-600(   glutSetIconTitle \(title.str\(\).c_str\(\)\);)]TJ
+-6.6 -12 Td
+[(100:)-600(   glMatrixMode \(GL_PROJECTION\);)]TJ
+T*[(101:)-600(   glLoadIdentity\(\);)]TJ
+T*[(102:)-600(   gluOrtho2D \(0, window.width, 0, window.height\);)]TJ
+T*[(103:)-600(   glViewport \(0, 0, window.width, window.height\);)]TJ
+T*[(104:)-600(   glClearColor \(0.5, 0.5, 0.5, 1.0\);)]TJ
+T*[(105:)-600(})]TJ
+(106:)'
+T*[(107:)-600(int main \(int argc, char** argv\) {)]TJ
+T*[(108:)-600(   window.name = basename \(argv[0]\);)]TJ
+T*[(109:)-600(   glutInit \(&argc, argv\);)]TJ
+T*[(110:)-600(   glutInitWindowSize \(480, 360\);)]TJ
+T*[(111:)-600(   glutCreateWindow \(window.name.c_str\(\)\);)]TJ
+T*[(112:)-600(   glutDisplayFunc \(display\);)]TJ
+T*[(113:)-600(   glutReshapeFunc \(reshape\);)]TJ
+T*[(114:)-600(   glutMainLoop\(\);)]TJ
+T*[(115:)-600(   return 0;)]TJ
+T*[(116:)-600(})]TJ
+ET
+Q
+Q
+endstream
+endobj
+105 0 obj
+1921
+endobj
+109 0 obj
+<</Length 110 0 R>>
+stream
+q 0.1 0 0 0.1 0 0 cm
+/R7 gs
+0 G
+380 240 5360 7080 re
+S
+5 w
+0 0 0 RG
+380 7320 m
+5700 7320 l
+380 7320 m
+1100 7320 l
+1100 7680 l
+380 7680 l
+h
+S
+0 0 0 rg
+q
+10 0 0 10 0 0 cm BT
+/R8 12 Tf
+1 0 0 1 52.6641 752 Tm
+(07/22/14)Tj
+-0.659766 -12.8 Td
+(16:38:11)Tj
+ET
+Q
+4980 7320 720 360 re
+S
+q
+10 0 0 10 0 0 cm BT
+/R10 28.8 Tf
+1 0 0 1 518.488 739.2 Tm
+(1)Tj
+/R10 18 Tf
+16.0129 0 Td
+(/1)Tj
+/R12 14 Tf
+-263.743 -2.7 Td
+(triangle.cpp)Tj
+-159.232 18 Td
+($cmps109-wm/Assignments/asg4-oop-inheritance/opengl-examples/)Tj
+ET
+Q
+0 G
+0 g
+q
+10 0 0 10 0 0 cm BT
+/R14 11 Tf
+1 0 0 1 70.4 718 Tm
+[(1:)-600(// $Id: triangle.cpp,v 1.9 2014-05-08 19:42:13-07 - - $)]TJ
+12 TL
+(2:)'
+T*[(3:)-600(#include <GL/freeglut.h>)]TJ
+T*[(4:)-600(#include <libgen.h>)]TJ
+(5:)'
+T*[(6:)-600(bool flipflop = true;)]TJ
+(7:)'
+T*[(8:)-600(void draw_rgb_triangle\(\) {)]TJ
+T*[(9:)-600(   glBegin\(GL_TRIANGLES\);)]TJ
+-6.6 -12 Td
+[(10:)-600(   glColor3ub \(0xFF, 0x00, 0x00\);)]TJ
+T*[(11:)-600(   glVertex2f \(0, 1\);)]TJ
+T*[(12:)-600(   glColor3ub \(0x00, 0xFF, 0x00\);)]TJ
+T*[(13:)-600(   glVertex2f \(-1, -1\);)]TJ
+T*[(14:)-600(   glColor3ub \(0x00, 0x00, 0xFF\);)]TJ
+T*[(15:)-600(   glVertex2f \(1, -1\);)]TJ
+T*[(16:)-600(   glEnd\(\);)]TJ
+T*[(17:)-600(})]TJ
+(18:)'
+T*[(19:)-600(void draw_cmy_triangle\(\) {)]TJ
+T*[(20:)-600(   glBegin\(GL_TRIANGLES\);)]TJ
+T*[(21:)-600(   glColor3ub \(0x00, 0xFF, 0xFF\);)]TJ
+T*[(22:)-600(   glVertex2f \(0, -1\);)]TJ
+T*[(23:)-600(   glColor3ub \(0xFF, 0x00, 0xFF\);)]TJ
+T*[(24:)-600(   glVertex2f \(-1, 1\);)]TJ
+T*[(25:)-600(   glColor3ub \(0xFF, 0xFF, 0x00\);)]TJ
+T*[(26:)-600(   glVertex2f \(1, 1\);)]TJ
+T*[(27:)-600(   glEnd\(\);)]TJ
+T*[(28:)-600(})]TJ
+(29:)'
+T*[(30:)-600(void display\(\) {)]TJ
+T*[(31:)-600(   glClearColor \(0.2, 0.2, 0.2, 0.0\);)]TJ
+T*[(32:)-600(   glClear \(GL_COLOR_BUFFER_BIT\);)]TJ
+T*[(33:)-600(   if \(flipflop\) draw_rgb_triangle\(\);)]TJ
+T*[(34:)-600(            else draw_cmy_triangle\(\);)]TJ
+T*[(35:)-600(   glFlush\(\);)]TJ
+T*[(36:)-600(})]TJ
+(37:)'
+T*[(38:)-600(void mouse \(int, int state, int, int\) {)]TJ
+T*[(39:)-600(   if \(state == GLUT_DOWN\) flipflop =  not flipflop;)]TJ
+T*[(40:)-600(   glutPostRedisplay\(\);)]TJ
+T*[(41:)-600(})]TJ
+(42:)'
+T*[(43:)-600(int main \(int argc, char** argv\) {)]TJ
+T*[(44:)-600(   glutInit \(&argc, argv\);)]TJ
+T*[(45:)-600(   glutInitWindowSize \(640, 480\);)]TJ
+T*[(46:)-600(   glutCreateWindow \(basename \(argv[0]\)\);)]TJ
+T*[(47:)-600(   glutDisplayFunc \(display\);)]TJ
+T*[(48:)-600(   glutMouseFunc \(mouse\);)]TJ
+T*[(49:)-600(   glutMainLoop\(\);)]TJ
+T*[(50:)-600(   return 0;)]TJ
+T*[(51:)-600(})]TJ
+ET
+Q
+Q
+endstream
+endobj
+110 0 obj
+2574
+endobj
+4 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 16 0 R
+/Font 17 0 R
+>>
+/Contents 5 0 R
+>>
+endobj
+18 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 21 0 R
+/Font 22 0 R
+>>
+/Contents 19 0 R
+>>
+endobj
+23 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 26 0 R
+/Font 27 0 R
+>>
+/Contents 24 0 R
+>>
+endobj
+28 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 31 0 R
+/Font 32 0 R
+>>
+/Contents 29 0 R
+>>
+endobj
+33 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 36 0 R
+/Font 37 0 R
+>>
+/Contents 34 0 R
+>>
+endobj
+38 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 41 0 R
+/Font 42 0 R
+>>
+/Contents 39 0 R
+>>
+endobj
+43 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 46 0 R
+/Font 47 0 R
+>>
+/Contents 44 0 R
+>>
+endobj
+48 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 51 0 R
+/Font 52 0 R
+>>
+/Contents 49 0 R
+>>
+endobj
+53 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 56 0 R
+/Font 57 0 R
+>>
+/Contents 54 0 R
+>>
+endobj
+58 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 61 0 R
+/Font 62 0 R
+>>
+/Contents 59 0 R
+>>
+endobj
+63 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 66 0 R
+/Font 67 0 R
+>>
+/Contents 64 0 R
+>>
+endobj
+68 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 71 0 R
+/Font 72 0 R
+>>
+/Contents 69 0 R
+>>
+endobj
+73 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 76 0 R
+/Font 77 0 R
+>>
+/Contents 74 0 R
+>>
+endobj
+78 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 81 0 R
+/Font 82 0 R
+>>
+/Contents 79 0 R
+>>
+endobj
+83 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 86 0 R
+/Font 87 0 R
+>>
+/Contents 84 0 R
+>>
+endobj
+88 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 91 0 R
+/Font 92 0 R
+>>
+/Contents 89 0 R
+>>
+endobj
+93 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 96 0 R
+/Font 97 0 R
+>>
+/Contents 94 0 R
+>>
+endobj
+98 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 101 0 R
+/Font 102 0 R
+>>
+/Contents 99 0 R
+>>
+endobj
+103 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 106 0 R
+/Font 107 0 R
+>>
+/Contents 104 0 R
+>>
+endobj
+108 0 obj
+<</Type/Page/MediaBox [0 0 612 792]
+/Parent 3 0 R
+/Resources<</ProcSet[/PDF /Text]
+/ExtGState 111 0 R
+/Font 112 0 R
+>>
+/Contents 109 0 R
+>>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [
+4 0 R
+18 0 R
+23 0 R
+28 0 R
+33 0 R
+38 0 R
+43 0 R
+48 0 R
+53 0 R
+58 0 R
+63 0 R
+68 0 R
+73 0 R
+78 0 R
+83 0 R
+88 0 R
+93 0 R
+98 0 R
+103 0 R
+108 0 R
+] /Count 20
+>>
+endobj
+1 0 obj
+<</Type /Catalog /Pages 3 0 R
+/Metadata 118 0 R
+>>
+endobj
+7 0 obj
+<</Type/ExtGState
+/OPM 1>>endobj
+16 0 obj
+<</R7
+7 0 R>>
+endobj
+17 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+21 0 obj
+<</R7
+7 0 R>>
+endobj
+22 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+26 0 obj
+<</R7
+7 0 R>>
+endobj
+27 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+31 0 obj
+<</R7
+7 0 R>>
+endobj
+32 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+36 0 obj
+<</R7
+7 0 R>>
+endobj
+37 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+41 0 obj
+<</R7
+7 0 R>>
+endobj
+42 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+46 0 obj
+<</R7
+7 0 R>>
+endobj
+47 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+51 0 obj
+<</R7
+7 0 R>>
+endobj
+52 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+56 0 obj
+<</R7
+7 0 R>>
+endobj
+57 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+61 0 obj
+<</R7
+7 0 R>>
+endobj
+62 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+66 0 obj
+<</R7
+7 0 R>>
+endobj
+67 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+71 0 obj
+<</R7
+7 0 R>>
+endobj
+72 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+76 0 obj
+<</R7
+7 0 R>>
+endobj
+77 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+81 0 obj
+<</R7
+7 0 R>>
+endobj
+82 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+86 0 obj
+<</R7
+7 0 R>>
+endobj
+87 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+91 0 obj
+<</R7
+7 0 R>>
+endobj
+92 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+96 0 obj
+<</R7
+7 0 R>>
+endobj
+97 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+101 0 obj
+<</R7
+7 0 R>>
+endobj
+102 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+106 0 obj
+<</R7
+7 0 R>>
+endobj
+107 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+111 0 obj
+<</R7
+7 0 R>>
+endobj
+112 0 obj
+<</R12
+12 0 R/R14
+14 0 R/R10
+10 0 R/R8
+8 0 R>>
+endobj
+12 0 obj
+<</BaseFont/WAWJTU+Times-Roman/FontDescriptor 13 0 R/Type/Font
+/FirstChar 36/LastChar 121/Widths[ 500 0 0 0 0 0 0 0 0 333 250 278
+500 500 0 0 500 0 0 0 0 500 0 0 0 0 0 0
+0 722 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 444 500 444 500 444 0 500 500 278 0 500 278 778 500 500
+500 0 333 389 278 500 0 722 500 500]
+/Encoding/WinAnsiEncoding/Subtype/Type1>>
+endobj
+14 0 obj
+<</BaseFont/WYYKVU+Courier-Bold/FontDescriptor 15 0 R/Type/Font
+/FirstChar 32/LastChar 125/Widths[
+600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 600
+600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 0
+0 600 600 600 600 600 600 600 600 600 600 600 600 600 600 600
+600 600 600 600 600 600 600 600 600 600 0 600 0 600 0 600
+0 600 600 600 600 600 600 600 600 600 600 600 600 600 600 600
+600 600 600 600 600 600 600 600 600 600 600 600 600 600]
+/Encoding 117 0 R/Subtype/Type1>>
+endobj
+117 0 obj
+<</Type/Encoding/BaseEncoding/WinAnsiEncoding/Differences[
+39/quoteright]>>
+endobj
+10 0 obj
+<</BaseFont/WLHAMG+Helvetica-Bold/FontDescriptor 11 0 R/Type/Font
+/FirstChar 47/LastChar 51/Widths[ 278
+0 556 556 556]
+/Encoding/WinAnsiEncoding/Subtype/Type1>>
+endobj
+8 0 obj
+<</BaseFont/TMEANR+Times-Bold/FontDescriptor 9 0 R/Type/Font
+/FirstChar 47/LastChar 58/Widths[ 278
+500 500 500 500 500 0 500 500 500 500 333]
+/Encoding/WinAnsiEncoding/Subtype/Type1>>
+endobj
+13 0 obj
+<</Type/FontDescriptor/FontName/WAWJTU+Times-Roman/FontBBox[-9 -218 775 727]/Flags 32
+/Ascent 727
+/CapHeight 674
+/Descent -218
+/ItalicAngle 0
+/StemV 116
+/MissingWidth 500
+/XHeight 460
+/CharSet(/A/a/b/c/d/dollar/e/four/g/h/hyphen/i/k/l/m/n/nine/o/one/p/period/r/s/slash/t/u/w/x/y/zero)/FontFile3 113 0 R>>
+endobj
+113 0 obj
+<</Filter[/ASCII85Decode
+/FlateDecode]
+/Subtype/Type1C/Length 4290>>stream
+Gar>GH!""s[QcJlH`MrSBe#76_sM;XDk58+X0c'r_sp;u:_5q9+9@(FKJ=`_KHpsf$'5](#nZ5Q
+UF7Nc[#3G.KA*AK\?G+EpNFp?U$q]gIJC8>IIG+gpYA(%pRNtp3E^^t[FT8u]m`0U'f:^*E&b]2
+V7Dc+'lig"[(O3KE[I<o]J>7F_C[-\ZejB1]HpNN.sD"$k+^e,p/aT3K]:$*ipMNQoE*"nE(V/,
+d;jr@5amsD'_,d_gk"?6>IOGOs/_6<MMar+rP'XfMkj1<Po$]iI4:<"jGI26?I=*3dHkV99R7s.
+9;YTt(Ik33A4SHWgChqFP+rWDUb\o9+YS[s1\s$BCEb!)Y@)k2m[!"4(DfP'O$$m\4=VO%,#4;$
+/5%MgB+%.*iluah76t?ZYqiF<?$.D[P*IU^.a),&E`M2cGG8E=W)or]e6XVjg.1P.ii*&1OnomZ
++;ITs;-U!$e2D%H[?LGg.Yde]g.d8t$`Or@(TC5'81g]`'[:)Y"]5otCX0+D4`c5;Gj"u8=!#9f
+o(,oRD#=Ha$3-&/)D6ben1Sk-F"bfhQtMi=1%4a^dJSt!mD00^]9oU[fhCJEM'n]uq)G\eD8MA#
+7T]:(@UhS0;t<N"1]8r3<*tqr/Ln_2D'3!Gp,CZoleM+XT$,"mrlJ_G$:d;.MGSl8,,#4,@OHDt
+__*):fT.3Go0SfojC&g2j?/sK>@tBOk#Gj'h.:Fkd,1KfU59VX3.j,o&o)Bo#:.l8Ra<J$_r0nG
+Ni!s&cZR?QdR4.5N)"dTYUIBkP3V[6kT%Mjn3b?pc%flq?/*=/JB=+QOrF%\M-,g.5I8AUl2)-3
+rY$+&R8b>T3H>uLPOS%-i_UWkoKTSt03\%%]L;)H_O2pta:cAeB_r#PR9_14B_bW\/T_pq3HOSr
+Qp$Ag[]!D137g.2KR=\aG6SjJ?6la30M@'.<X3A)E7eS]6pJj!k^^LRf*hgUe^sp++16\2XL^lC
+*TGUW,cAgFNZaqf*=friito0'nZ@3g"n=&64^b_;QXoFUX$ufc%tsnJ7ORYpgI*1C-@HGR-uQD!
+*.f9=phfYC^7O:ER)QpSH\8^4_=!&`'UmYT3bU;9d^-HN4CGd,m6T24(PBP\o=af+(1X,lX)0]*
+&a](qpkMIhd^6Z]/P5SY^g]qbcI2)3A\eus47k^KV,,\THJod&]!Y)5*.Ng[&6@dlGQrV>Fh+KK
+V@na0aCmBZ5s^F8\@=F]Hp_.JoY/-dO-8bN3?u\466m5@*0hmDAaYRVECkA"Vf!E=O[qFgiMs;j
+nHr_D:igb,$Vu]6hcnbPIdb;<>NZBLp5IFQ\fpf_\l#Zp`.3>X\mN%GPKeEh35l"2L:XXDHoSH'
+n-D+D"JOc9;@NB()S9-g.Q<]`N0=.=a^p`6nAnumRk0IpQ*o=P%0\[T-D0eZoqu+VGJ%^+8??SX
+.8UtAOXO/WH_&/d5k*uUr'6`VNq5!o[V2-tDpR?YXHs^"n@[,b5AY#'V"%Bh"pft5i*'-E&KQNm
+&!5S@eJ].@14:d,)+TJ&BgE,U5aH0$frAWn3XeS#fPib=GK7_9]tNE^$/TtNLoIL?mi-,Vcn&Y0
+Rb#Mqn8XgKfi0e9f]4e22:@j"%>r]3+D`&N;GSKig`k7qkW%UQ*g35ua"!Pe^3E/IUU4>B8Wq!J
+`6FRMC):oI:j\CI\<^F.6N]BMS]6[X*)<)Y2<?m,or&?\h+^%K\!b+I-&1R+>&uh>3Da"6pB97J
+IgKm2\(CFX(EeCaCRgEsb_1+m?MXl@q>3U4e'.7+KkdaHU-Z$)e9m.n#6:3uoP(mo7oS19,.M*'
+;G<3Kg"FpDl_pqbX)ZM:%5goAJA$RU-dMDI`J\pBZLUA*7B3.cWKj1t-qK:WQ#cQIanD^7@Y+DA
+?#.R(n6n6SOlNO"XSPDBA<ud!IA'\J?@lRnI!C7G"mF+N;7tg$$qq3So<sF,#@>E*4a\,FH=a"q
+9/nZm)][Yag[?/iMEGF/#4u!/bXdZaqVhRE`N3/*PZhF]HsAOfgo/onkdRj**RQ]oIcT#g*;Y6!
+(.S'E.Q?0sb,H"fnEV,<f@RS!*?M\NIXi5`9-S,q2D[+HONLOj;]U[ISHADdF)K92jhGm,MV3tU
+M_.YuW&URdj]1fm5eXQ@3=n=#:nC-@o)dU?S;0)j-ThY6)DBn<_]-3tZ]^R4KV5S+UJpp5D^6KZ
+S%L9:^djsOcR2HD%!.\N%lrAc,[A5/oTkhDesNL3oNS,P!*jG[Y&pF.&Sgtu->[KNkuuG4fj\p#
+0qZsKfdf1qre'&YU_+bE;2dP;RpTF#7:oM:1Y.gPe?s&"Sk<R&c="K`(M>D[f05nu8nPV\YgM!4
+(BsZn.u)Zrl+Y2L?H&&DjK2R=E<o&%HAKCe>eL%4;7@^t7Fr>;jfPP+,jOW-lb'UtbdsT<AQCj?
+0L`\rD1L^/#:hP'oEk!%W49<p/^9RDQq\_W1XFD3I>jFI>l:?oLu4TZH%Dum)H@rJ<PdNMjp!o2
+P1A7*?#!4SE*DRi'>\/f`cRY;!m.+0nHa^LX<]q!.XC:H4*]&Ij1[=eoIbYS6-*Tb)\"9.JM@\O
+p%oijKp[)PcIX/14-Vu8d^k;,"u-tV0['!4@Ig;F]NloqV=s"FX,`[(Wina:Q!a'LZ*.OhGP#kO
+!H\kn;G![>dM5t_'I;\Aeme.0mM/ETMogC[>hF:Npt/Sg'm7XSn%e*dS&TCDn=jfj1KN]%pi#,s
+HbFk\PJ`%[a5.%nUp2Ej`Qg/k92V%:i6'<lOYOP4cZA;JPtGo%jQ,Qi8;Ts-oI#o.%Oc?o-;:qA
+o&T6;T(+9"nUZulF<"RJ1qqX<K_8a[[Xn_E7D>IX?=uWbUW/>JWnfQ*kSQA>)<`+3HUcA-e7\$q
+%ROWN[TGM"H>#Kti3u(bXOp5bK_KY+hl0A+Hi-!3LVFX3nW-?RoVciEin!In_^GWTbKE)^-ge7<
+ia55<r"IBEB(0]HA?56!iV6r5b8>io]<ero,RL.27U<+k(Y4UjR@WOg`6$s#ZqoQ7Ro[&^YS^.<
+Md<>9W7Y/u;?X-lXjt]l,rjkb8>Vq!"_asI4LTjt0Cs_HH=IW#T,md0fD2!M+("G8kl%-&b>.,j
+EHH`F=7,0bfWJnn\ZH<3eFf@01]Tr`%GLrY^ute\lRH0'.u5nk0T!;-W$j-Yb<(UZI@VC,rh@\#
+qNm`'HT;&F''UrKaIZpb+ZSQ2-.C14=SAntM@L2sc3'<^,;r7P)A1pFJ0W,VH_mje<b8HI3K82<
+ZG?$OZX-n:_0I)NMI"f!G(Ha1$"87q[m.Vcg#j&pC7B&l#Wb*o<QcJbBrkiX;FS,sX(Q!58/SZS
+<8&Vo]Sb>s;/QR+H.&3IcZ%XkR-OL,eg;p%q1C:OX"!T?MV%-&/8S8i%u@48]?j!fr4q_bTU$G(
+WEDi-@rkg/`HaRu@fd1MNR_*J]/-+`H5aqhBi6$46aNtN4eodp&o="+1^<IU5W5O`iTT^"BGj,*
+<(AiNe6IOt)%:Kc5`7`IcDkSEf-%3ur=_Q#P6apm.b<&oMq)SX'sT*/Ok^'0D7MQ1.iK)[FF`Oc
+I/8;.@X`.+=>_\tNCPEgY$E+On$:@mZ':Mc)A+K3E5HbC(p;hXYp(n,f3AP(fP^1un;Dc2jqd%$
+o"#5*#(!lX#4d+]BbhYiDcY(c:X#sXmbec/IrF@q).7?!cYR8*Vs>dT5NQ>ZCYY!!e=#!pq]l:e
+1)CPJ&=IlWhm&CRKpU0j1sn'>Er"^7$kZeGEEXXe'j2fbaqr?nAd=3H85^Y_Y"e^FS:S"BA+&CW
+CR'sMDmQ%3O1G$"l[\>XjCpnY?"7`RXjtfsbI1/mKB=T\ll\PR'h)]qRW<7F=od\K&(k8AF.oq%
+q%5_:0Drg!<l'LLe+_b7[n-!O,K"*0f9t8*55F2@/8l=G-LUuOhsTItIc?P32h],fa!U^@+J#cW
+JdM!hqS2&s.2LncpVjQoci*h.X7ujO_]b%DL$''lRD3>_#q$m']o/kJj5,tAMpod/_Mo\]o-(i"
+B8&lZ=`,XS(M;s<&DWLt(XJ`IIbNXG\+mNRq[i\Cl*Y%h+Qo^cIil].#@(jc;^K@e+SDXYf"'^]
+BafePaiebrV$c;rP_orrZVP-*aZD>gO$GH%<`g$\'`JLujCS=gRH'$i.eq<Y+2FGEJYpi/+b/6<
+F;><eN9Yfp-P\hNi"j6g@)dFPXl[$Rls(uEInA=Q-IKfkiLA)2K`!7r5.4aJ5"%K=1,irULsj<h
+q!`_S^OP+8q>JUsi('oc$Rk:i!SR[pE<~>
+endstream
+endobj
+15 0 obj
+<</Type/FontDescriptor/FontName/WYYKVU+Courier-Bold/FontBBox[-21 -205 623 695]/Flags 35
+/Ascent 695
+/CapHeight 597
+/Descent -205
+/ItalicAngle 0
+/StemV 150
+/AvgWidth 600
+/MaxWidth 600
+/MissingWidth 600
+/XHeight 451
+/CharSet(/A/B/C/D/E/F/G/H/I/J/K/L/M/N/O/P/Q/R/S/T/U/V/W/X/Y/a/ampersand/asterisk/b/bar/braceleft/braceright/bracketleft/bracketright/c/colon/comma/d/dollar/e/eight/equal/exclam/f/five/four/g/greater/h/hyphen/i/j/k/l/less/m/n/nine/numbersign/o/one/p/parenleft/parenright/percent/period/plus/q/quotedbl/quoteright/r/s/semicolon/seven/six/slash/space/t/three/two/u/underscore/v/w/x/y/z/zero)/FontFile3 114 0 R>>
+endobj
+114 0 obj
+<</Filter[/ASCII85Decode
+/FlateDecode]
+/Subtype/Type1C/Length 10135>>stream
+Gatm^$!:-X](SV7cE;;'NSB&n$##kWeCnE7X^eb63"LOA&J;kojs^<d!auZDOq9q]@1#:)6,<R:
+[>oBCCTSUQgXBA2m<";hD:e2]S9+_<'>bm=H_18JO3!ErpDUd)rSI9QgPt\>7_$">NEdo)MAM#e
+cX%cP3l$1uQ^QdO4?ndM_*&Y>s69OGHHlo:L@R&Do1-<A&aj%[8(I4FEFYC&BAl@UU%fMBh9@N/
+c`g:]RhdXc$W$Dd[U\X+kqcttlMY8M/$HVF]g'ba`HtTuJhSaqHOB`u3Aa>B)]]i\po='\I!8PS
+0Z6%(.P3P@_)qG-J^=Mc@lo=<66j0F$_rB[Z(bdtBe-*.chI+'2]I6NkU2>GT9S9I;%t8GhVcXr
+U#.4#60qo!Z[7DIIq@uH\2WDK-`fme1ML^s\s2.GWV\WMKksFIi"ruhi9%6qiEM#j,.:#0LtW`[
+.raXPT\4DCRd2Jq-^gU3i2),\HiM?'dDT*5/Um6?a\/MD2YH`Wdq9616t-i"$8ICi9IqMs,dn8J
+M64]1@N.%efM5*bFqE,ZS\tqG(GV-+9roIL&cT^@@Q"f`X<Qd<J]&MG>[fSL9<9<!&T8<RM7(8'
+@NFtOZ(>&gC`m%22A1Kar.me[&n1tuP'EN77>rRZ&^M$7&poEh6kI0Zp(CjARM\OW8%9/&`%]&d
+E$rX=*lJ256Te/+`!Z^7i"HeJ+J'd3'2K;@f\uVrEOYna?6".9Sa1aA@iNIZ,:;Sp8Zn&1HYU]%
+57Z"b3b*j?#jKEC7p8FYNk-tAa>9O9%Y(otbj/bVnT;G@@s.FeF<UVU3;mnST0)A,jgA^5gN_t9
+'bf;n?hK#k$W[+eI%t)Ei%+7VhC#s#nX8AMk+hJrn[Uc%njG2%k=N!-<PHP"dJ2_9-YH1d-DN#n
+:/Ob4VS51#FkY5W5>H\jA+kih1Io^&4DXborNf[?rQjhiZ`c/LO(*PBp+(<rbgL$G@pXcYl09jj
+6o#6#oAhBX>b2GRJQOEOQ0XZhg_rFD!Ef_$2;5o&S^%Yf^n`C%eB,(<N<l1B-H-WeOg32EATDeb
+ZSK3lYI4Mt#)VJcn`#*>?hSN#9gr$XTB&ACJV36!`<o<jTG#B3.idbkVpRWtF1@dY0%^6?Z:A$:
+r+LkJp?-[ui%AUn4e#CN23=hJEmrK&/;UB"5F+e_R>Mpo'P_o:pJrPCYsGP]hMR)(<kZfN`2kGu
+NoYV7mW>57A&<@m@XnH\jrR&cMo<e%-2=q+C8o4KncO9LNXN"e*Y17N;7"#Z0A$bfP/&3_YummJ
+il2P6PD8\%hi[i:EmW_J9ZjXLf4=Ko,TtB4-o9rl0p$o2IAST+%W_02"l8I'\l)Ade[m^OTR9<W
+a9,SJSOQ\X[Ar25[*]O=7KK$38Z>PsUC2/nk;M/n)u";D\PVl**9$]!N<iU`Uk*24V\>Z3Y9CG=
+1uGP?4.Ku>55$]qfO:Y*/%54k5M0ZVRG`$pY@1)c>,<s_)UEY_KYp$hq9od]a3#.uO#bludF9oM
+a$h'm%NcF.5F3O[\Xo#LPU5Tu5a@ITj?l9Vkf(5T1a++m+DR_QEDSP&-c-2Fj.K7P/"q4&=iKO5
+K^iKfZo*6D3jB]+f\MSBiGH1g]Ys04d58e0JiqF?8A5A_J)meP*2F2B)#4I.VUFAWhRn6hl7MVj
+YJ0St-atbd(HAkEKNR#;!?U6%W2AMt.-G9b,<<2Id,9#2]NEIjC+^C]GLq\Ji]>b/oK7<Io@=OA
+)5q_g.LWl2EVk,'PeF5o,-02Hq=#+EkFfr_\?U\I=K02Jl.?Y\"iZ7g9F'q^FX1:2L7O`J(L"g8
+@:/dbgR)b5n$[@c\9?I,1^=I[UX2Yc[9PNr5(hYLlQ<iJhKY4@>Z5&7ePog`F_kYj[T(D1'`fFW
+`CiN3HNAgi]RJ$V\B4^:UJHARDNRTWq"8*EAmrQM"H?<[cmk!S;IBQ;>((+i:/_4/WIJkQD4Xe)
+UNjLaEj76669<1cAYu`kJqEBOCPPNogIHG>M(Q<u?2Ari8b#dr4FXsS7mhUNccCHCYW+U-E!fHI
+*"T^hMX=ejiJ"8S:Y\1WfW0&+_@\A="^)!;IF;3]Y`_Zn#H04"SB_8cm@[$g9rUpk3!^_,2`CLc
+>i=4ZVm2u(^63EB2!L#&B6Z3pa'.frmN:-Hd)<:^7kb<UhUk>I"0PXr4l:7VjuU"FS`[e7a9.Gj
+;tqc2m-@%hZ7>5Yhql>I)'0d;]`=(M%u8aE9lGSG<"Kl4c3tLX77B[VD$'\'e7=?tm-`*?M=_Rr
+?("mD@uTCU%%]h&[niBJ)*\d;%8-I?B[9[Hm3Mjp#FdX0?bIi37,uYX?[\X+l7#ZdGla?7>Np(`
+nR!$!)A\M^Leec.JjD(%lJjC(W`!%d'54CZWNWU.2!Nc,bloIXlp69UE!.q8-d8:!<g"Rk,;5;I
+,\FS)Pe!MW&$-K+E.JK5jQU]$C#uT:iZnk6VGa:Wj.&r[N"\D(T8OeW(!?1^'7RGQeFXY2YYf@/
+f+.5!HIRQb?+_4(lE*#u,i\dB7)E(PW)`/hFg<d-%UTDQV(;^EXoKY\(Xd;oH]m%ufZ/@HK;RW;
+h1cBKTV)U%3_7LqZ-MPN=6FZ0n!t[o[\\J=FHdPH2Ze.4S\[hsVij1"c[Iu[dl>/Lo\!fDpgUZD
+:j(==[W82ffdqrb7N0-0!!l;KF]2YB]4%K#E([YLSu@c\K4gQ_4U0MRFJ-ofnCkNaQ!Wn41M^s?
+=pj8[#1r8)3Z_<10K=N+Aln&CB(/*Z5E`B9Z14DFS4`Ljo`I/^7`&U%b\VN^2C'1%fNQ(deJmuj
+fRR\tG"=0H'"Kbt_*:c1?Q6dIeAA>k0"Dl%]d89><L#RVAYl+X"(Y;d4&a`!#VNO)nE#GE`]1UR
+m+i)(1V+d?cCi[F9o<sf$FBs_]!g+0ZHIKloFG$<m"dan<fJ6U*)a(9^L!h\cR9JDa`Kd<Q(Ke'
+45M5YZ1/iZMsVSQ8CS/hU7R*XdPe5T$u0'ZgmMe*EH+f;$0f`cZ*,KAdgmi._$8h)-EN96AfLnS
+W1.&=C$BGKC1oS<\chGQc6RhJ2@=sYV,lF\\QXE11!YEt\=a$nY$U@3Be#2nZ4_a>"%m`e=2;EB
+S\'(5N*6^W;QI=cNS68Wqp,%f*V3(r))u!sm:j^Wp`_d>O/j7W""45"8&M_e7-W_^WKWL<[J*4"
+`=\o0Q_emrO?<mi<<hH]"l\6fOl$UH7o1K,nsu>54TDt&qCMZFfh`#j-sL_7XAl0bVt9X0#"j)k
+:`q75.TI4aFeI/SP$je#``q4PV2MRa@A0EXO+]S;c=AP*1NF&HfNk7P%$,3SW$hoDrPEKq5k!Vt
+ULO[+)4H@*i5@CV#3[nT_8^l^iL#M0VHg-Zk?sYT%=qS_qA1Z(PU?e0@<3U@NZ!VAK>kDX`D4Jl
+QruJ:@FpXR[`<%W")=$uqQ'ZTi6p;.;72792'r'i-@@2n>d:Ia\hW/gjsb6]1`AGO;h7/RqpJat
+D=+<P:@?#qd#XbH,^jne\i<M&\7"8m(N7Fr4R?&W(Whk@jsJ,VK'q$`OA9ucK1#2R*(;)2(s+3H
+[#@#(L-3R*R6o6d7M<Fm^>h>q5N$aU_/#`cO9n8bU@4s[(hV[66Rh_#-FUtV!JC%J"f`Zu*q3lc
+PQX:_o&SlMUp,e3+9Y#:5S`r*$d?2rC"3[:E>3_eH[kL2.@7kNE63.5j`J-1.!V*D2:C5u/U[l+
+jZF[c!Uhs]fDt[2(KPUujM![LgAqd6<D8.?fm[m(B*#OLbs)2@f)dP\Pa>8!QV9A.RG5th78A+?
+@nCH:IuWlCrm2,3*Y5F.`uP+".Nbq'P$pJn_5D7N)`>TeOUj2%97FYR+r]j`4>T-^T7WaS,Z?F_
+8N*,:F3)So0XMTR!U=:16mtUemOsSML]m=clF=P,$*fY4&4J2N_XHI6X2`jLI,8f;d"C1-gm5YV
+;#;H\<Ca57H,$mI8(f6Q$0**I`UNqVmG'e&2eSXMPJ#hX!>VS(j[G=uOLt$5^IG^?cLu(X`"C-E
+?-lNS>jPad#"0S2T2DRQX3k`Z3;j,,kbsk'FB&/k`H0&G9+C@7(?R'56:4O.XLY!"%!6jB\$,No
++MBb@,1Flqe*jBK"HQ^R"j6<EZ!\['eL[`:Yul:Ga_7c[^Ga%+gKYsR'c@-uhtbnX?7AGLM-bFS
+QD*:`YO/*_NB2KKd%hXA"j;8C^n2Z)U'B'B?IHSV492@-;3a1/Se#V[]F$h(QRY'lG+>SC$uUW?
+'<VJ/$p(r$EZ*L4p5&GL.6-.U4p)_0l:!T#AO6q/KGhZ%GYtOrEt=oZpg*g1ak0Qs/$R]q$toIY
+!9i`6A#L=jo3Fm(0slupGO`*OdQd!i0bX`"P>2C.Jrd3ZAM/l$3i)jUJMTL%JDQ:lcI@E4jf/ZT
+D[iQN*8\pe@63H#j9cNtMXBq\Dm.).9@4$0J4Q&H1r%JlT]e2[4AskA[j!:tCWN2qaP>Me.9i4F
+1o>($a\mDiMLWDSW8EK71iqYU1s)qAB3U2MCuG!IT/"<qBkXu_=&rN[ag5D-RO-9WaSBhtff?%3
+"NCB,&H($VS(k\?C2C.Y"h+8.j#M&k[)f@/98_ecdL)0p.]l=D.-iBS=iTY<nYqg/a6i@K7]&u?
+7)k.>_pKXQI1j-/6QC2q+E?X?^2^=:lVeiB*d8/BJVK;#!pW1$fZ?Es,k"]]?62p=a9'IDfst4=
+YYL2GAdFF"Oi(ZlHBR\TO]/_]qdqjh7bhCSSVC]Pa8)HF2KE<\]$."QqQY/`SBaPm<6SL`XM2aB
+bLrUU>,jWr2Z^O%VTkNZI1.:eT7H,CEaSDZdjD:5CeG7a/*O*g/RTT$>I1_IDoZ(KP!?tZkud2(
+(+L;%"&Q3<pIS<a&(-r.'Wd9Q7Y!0(kt8cW&.!rcU:PSb7MBG>9uc>L=uI&?oZ>%`G$'>0EB1q7
+TqRCjH,ueCD3a4BN\kit#W-G_4?S3jOf3qYSqFP&$-;1Wk+V3kKfc?n]mJYih67Gm7N^YW4rX,#
+9h/-Da(47fSqh2>iS6N0PZpoQCJ%3X^k1fh<NJ;USX[TjRh22*";ZNY[_ur\_*,BrmAhg_EEZTR
+2f5HtSK51348a$0pC#1U1n'&g75(;[kV\0G_DuQNjM;YjU7\/Dh/H)mZZBF.S%):?4T,'r`'qRM
+R58@LipS#qH@58]56\2lqC`g_JU"j!/Erce!&/^rD.Y<O<+ietE$ef>bVuKnGt!7h<`[aP9?aZ[
+Jk4^Pia@/ce'#5G'c[W#XFI'#W3Q:rs)6W$^NKEcQGAmgFurst&A)YkZh8\VrD3!2ctP[h[dcoa
+C!].3pN`AS*Znr%Un%HnWJqb+e4q5+Sd-61hEE!pF^&h[C&o5J3^NSU.ut2#4IX/]V@PKeRP>[G
+j!RVk?HD`)WGqe2'4oE/K'h?!#:$\J0ff`k8ahCO%hcI%q>'I\pnqii4MmMD":OJ?hV#PXjbD#Q
+QYsJ4dG=+i5@Jtu-JMTc0N^(O0Y[68Nf\OH[hmVoBPj=VBYYq@;0'&?a3,8@!pECq`Fo[-!R5f,
+PFlQI/V)//B\UuIqshC[RlnZQ*!MF#U8e?3O^:soi1DF.Y/dmZ<9KM,:qXBh1PbO9-StgmY,09Q
+dMoH1ZR&Vj86'Cr,!RqXSgsh>TZg1_U3M$-O`?09-:gC&?:#.P`73.MGZ*AVq#g8>**7BjSc!BQ
+#C#hpKDtiG50Q8\52"3L<J2D'&iq_N7;Oo44aHj4Q/OQ5!#=2L%!0F^/0Lb8;HCOmB'XM?iF3]H
+"8#fY;cI]<Bj^P9c`Xr1qa6kl$BDF0KoV7SGD'cpr=aH]nc0-bS3_T&A?;1Q""T[PiW5<9#/>Ad
+@o*!X[NfG#%I1EJGL8B69)(V]OBK9<"lhc(6Kl8!fb(d@Iq.-gH2ur_ho<GK3.)kZT^T,k`'SQ'
+?GXEXL4NXHB1RbH%8Cg"cNDV-(LT^p]LNiuKgrs-_VmYKCpu&>_u.RCN01Bm\:A9n3e`\J?n"@D
+OMuuV]iD?W5PrZpV,Of\loZ(/BM<3+h3,LEA]h!:<b3.IYb9XX-"?](%J;;.^7l);A[,L,=d\1/
+<c"Onm<btsmPQ:40bke9R/(CT/nD\UfD<@:%j%?=D%C=p7+I#1?SX2hAnt<:8L9O7*8W&(Rr2Iq
+'-!\+(InO'ltD"jHi%VqDmGk5q)L!N'0[G\>*/9m3/de&7KE1#1>D!)UB^fj('4F6Rt(f3(C+@q
+Y%H]=Qj\u&kimrnBsOX#*k2/XLMf(gI_etu]$2D1)1nV$fWT8tGBB+E*CDW=n,MV2XW))&>Rahk
+MMHr/[68nK9G:[om%$V_7<H*1=5U+'*#Zi]edoZ<eJ[_P%4>ckM-bctE;33KRu;7[/%^g(5or#L
+V/0f"RAh'ZjG")#p[s[Y*;H)r$t4*8_7SMn:uDT2>LLPR(5:@4oh,3F%_fb]Yr*OYK:Q6irC`U<
+R,A6b,Q5%RXBN$nloTUI2Gb6&l(qQp^;r$$5@"q*RGO6"Ta!,OA_VBBhhd.FijZ`mE8#E.l10\B
+9AiQ()-Z%bcER)R](Z1s%+9[9=CUVgbcW6f->#JYq!5k?b0(>Yf-U29NF%8K3#)Pl@D.('YPo33
+(fSX.?*6*3!oVq<'[MO[$t`Be6#jWA^rotnZiEb6<X&%6?r;QX7&a2<!NLn@F2lsPL[ON\F1ej+
+#:%]f?KmU[i]pICg/7R2QQ)Cc`3IQMEaZ?a#'5&s1`rkKWLH_bQ\kq0jq%E;@LYmDU$Q(0/LDM3
+X]6a,ESSJjYODgk!\!&W]^=.QrK._$'L0/X_K5e,lkF`TM!DD*"aHF6*ZaCY@H99mj`$p(*7XXG
+(.?IX%Ib1TE)aF`-?CMr92T^HXQ>tgDU:VqQ?8ZDoF/[874Jk:`.rE:A,BcPc=56Z47clVDm+o0
+njLC)O7GR-s(-ciL?=5[]:Euh2&o;fTasn#_]T;S?'u4.oOJ20.F1i3*?A[t#Yj@iCrbh*%fQ_]
+U.+.)E.umE7;tB&)Q@eS3#5J"&n@fl@*k@LI#K;8S0p4$&4g^_P<`1+@l6AMGHepZJ""^cfCaU]
+/3'e>AbQY_0\Mf01jYhj](;V2X=LdW1'sjKnGj1Qk-%GAf)#6oesQ;dJi#563]\hYE-."ja?A;B
+`\>U"IsLhhl+tZcBUD"t]gYj&8uPppOqTW_64"`^oWQ7)Zs4K1H,\A\>&-b'c"/I%OOtG#]A$ER
+E?)-T&CKFMkR7F^_NqupX^EXb9GN<Xmh.2V^=4\dn?jk9gsmBf-M9.(%*hg/[re4NI0&b7kaPrC
+`uXX+\^Rfq&uMed8O7,mXU9CS0foE[a(B_;UsYi1X0^p>CFka\X;k!@#Zkru[#0n[EC$Zu&XOHY
+[Kg8,ZoPfSa-p5."<n1)kH;D)l%>i_b@+UIAW2?sdO6)J9_5dPI'u&/^=lUu"t,p3kCU6!1^`+]
+,0S130jZT#7'"$E^T`=i9f8hap6<<'n/$l"2b1'^3t3ghTS>T>m*gO1;E>=Hrq5()VdasKgPs2<
+E$.in_h?\,H_4R-XK-dE?-Q5c$O[U)YL'5m>>rC*pqiu>!"_`@<@?<s<Z'&7r0#'INS[KC4]9i8
+W*>etFplc_VYUYnmS=R-@4.]p1'(LfpK:H0&?"WE3?l-J:KAm;6**C*b)9,p,\*T==/@b2^38lR
++(EFF'kscRN<Nq&8T?`G*-is85ins@bIMgT?$de?.4&/.8Zl.dD/-0S`)6kFITKs(9h_9PPn*Lb
+XoKBXb]KB;hM1\3O,ct-Nesl/Dc-s<W(Y[+o$aT2iSYhLPfBVZ@hT?p<eL&f\gYiTf&p_P!$t60
+'(,Zr#Y0Ac_:Wj-d*Z=7"Km9E#<S9\igP5[R'lVHGgN%*19r(qfWL+>JF];?F%^=L@\'d28>d+X
+*jLu8"OufP0meM)%gG"=ktrE2Fr\oarZ"C;S3s<Zadbf(2DfO6WDH@rGe/o@qgeZCDHhRd))ODS
+RQ:r'+Q3`rc#IP>.d[2Ro/pm1^uc+q9Ebn"%arREJ`K8L8k)i.eE_uK7A]nq<@85MJ9pZ`_"&e&
+#:HX3f%*:u,R.gG#,#E=P@D!afEXqEE5ck[UnHgO`HcEVJn+!BJ4@Na<RNR6k/'qVo_I$s=bC?O
+!'d<\iTLO@IKqo1QrfG\;X)^m5hW0<D9)?PhjF:5n1/DaG-?s2$Kcu+jf_ehO03aup_A#aS?6I=
+CMk^g#;/r:oC@Nj]0fM@#P.PD9@oa%CcMNp[nd-D=Vi!^@9m"$2\O]Spaa\-!&g;9T$`M"NS3Q2
+"d")MeKi[J91rJ]q/??Zi]QRR@fa(-\UFW7Po$fL@i@.lWM8uWo8TE!l4>iYm1B\XPkc3m=o<Tq
+=V+l$C'.d#:gRJT5j_'%^$q@`*d#8+X2&G'eW8Vqqj=SR^31?I^HKX7R99YWUp%2Z:4S7eIEiXb
+Ml=1E-h"G0],&9HrOP0<@b8WihY1'dZ#JL3]79<q5D/86kL[1?BET$s2c#1qo%tCp@DgrfF6?<,
+g_B7,75g3Nc\:`Z%lh(29gJ$Tc3nJJft!Ns0etu>4J\I/[NJm(WrQHAT[b-i2S`eJ&'#.Q.D+SH
+Tb$HM2bZp#R<A!]SVTb]?/PhG+?NqV86dFhaDk*'-Ai;'Nr.bNQcHjg:N5a!oi#f?ge%Bih!*2[
+rL+OR2aK]D=GZHSg2=-[6Cb7Brn_q-inPEc%!(Ub!<99OJD.93j3"L!D)Z@?*.4`E>qZmSr#Ik9
+)mbqbJI=>8Rd.E:38c)kKarGlX3))eTd?;28:3;04PuH('@V#&W`J9$Yufu^]sZj!dHjFQ/pA&+
+dYAJjTK24`Kb)cj.k*mpo9;KHEkJ+sPNnX]<UG/9>f-;u]qA,#a48,[!A?!fMY2_@U>kJ9Z4a[c
+ZORY&D@0n=4YDl%3L*3OJ*/WuEq8LiVOg_#]V^t\D2tQ)I"s>OjZ$r+c]@dII^#`kNeROW=K]Fk
+DLXcdIsCps4+,9MRs%XCEGmGE1'?QI*-\)eo6TmE=F=Pt_j$3-SsQ61W?@_b(DsDpqp*n"Ki;]#
+jk>Zf9\2S%Z]":m"n@V>%WE.3#=b@JA26&T'WR5;.1Fl!q=:8/0?IUi`bNW!\;r5nDh2iB$-BI)
+\i=JmBk-BgUZZNC63T!/XiG1[[C<!1(@[5k.jT7RD(=*U]:7];m-?Nao!GrMWTCBE#Sh)gG#!K]
+IU7ImTr5OgV9."aBX33=E>l_G`:j($!jrGCUA%-t*XFbGHg9*hCKl.E29:oY\)?m_+0j_Y^:j40
+/KOiZ%TAdFd7ZE7=ShlR%A/)ij2T-3qd!PQ=Qa\:.3^`>.,5mgCi40,DJg+Q'8iQcMR5EPU<FKd
+&sXBrAF\'^dI8EX635#2kse7t+e;)$b_M'sXs$%*FMNt]qcuRpq/?Ttda/95WXUukW:0jWlJgTn
+4H68]-n`UA$6[O:;K]*,iL\7#'O@F_ajm]EBdtPek%d'eMD`AG&6-^[M$@VeFeON*5kM<E'Oss&
+is#VLWGllmS\,#gGhHi3l7GIo>Woj8Wj,f1!iiqK'5QWnnm&hi3($;H!h^=4H=LqoEGAd@JCh@e
+9XsK7nM<Db#_u\FXK=V/kA;i6E8DK/<EB?<W%9PSBs5o`<!"R(.uj=eetEq(P.\Z.kY4*<.a>qQ
+G^F8GZ)7*',:80Tq"B2F-mG%toO.-[3%-X?G/1^24k"S672u7+Sodg!5Mc@&MSieoNCHCuQ'`lD
+!bkt+WDOBYo@9F$)()<p'SDPM6P6X+L3n*GJC2dhBn6>1AUsESm*%T"B<G.7"=fM1bGpjhVDCS`
+G@p67,A><Rjb[CrOP;rU(3fp<X9EV4+AVm,;CPppI8s:<6!Y`l$!'ESaIg7$i).Bf+$^@M$'T*+
+<L6Z"j']=[GW<29%i:Fo'Utprl,A8/aJ3`%Qjfi[c$TV=aM_g.aJ*.EP3T(V\g,c']5ZC/3#;Dm
+i34oV>m35CV_^sYS@0hbE!V?X[7ZUHUB$]gZ.4\R(4D=i_E\(Zq3@3hXf<"YeQ#]&Q0.9UQ%E:c
+rl`kj@OqU^05G#k]KA,KQ-<S`idAoi5Z(g*Dp@GtZm?OMk0&9VHr=EiChZA><%of@_Q:/\0c#\$
+Ho1cKe)+q2N-I0g,XM>mfe7:2~>
+endstream
+endobj
+11 0 obj
+<</Type/FontDescriptor/FontName/WLHAMG+Helvetica-Bold/FontBBox[0 -23 516 724]/Flags 65568
+/Ascent 724
+/CapHeight 724
+/Descent -23
+/ItalicAngle 0
+/StemV 77
+/MissingWidth 500
+/CharSet(/one/slash/three/two)/FontFile3 115 0 R>>
+endobj
+115 0 obj
+<</Filter[/ASCII85Decode
+/FlateDecode]
+/Subtype/Type1C/Length 701>>stream
+Gar8S?t!MPA7Xcq8BiSV/]g[]e9/p[8HB-3rK(Xh+iEq>QFXWga,HW.XKi6uF'e?Zo.YC[YUo[V
+:?[&:i:f;3mhGm4b`%Jq?.5A9$S%&idkaT11dZi3279i7&0cjpQBhkLPqX'ZQdk$=oK3:7+JUJF
+-bgc_26Xr%_&914-RU]Q+[)a/+JW$^0dS,'"f*_$0deh__(@GjZ_/GU9L6R!;o-Pj^ebh<R/1CV
+-C#>s"=N=H/,1NC>`U)G^qda[DeN\*^`^E8`$!8H_S?NN0`qf91kRBt$qA>\*IQaGe]qh*T(4[4
+oQSa@*7f1IhiiNOYk%`Pcj^\,qQ@X3^$/%hkb$St$9od.fLsJ[&q9FpF6Kl]<.#M[;>HcBERT-r
+n$,-C5GifE'`EH1D=5Dto06U^cMr"b_=#nphdppPs47+MDJJ`HX0oRMVa9a_e0;>*)g7f:\M:q>
+[OC=J_/Eqrh`R3=4tXOg3I[3t!KA`-cLYQ"G?1F+?b\,hk5;A)/puW)me;X6Hb-+s/T0BE[kapE
+SAR9LcHe:pj-=euh_K"2^Qi+BI95gupoaSXa`k:Bkm+=LaU:<m]4KZU1K*,@N3E2G[;sS(:R92M
+W/L*;iMcc/`nn&,Dr.;#1KLWL\##SSnES3tQ_\^2q0Fs5P!qSnbl;QB5C*prG:p&eMVR+"VXX)&
+=.IFNbJ4)X6a#JB~>
+endstream
+endobj
+9 0 obj
+<</Type/FontDescriptor/FontName/TMEANR+Times-Bold/FontBBox[-24 -19 476 691]/Flags 65568
+/Ascent 691
+/CapHeight 691
+/Descent -19
+/ItalicAngle 0
+/StemV 71
+/MissingWidth 500
+/CharSet(/colon/eight/four/nine/one/seven/six/slash/three/two/zero)/FontFile3 116 0 R>>
+endobj
+116 0 obj
+<</Filter[/ASCII85Decode
+/FlateDecode]
+/Subtype/Type1C/Length 1541>>stream
+Gar?.InWdB'Z]++mH]`GL=A.56MiP6;$P;]SQZm<ifCVU&qb6L56Ug6L&R5N-qp[8Vs'[FA`D4]
+gF,9#4"Ig#7GSY*nOFcU0iL#@FE*0o1YY-cf3Dq]C9m2erH!&J3Tkk;3M1A,8fg:G1`]_0[I`g#
+$_0+rpmNg1TuDZj0i@*,MQY;=73]/+YTaFTA6:/H8ru8sKq=.Jp):<V:bnL5md]I#>toHB9=9Q(
+Y?\=^/Nl8W5EF3&13&RRs$jMP]\@1@E%-st^tYA347DZLEHtHjc"=*;/@Hm,[@=3NRsB)Mg%uLB
+^6Vu>[96cfB*5'X9B.c:#3.Q)Ge:b+YH2qh/"H;?#?Th?EQbk>hJB='s$&bG<9/.R0lt@Y=gR:Y
+k#,.e23EcmeC5b$V;eGqP_P'nVGJb!#:5^q-L(Z'9R"pG,Dm_SaC8]7A`q"_B^#0tThL#liQr4g
+aH4Yr(FsrEU;^/??V&X9q]QUc+B&J]TnVi[G\MG7?>WR<1cu#*b,6L"1r);-1an'@2^+`rg<oG5
+/2#_@rK1m%j26itN)k9q5d,ee-)>`k5'p&G-`L9@*W*gISju]3!mo-K7nK6;-F@6qo!>du[^KJT
+qmuNNN_t!jI>Mj3<FSm:Z[O9BMiiIb@9<%dHj>KeP[PHVM#"j5DugS^@NAQQ2ri!6oPlWU,b9Kh
+nCGoM*P[/DCL55s9rQTX)D0KCZanKKbX$YNs4%d2(\+soi;Lg(^S0J?4h09O<*T8dG'*s[+U7!>
+B82=\4>2`OMhN:Lj8]jkIW/F(fRYQ(Y4"*V2H[A'Bm"QQ?.Z0jmg(`TX[mlHhf6/B9me!h]%l]?
+3*)e3&)%QI1#cJVlcL`D-]eLqJUs%A)brDRlPf]Gql:2Oon2R_SOZ0/*u96jXNt%?<:gN\!&5T0
+NC#0%OA)Oge2[,nU&itNED`%-E#tE8ZBe6mStR;7pk0nAeRO[L8_65IONQ/]cN"L=(#`0d_TUDY
+"hG3QTS!Z@=;(nAn`JHL?Ua&I$Af`9%3i>Y,U!Y,*^?!7*jsoY@;>,;qs<#MOF$pJU`;h!Kab7G
+\r+Q;11?B[f[I42ZUNIcBXri;nC9Zdm+pL3kJ3u#0RD9]GR+prEIDL14$JiW-Zt;aVXqD!b@-@&
+MBO;+6,i;rrn4R'Ua*-m&4Idn"V^*U"sW*';&7%iG(nQ.>@6Q4DW#Lp8q*uIe=[cX"]W7>]ul=L
+e[M,uII`lnnW2g>,*?D.k+XfAl7nfMZKQQW!nACZlr0aup_"JP#)=fO/'BQuii+BYV@g`J]te!5
+F4%TWPq*4n(EO$0oUd*0'DDf`:W(@^\d'u9;?g:=Ns/8qmCk[Qf:@gQ0W5TE:'Us]a@)ep,a&JC
+Z@F"[fmTMp]9[!OI>9(.&G3jg]@461>O.<OgUu9"@$L*t!@+998'c=-Z.[U"46YJ/#VX-!*OW"\
+-lO0'+<+3%RteI]?qYcdfp^j1TsFhKc4'5q,s&Ob0BN#8io%DS6N[FRDkKK7h'e'o!j!$%^]`R>
+!s+Yo\1Ubq7K!<2G<Ek~>
+endstream
+endobj
+118 0 obj
+<</Type/Metadata
+/Subtype/XML/Length 1395>>stream
+<?xpacket begin='﻿' id='W5M0MpCehiHzreSzNTczkc9d'?>
+<?adobe-xap-filters esc="CRLF"?>
+<x:xmpmeta xmlns:x='adobe:ns:meta/' x:xmptk='XMP toolkit 2.9.1-13, framework 1.6'>
+<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' xmlns:iX='http://ns.adobe.com/iX/1.0/'>
+<rdf:Description rdf:about='5b140cf5-4a25-11ef-0000-c6e5564eff58' xmlns:pdf='http://ns.adobe.com/pdf/1.3/' pdf:Producer='GPL Ghostscript 8.70'/>
+<rdf:Description rdf:about='5b140cf5-4a25-11ef-0000-c6e5564eff58' xmlns:xmp='http://ns.adobe.com/xap/1.0/'><xmp:ModifyDate>2014-07-22T18:29:36-07:00</xmp:ModifyDate>
+<xmp:CreateDate>2014-07-22T18:29:36-07:00</xmp:CreateDate>
+<xmp:CreatorTool>GNU enscript 1.6.4</xmp:CreatorTool></rdf:Description>
+<rdf:Description rdf:about='5b140cf5-4a25-11ef-0000-c6e5564eff58' xmlns:xapMM='http://ns.adobe.com/xap/1.0/mm/' xapMM:DocumentID='5b140cf5-4a25-11ef-0000-c6e5564eff58'/>
+<rdf:Description rdf:about='5b140cf5-4a25-11ef-0000-c6e5564eff58' xmlns:dc='http://purl.org/dc/elements/1.1/' dc:format='application/pdf'><dc:title><rdf:Alt><rdf:li xml:lang='x-default'>Listing.ps</rdf:li></rdf:Alt></dc:title><dc:creator><rdf:Seq><rdf:li>Wesley Mackey</rdf:li></rdf:Seq></dc:creator></rdf:Description>
+</rdf:RDF>
+</x:xmpmeta>
+                                                                        
+                                                                        
+<?xpacket end='w'?>
+endstream
+endobj
+2 0 obj
+<</Producer(GPL Ghostscript 8.70)
+/CreationDate(D:20140722182936-07'00')
+/ModDate(D:20140722182936-07'00')
+/Title(Listing.ps)
+/Author(Wesley Mackey)
+/Creator(GNU enscript 1.6.4)>>endobj
+xref
+0 119
+0000000000 65535 f 
+0000055713 00000 n 
+0000079084 00000 n 
+0000055518 00000 n 
+0000052450 00000 n 
+0000000009 00000 n 
+0000002918 00000 n 
+0000055779 00000 n 
+0000058859 00000 n 
+0000075693 00000 n 
+0000058682 00000 n 
+0000074650 00000 n 
+0000057686 00000 n 
+0000059058 00000 n 
+0000058075 00000 n 
+0000063772 00000 n 
+0000055820 00000 n 
+0000055850 00000 n 
+0000052601 00000 n 
+0000002938 00000 n 
+0000005456 00000 n 
+0000055913 00000 n 
+0000055943 00000 n 
+0000052754 00000 n 
+0000005477 00000 n 
+0000008272 00000 n 
+0000056006 00000 n 
+0000056036 00000 n 
+0000052907 00000 n 
+0000008293 00000 n 
+0000010590 00000 n 
+0000056099 00000 n 
+0000056129 00000 n 
+0000053060 00000 n 
+0000010611 00000 n 
+0000012750 00000 n 
+0000056192 00000 n 
+0000056222 00000 n 
+0000053213 00000 n 
+0000012771 00000 n 
+0000015662 00000 n 
+0000056285 00000 n 
+0000056315 00000 n 
+0000053366 00000 n 
+0000015683 00000 n 
+0000018084 00000 n 
+0000056378 00000 n 
+0000056408 00000 n 
+0000053519 00000 n 
+0000018105 00000 n 
+0000021269 00000 n 
+0000056471 00000 n 
+0000056501 00000 n 
+0000053672 00000 n 
+0000021290 00000 n 
+0000024287 00000 n 
+0000056564 00000 n 
+0000056594 00000 n 
+0000053825 00000 n 
+0000024308 00000 n 
+0000026962 00000 n 
+0000056657 00000 n 
+0000056687 00000 n 
+0000053978 00000 n 
+0000026983 00000 n 
+0000028990 00000 n 
+0000056750 00000 n 
+0000056780 00000 n 
+0000054131 00000 n 
+0000029011 00000 n 
+0000031852 00000 n 
+0000056843 00000 n 
+0000056873 00000 n 
+0000054284 00000 n 
+0000031873 00000 n 
+0000034782 00000 n 
+0000056936 00000 n 
+0000056966 00000 n 
+0000054437 00000 n 
+0000034803 00000 n 
+0000038235 00000 n 
+0000057029 00000 n 
+0000057059 00000 n 
+0000054590 00000 n 
+0000038256 00000 n 
+0000039497 00000 n 
+0000057122 00000 n 
+0000057152 00000 n 
+0000054743 00000 n 
+0000039518 00000 n 
+0000042115 00000 n 
+0000057215 00000 n 
+0000057245 00000 n 
+0000054896 00000 n 
+0000042136 00000 n 
+0000044593 00000 n 
+0000057308 00000 n 
+0000057338 00000 n 
+0000055049 00000 n 
+0000044614 00000 n 
+0000047781 00000 n 
+0000057401 00000 n 
+0000057432 00000 n 
+0000055204 00000 n 
+0000047803 00000 n 
+0000049778 00000 n 
+0000057496 00000 n 
+0000057527 00000 n 
+0000055361 00000 n 
+0000049800 00000 n 
+0000052428 00000 n 
+0000057591 00000 n 
+0000057622 00000 n 
+0000059379 00000 n 
+0000064411 00000 n 
+0000074890 00000 n 
+0000075967 00000 n 
+0000058589 00000 n 
+0000077611 00000 n 
+trailer
+<< /Size 119 /Root 1 0 R /Info 2 0 R
+/ID [<BE7749D48AD5FB6542D4AA22421E9F2B><BE7749D48AD5FB6542D4AA22421E9F2B>]
+>>
+startxref
+79278
+%%EOF
