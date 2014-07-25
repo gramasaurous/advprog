@@ -18,9 +18,12 @@ using namespace std;
 using str_str_pair = xpair<const string,string>;
 using str_str_map = listmap<string,string>;
 
-void scan_options (int argc, char** argv) {
+// returns position of first non-option argument
+int scan_options (int argc, char** argv) {
    opterr = 0;
+   int c{0};
    for (;;) {
+      c++;
       int option = getopt (argc, argv, "@:");
       if (option == EOF) break;
       switch (option) {
@@ -33,6 +36,7 @@ void scan_options (int argc, char** argv) {
             break;
       }
    }
+   return c;
 }
 
 int do_line(string line) {
@@ -78,16 +82,16 @@ void do_file(const string& filename, istream& input) {
 
 int main (int argc, char** argv) {
    sys_info::set_execname (argv[0]);
-   scan_options (argc, argv);
+   int file_pos = scan_options (argc, argv);
 
    str_str_map test;
-   for (int argi = 1; argi < argc; ++argi) {
+   for (int argi = file_pos; argi < argc; ++argi) {
       string filename = argv[argi];
       if (filename == "-") do_file(filename, cin);
       else {
          ifstream file_in(filename);
          if (! file_in.fail()) do_file(filename, file_in);
-         else complain() << "file not found.";
+         else complain() << "file not found." << endl;
       }
    }
 
