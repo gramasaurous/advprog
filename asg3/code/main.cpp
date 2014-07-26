@@ -14,9 +14,10 @@ using namespace std;
 #include "listmap.h"
 #include "xpair.h"
 #include "util.h"
+#include "xless.h"
 
 using str_str_pair = xpair<const string,string>;
-using str_str_map = listmap<string,string>;
+using str_str_map = listmap<string, string, xless>;
 
 // returns position of first non-option argument
 int scan_options (int argc, char** argv) {
@@ -56,13 +57,16 @@ void do_file(string filename, istream& input, str_str_map& m) {
             cout << "do_find(key)" << endl;
          } else {
             string key{};
-            if (pos == 1) key = line[0];
-            else key= trim (line.substr (0, pos==0 ? 0 : pos-1));
+            if (pos == 1) {
+               key = line[0];
+            } else {
+               key= trim (line.substr (0, pos==0 ? 0 : pos-1));
+            }
             string value = trim (line.substr (pos + 1));
             
             bool k = (key.size() == 0); // true if no key
             bool v = (value.size() == 0); // true if no value
-
+            //cout << "k: " << key << ". v: " << value << endl;
             if (k == true && v == true) { // no key
                cout << "do_printall()" << endl;
             } else if (v == true) { // key, but no value
@@ -84,7 +88,7 @@ void do_file(string filename, istream& input, str_str_map& m) {
 int main (int argc, char** argv) {
    sys_info::set_execname (argv[0]);
 
-   str_str_map m{};
+   str_str_map m;
    int file_pos = scan_options (argc, argv);
    if (file_pos >= argc) {
       do_file("-", cin, m);
