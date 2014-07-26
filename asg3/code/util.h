@@ -67,6 +67,12 @@ list<string> split (const string& line, const string& delimiter);
 ostream& complain();
 
 //
+//
+// trim
+//
+string trim (const string &str);
+
+//
 // syscall_error -
 //    Complain about a failed system call.  Argument is the name
 //    of the object causing trouble.  The extern errno must contain
