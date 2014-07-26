@@ -23,7 +23,6 @@ OBJECTS     = ${CPPSOURCE:.cpp=.o}
 EXECBIN     = keyvalue
 OTHERS      = ${MKFILE} README
 ALLSOURCES  = ${ALLCPPSRC} ${OTHERS}
-LISTING     = Listing.ps
 
 HOST 		= $(findstring ucsc,$(shell hostname))
 WARNING 	= $(error CANNOT SUBMIT, NOT ON UNIX.UCSC)
@@ -49,7 +48,7 @@ clean :
 	- rm ${OBJECTS} ${DEPFILE} core
 
 spotless : clean
-	- rm ${EXECBIN} ${LISTING} ${LISTING:.ps=.pdf}
+	- rm ${EXECBIN}
 
 dep : ${ALLCPPSRC}
 	@ echo "# ${DEPFILE} created `LC_TIME=C date`" >${DEPFILE}
@@ -71,7 +70,7 @@ ${DEPFILE} :
 	${GMAKE} dep
 
 again :
-	${GMAKE} spotless dep ci all lis
+	${GMAKE} spotless dep all
 
 ifeq (${NEEDINCL}, )
 include ${DEPFILE}

@@ -24,7 +24,7 @@ class listmap {
       };
       struct node: link {
          value_type value{};
-         node (link* next, link* prev, const value_type&);
+         node (node* next, node* prev, const value_type&);
       };
       node* anchor() { return static_cast<node*> (&anchor_); }
       link anchor_ {anchor(), anchor()};
