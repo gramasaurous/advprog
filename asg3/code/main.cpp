@@ -55,10 +55,11 @@ void do_file(string filename, istream& input, str_str_map& m) {
          if (pos == string::npos) {
             cout << "do_find(key)" << endl;
          } else {
+            string key{};
             if (pos == 1) {
                key = line[0];
             } else {
-               string key= trim (line.substr (0, pos==0 ? 0 : pos-1));
+               key= trim (line.substr (0, pos==0 ? 0 : pos-1));
             }
             string value = trim (line.substr (pos + 1));
             
