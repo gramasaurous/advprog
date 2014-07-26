@@ -21,8 +21,9 @@ CPPSOURCE   = trace.cpp util.cpp main.cpp
 ALLCPPSRC   = ${CPPHEADER} ${TEMPLATES} ${CPPSOURCE}
 OBJECTS     = ${CPPSOURCE:.cpp=.o}
 EXECBIN     = keyvalue
-OTHERS      = ${MKFILE} README
+OTHERS      = ${MKFILE}
 ALLSOURCES  = ${ALLCPPSRC} ${OTHERS}
+LISTING     = Listing.ps
 
 HOST 		= $(findstring ucsc,$(shell hostname))
 WARNING 	= $(error CANNOT SUBMIT, NOT ON UNIX.UCSC)
@@ -48,7 +49,7 @@ clean :
 	- rm ${OBJECTS} ${DEPFILE} core
 
 spotless : clean
-	- rm ${EXECBIN}
+	- rm ${EXECBIN} ${LISTING} ${LISTING:.ps=.pdf}
 
 dep : ${ALLCPPSRC}
 	@ echo "# ${DEPFILE} created `LC_TIME=C date`" >${DEPFILE}
@@ -65,15 +66,12 @@ cp : tar
 tar : 
 	tar cvf ${TARFILE} ${ALLSOURCES}
 
-test:
-	./${EXECBIN} file.in
-
 ${DEPFILE} :
 	@ touch ${DEPFILE}
 	${GMAKE} dep
 
 again :
-	${GMAKE} spotless dep all
+	${GMAKE} spotless dep ci all lis
 
 ifeq (${NEEDINCL}, )
 include ${DEPFILE}
