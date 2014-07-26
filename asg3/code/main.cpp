@@ -49,7 +49,7 @@ void do_file(string filename, istream& input, str_str_map& m) {
          line = trim (line);
          if (line.size() == 0 or line[0] == '#') {
             cout << "Comment or blank line." << endl;
-            return;
+            continue;
          }
          size_t pos = line.find_first_of ("=");
          if (pos == string::npos) {
@@ -65,12 +65,15 @@ void do_file(string filename, istream& input, str_str_map& m) {
             
             bool k = (key.size() == 0); // true if no key
             bool v = (value.size() == 0); // true if no value
-            cout << "k: " << key << ". v: " << value << endl;
+            //cout << "k: " << key << ". v: " << value << endl;
             if (k == true && v == true) { // no key
                cout << "do_printall()" << endl;
             } else if (v == true) { // key, but no value
                cout << "do_delete(key)" << endl;
-            } else {                // both value and key given
+            } else if (k == true) {
+               cout << "do_find(value)" <<endl;
+            } else {
+              // both value and key given
                cout << "do_insert(" << key << ", " << value
                   << ")" << endl;
                str_str_pair pair(key,value);
@@ -104,13 +107,13 @@ int main (int argc, char** argv) {
    }
 
    //str_str_map test;
-   for (str_str_map::iterator itor = m.begin();
-        itor != m.end(); ++itor) {
-      cout << "During iteration: " << *itor << endl;
-   }
+   //for (str_str_map::iterator itor = m.begin();
+   //     itor != m.end(); ++itor) {
+   //   cout << "During iteration: " << *itor << endl;
+   //}
 
-   str_str_map::iterator itor = m.begin();
-   m.erase (itor);
+   //str_str_map::iterator itor = m.begin();
+   //m.erase (itor);
 
    return EXIT_SUCCESS;
 }

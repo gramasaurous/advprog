@@ -65,6 +65,9 @@ cp : tar
 tar : 
 	tar cvf ${TARFILE} ${ALLSOURCES}
 
+test:
+	./${EXECBIN} file.in
+
 ${DEPFILE} :
 	@ touch ${DEPFILE}
 	${GMAKE} dep
