@@ -71,17 +71,19 @@ listmap<Key,Value,Less>::insert (const value_type& pair) {
    //node n(nullptr, nullptr, pair);
    //anchor_.next = &n;
    //anchor_.prev = &n;
+   Less less;
 
+   node n(nullptr, nullptr, pair);
+   
    if (empty()) {
-      node n(nullptr, nullptr, pair);
       anchor_.next = &n;
       anchor_.prev = &n;
-      return iterator(&n);
+      cout << "new node: " << pair << endl; 
    } else {
-      node *tail = anchor_.prev;
-      node n(nullptr, nullptr, pair);
-      n.next = tail->next;
-      tail->next = &n;
+      n.prev = anchor_.prev;
+      anchor_.next = &n;
+      cout << "new node: " << pair << endl; 
+      cout << "at:" << &n; 
    }
    return iterator();
 }

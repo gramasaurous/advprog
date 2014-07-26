@@ -18,19 +18,21 @@ class listmap {
       Less less;
       struct node;
       struct link {
-         node* next{};
-         node* prev{};
+         node* next{nullptr};
+         node* prev{nullptr};
          link (node* next, node* prev): next(next), prev(prev){}
       };
       struct node: link {
          value_type value{};
          node (node* next, node* prev, const value_type&);
       };
+      node *head;
+      node *tail;
       node* anchor() { return static_cast<node*> (&anchor_); }
       link anchor_ {anchor(), anchor()};
    public:
       class iterator;
-      listmap(){};
+      listmap(){anchor_.next = nullptr; anchor_.prev = nullptr;};
       listmap (const listmap&);
       listmap& operator= (const listmap&);
       ~listmap();
