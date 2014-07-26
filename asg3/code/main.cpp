@@ -39,10 +39,6 @@ int scan_options (int argc, char** argv) {
    return c;
 }
 
-void do_insert() {
-
-}
-
 void do_file(string filename, istream& input, str_str_map& m) {
    for (int lcount = 1;; ++lcount) {
       string line;
@@ -57,17 +53,15 @@ void do_file(string filename, istream& input, str_str_map& m) {
          }
          size_t pos = line.find_first_of ("=");
          if (pos == string::npos) {
-            //cout << "key   = \"" << line << "\"" << endl;
-            //cout << "No value in this line." << endl;
             cout << "do_find(key)" << endl;
          } else {
-            string key=trim (line.substr (0, pos == 0 ? 0 : pos - 1));
+            
+            string key = trim (line.substr (0, pos == 0 ? 0 : pos-1));
             string value = trim (line.substr (pos + 1));
+            
             bool k = (key.size() == 0); // true if no key
             bool v = (value.size() == 0); // true if no value
-
-            //cout << "key   = \"" << key << "\"" << endl;
-            //cout << "value = \"" << value << "\"" << endl;
+            cout << "k: " << k << ". v: " << v << endl;
             if (k == true && v == true) { // no key
                cout << "do_printall()" << endl;
             } else if (v == true) { // key, but no value
