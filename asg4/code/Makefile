@@ -1,4 +1,6 @@
-# $Id: Makefile,v 1.12 2014-05-08 18:32:56-07 - - $
+# Graham Greving
+# ggreving@ucsc.edu
+# asg4: Makefile
 
 MKFILE      = Makefile
 DEPFILE     = ${MKFILE}.dep
@@ -48,7 +50,7 @@ clean :
 spotless : clean
 	- rm ${EXECBIN} ${LISTING} ${LISTING:.ps=.pdf}
 
-
+
 submit : ${ALLSOURCES}
 	- checksource ${ALLSOURCES}
 	submit ${CLASS} ${PROJECT} ${ALLSOURCES}

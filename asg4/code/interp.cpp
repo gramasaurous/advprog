@@ -52,7 +52,7 @@ void interpreter::do_define (param begin, param end) {
    objmap.insert ({name, make_shape (++begin, end)});
 }
 
-
+
 void interpreter::do_draw (param begin, param end) {
    DEBUGF ('f', range (begin, end));
    if (end - begin != 3) throw runtime_error ("syntax error");
@@ -77,7 +77,7 @@ shape_ptr interpreter::make_shape (param begin, param end) {
    factoryfn func = itor->second;
    return func (begin, end);
 }
-
+// need to write these fn declarations
 shape_ptr interpreter::make_text (param begin, param end) {
    DEBUGF ('f', range (begin, end));
    return make_shared<text> (nullptr, string());
