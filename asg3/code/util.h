@@ -1,4 +1,6 @@
-// $Id: util.h,v 1.3 2014-04-24 18:14:51-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// util.h
 
 //
 // util -
@@ -54,7 +56,6 @@ const string datestring ();
 
 list<string> split (const string& line, const string& delimiter);
 
-
 //
 // complain -
 //    Used for starting error messages.  Sets the exit status to
@@ -64,6 +65,12 @@ list<string> split (const string& line, const string& delimiter);
 //
 
 ostream& complain();
+
+//
+//
+// trim
+//
+string trim (const string &str);
 
 //
 // syscall_error -

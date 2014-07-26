@@ -1,4 +1,6 @@
-// $Id: listmap.tcc,v 1.5 2014-07-09 11:50:34-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// listmap.tcc
 
 #include "listmap.h"
 #include "trace.h"
@@ -13,12 +15,11 @@
 // listmap::node::node (link*, link*, const value_type&)
 //
 template <typename Key, typename Value, class Less>
-listmap<Key,Value,Less>::node::node (link* next, link* prev,
+listmap<Key,Value,Less>::node::node (node* next, node* prev,
                                      const value_type& value):
             link (next, prev), value (value) {
 }
 
-
 //
 /////////////////////////////////////////////////////////////////
 // Operations on listmap.
@@ -38,7 +39,7 @@ listmap<Key,Value,Less>::~listmap() {
 //
 template <typename Key, typename Value, class Less>
 bool listmap<Key,Value,Less>::empty() const {
-   return anchor_.next == anchor_.prev;
+   return (anchor_.next == nullptr && anchor_.prev == nullptr);
 }
 
 //
@@ -59,7 +60,6 @@ listmap<Key,Value,Less>::end() {
    return iterator (anchor());
 }
 
-
 //
 // iterator listmap::insert (const value_type&)
 //
@@ -67,6 +67,24 @@ template <typename Key, typename Value, class Less>
 typename listmap<Key,Value,Less>::iterator
 listmap<Key,Value,Less>::insert (const value_type& pair) {
    TRACE ('l', &pair << "->" << pair);
+   // make a node and set to anchor!
+   //node n(nullptr, nullptr, pair);
+   //anchor_.next = &n;
+   //anchor_.prev = &n;
+   Less less;
+
+   node n(nullptr, nullptr, pair);
+   
+   if (empty()) {
+      anchor_.next = &n;
+      anchor_.prev = &n;
+      cout << "new node: " << pair << endl; 
+   } else {
+      n.prev = anchor_.prev;
+      anchor_.next = &n;
+      cout << "new node: " << pair << endl; 
+      cout << "at:" << &n; 
+   }
    return iterator();
 }
 
@@ -90,7 +108,6 @@ listmap<Key,Value,Less>::erase (iterator position) {
    return iterator();
 }
 
-
 //
 /////////////////////////////////////////////////////////////////
 // Operations on listmap::iterator.
@@ -139,7 +156,6 @@ listmap<Key,Value,Less>::iterator::operator--() {
    return *this;
 }
 
-
 //
 // bool listmap::iterator::operator== (const iterator&)
 //
@@ -157,4 +173,3 @@ inline bool listmap<Key,Value,Less>::iterator::operator!=
             (const iterator& that) const {
    return this->where != that.where;
 }
-

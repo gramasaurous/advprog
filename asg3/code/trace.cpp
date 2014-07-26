@@ -1,4 +1,6 @@
-// $Id: trace.cpp,v 1.3 2014-05-29 19:20:19-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// trace.cpp
 
 #include <climits>
 #include <iostream>

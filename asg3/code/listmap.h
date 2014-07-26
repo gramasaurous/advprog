@@ -1,4 +1,6 @@
-// $Id: listmap.h,v 1.9 2014-07-09 11:50:34-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// listmap.h
 
 #ifndef __LISTMAP_H__
 #define __LISTMAP_H__
@@ -16,19 +18,21 @@ class listmap {
       Less less;
       struct node;
       struct link {
-         node* next{};
-         node* prev{};
+         node* next{nullptr};
+         node* prev{nullptr};
          link (node* next, node* prev): next(next), prev(prev){}
       };
       struct node: link {
          value_type value{};
-         node (link* next, link* prev, const value_type&);
+         node (node* next, node* prev, const value_type&);
       };
+      node *head;
+      node *tail;
       node* anchor() { return static_cast<node*> (&anchor_); }
       link anchor_ {anchor(), anchor()};
    public:
       class iterator;
-      listmap(){};
+      listmap(){anchor_.next = nullptr; anchor_.prev = nullptr;};
       listmap (const listmap&);
       listmap& operator= (const listmap&);
       ~listmap();
@@ -40,7 +44,6 @@ class listmap {
       bool empty() const;
 };
 
-
 template <typename Key, typename Value, class Less=xless<Key>>
 class listmap<Key,Value,Less>::iterator {
    private:
