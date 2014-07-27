@@ -47,7 +47,7 @@ void parsefile (const string& infilename, istream& infile) {
    DEBUGF ('m', infilename << " EOF");
 }
 
-
+
 //
 // Scan the option -@ and check for operands.
 //

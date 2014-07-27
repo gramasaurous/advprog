@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 my %colors;
-my $file = "/usr/share/X11/rgb.txt";
+my $file = "../opengl-examples/rgb.txt";
 open RGB_TXT, "<$file" or die "$0: $file: $!";
 while (my $line = <RGB_TXT>) {
    $line =~ m/^\s*(\d+)\s+(\d+)\s+(\d+)\s+(.*)/

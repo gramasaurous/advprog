@@ -11,13 +11,13 @@ using namespace std;
 
 #include "rgbcolor.h"
 
-#include "colors.cppgen"
+#include "colors.cpp"
 
 rgbcolor::rgbcolor (const string& name) {
    auto entry = color_names.find (name);
    if (entry != color_names.end()) {
       *this = entry->second;
-   }else {
+   } else {
       invalid_argument error ("rgbcolor::rgbcolor(" + name + ")");
       if (name.size() != 8) throw error;
       string prefix = name.substr (0, 2);
