@@ -40,6 +40,7 @@ void interpreter::interpret (const parameters& params) {
    DEBUGF ('i', params);
    param begin = params.cbegin();
    string command = *begin;
+   DEBUGF('i', command);
    auto itor = interp_map.find (command);
    if (itor == interp_map.end()) throw runtime_error ("syntax error");
    interpreterfn func = itor->second;
@@ -49,6 +50,7 @@ void interpreter::interpret (const parameters& params) {
 void interpreter::do_define (param begin, param end) {
    DEBUGF ('f', range (begin, end));
    string name = *begin;
+   DEBUGF ('t', name);
    objmap.insert ({name, make_shape (++begin, end)});
 }
 
@@ -77,10 +79,19 @@ shape_ptr interpreter::make_shape (param begin, param end) {
    factoryfn func = itor->second;
    return func (begin, end);
 }
+
 // need to write these fn declarations
 shape_ptr interpreter::make_text (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   return make_shared<text> (nullptr, string());
+   string f = *begin;
+   void *font = &f;
+   string t{};
+   for (++begin; begin != end; ++begin) {
+      DEBUGF ('t', *begin);
+      t += *begin + " ";
+   }
+
+   return make_shared<text> (font, t);
 }
 
 shape_ptr interpreter::make_ellipse (param begin, param end) {
