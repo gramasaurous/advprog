@@ -39,9 +39,10 @@ shape::shape() {
    DEBUGF ('c', this);
 }
 
-text::text (void* glut_bitmap_font, const string& textdata):
-      glut_bitmap_font(glut_bitmap_font), textdata(textdata) {
+text::text (const string& font_string, const string& textdata):
+      font_string(font_string), textdata(textdata) {
    DEBUGF ('c', this);
+   glut_bitmap_font = fontcode[font_string];
 }
 
 ellipse::ellipse (GLfloat width, GLfloat height):

@@ -55,14 +55,12 @@ void interpreter::do_define (param begin, param end) {
    DEBUGF ('f', range (begin, end));
    string name = *begin;
    DEBUGF ('t', name);
-   cout << "b: " << *begin << ", end: " << *end << endl;
    objmap.insert ({name, make_shape (++begin, end)});
 }
 
 
 void interpreter::do_draw (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   cout << "b: " << *begin << ", end: " << *end << endl;
    if (end - begin != 3) throw runtime_error ("syntax error");
    string name = begin[1];
    shape_map::const_iterator itor = objmap.find (name);
@@ -91,15 +89,13 @@ shape_ptr interpreter::make_shape (param begin, param end) {
 // need to write these fn declarations
 shape_ptr interpreter::make_text (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   string f = *begin;
-   void *font = &f;
-   string t{};
+   string font = *begin;
+   string data{};
    for (++begin; begin != end; ++begin) {
       DEBUGF ('t', *begin);
-      t += *begin + " ";
+      data += *begin + " ";
    }
-
-   return make_shared<text> (font, t);
+   return make_shared<text> (font, data);
 }
 
 shape_ptr interpreter::make_ellipse (param begin, param end) {
