@@ -55,7 +55,7 @@ class shape {
       virtual void show (ostream&) const;
 };
 
-
+
 //
 // Class for printing text.
 //

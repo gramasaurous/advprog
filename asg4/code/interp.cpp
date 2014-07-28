@@ -43,29 +43,34 @@ void interpreter::interpret (const parameters& params) {
    DEBUGF('i', command);
    auto itor = interp_map.find (command);
    if (itor == interp_map.end()) throw runtime_error ("syntax error");
+
    interpreterfn func = itor->second;
-   func (++begin, params.cend());
+   // Have to decrement params.cend() because cend()
+   // points to end + 1 (for iteration purposes)
+   func (++begin, --params.cend());
 }
 
 void interpreter::do_define (param begin, param end) {
    DEBUGF ('f', range (begin, end));
    string name = *begin;
    DEBUGF ('t', name);
+   cout << "b: " << *begin << ", end: " << *end << endl;
    objmap.insert ({name, make_shape (++begin, end)});
 }
 
 
 void interpreter::do_draw (param begin, param end) {
    DEBUGF ('f', range (begin, end));
+   cout << "b: " << *begin << ", end: " << *end << endl;
    if (end - begin != 3) throw runtime_error ("syntax error");
-   string name = begin[0];
+   string name = begin[1];
    shape_map::const_iterator itor = objmap.find (name);
    if (itor == objmap.end()) {
       throw runtime_error (name + ": no such shape");
    }
-   vertex where {from_string<GLfloat> (begin[1]),
-                 from_string<GLfloat> (begin[2])};
-   rgbcolor color {begin[3]};
+   vertex where {from_string<GLfloat> (begin[2]),
+                 from_string<GLfloat> (begin[3])};
+   rgbcolor color {begin[0]};
    itor->second->draw (where, color);
 }
 
