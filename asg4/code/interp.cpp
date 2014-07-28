@@ -43,12 +43,10 @@ void interpreter::interpret (const parameters& params) {
    string command = *begin;
    DEBUGF('i', command);
    auto itor = interp_map.find (command);
-   if (itor == interp_map.end()) throw runtime_error ("syntax error");
+   if (itor == interp_map.end()) throw runtime_error ("interpret():syntax error");
 
    interpreterfn func = itor->second;
-   // Have to decrement params.cend() because cend()
-   // points to end + 1 (for iteration purposes)
-   func (++begin, --params.cend());
+   func (++begin, params.cend());
 }
 
 void interpreter::do_define (param begin, param end) {
@@ -61,7 +59,8 @@ void interpreter::do_define (param begin, param end) {
 
 void interpreter::do_draw (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   if (end - begin != 3) throw runtime_error ("syntax error");
+   //if (end - begin != 3) throw runtime_error ("do_draw():syntax error");
+   
    string name = begin[1];
    shape_map::const_iterator itor = objmap.find (name);
    if (itor == objmap.end()) {
