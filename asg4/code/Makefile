@@ -70,6 +70,9 @@ ${DEPFILE} :
 again :
 	${GMAKE} spotless dep all
 
+man :
+	man ../asg4-oop-inheritance.tt
+
 ifeq (${NEEDINCL}, )
 include ${DEPFILE}
 endif

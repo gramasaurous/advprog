@@ -4,6 +4,8 @@
 #include <unordered_map>
 using namespace std;
 
+//#include "GL/freeglut.h"
+
 #include "shape.h"
 #include "util.h"
 
@@ -50,7 +52,7 @@ circle::circle (GLfloat diameter): ellipse (diameter, diameter) {
    DEBUGF ('c', this);
 }
 
-
+
 polygon::polygon (const vertex_list& vertices): vertices(vertices) {
    DEBUGF ('c', this);
 }
@@ -66,6 +68,15 @@ square::square (GLfloat width): rectangle (width, width) {
 
 void text::draw (const vertex& center, const rgbcolor& color) const {
    DEBUGF ('d', this << "(" << center << "," << color << ")");
+   //int draw_width = glutBitmapLength(glut_bitmap_font,
+   //      (GLubyte*) textdata.c_str());
+   //int draw_height = glutBitmapLength(glut_bitmap_font);
+   cout << "here!" << endl;
+   glColor3ubv(color.ubvec);
+
+   glRasterPos2f(center.xpos, center.ypos);
+   for (auto ch:textdata) glutBitmapCharacter(glut_bitmap_font, ch);
+
 }
 
 void ellipse::draw (const vertex& center, const rgbcolor& color) const {
