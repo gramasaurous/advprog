@@ -69,7 +69,10 @@ square::square (GLfloat width): rectangle (width, width) {
 
 void text::draw (const vertex& center, const rgbcolor& color) const {
    DEBUGF ('d', this << "(" << center << "," << color << ")");
-   
+   glColor3ubv(color.ubvec);
+
+   glRasterPos2f(center.xpos, center.ypos);
+   for (auto ch:textdata) glutBitmapCharacter(glut_bitmap_font, ch);
 }
 
 void ellipse::draw (const vertex& center, const rgbcolor& color) const {
