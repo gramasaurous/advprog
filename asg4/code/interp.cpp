@@ -12,6 +12,7 @@ using namespace std;
 #include "interp.h"
 #include "shape.h"
 #include "util.h"
+#include "graphics.h"
 
 map<string,interpreter::interpreterfn> interpreter::interp_map {
    {"define" , &interpreter::do_define },
@@ -71,7 +72,9 @@ void interpreter::do_draw (param begin, param end) {
    vertex where {from_string<GLfloat> (begin[2]),
                  from_string<GLfloat> (begin[3])};
    rgbcolor color {begin[0]};
-   itor->second->draw (where, color);
+   object new_obj(itor->second, where, color);
+   window::push_back(new_obj);
+   //itor->second->draw (where, color);
 }
 
 shape_ptr interpreter::make_shape (param begin, param end) {

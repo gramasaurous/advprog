@@ -8,6 +8,7 @@ using namespace std;
 
 #include "shape.h"
 #include "util.h"
+#include "graphics.h"
 
 static unordered_map<void*,string> fontname {
    {GLUT_BITMAP_8_BY_13       , "Fixed-8x13"    },
@@ -68,15 +69,7 @@ square::square (GLfloat width): rectangle (width, width) {
 
 void text::draw (const vertex& center, const rgbcolor& color) const {
    DEBUGF ('d', this << "(" << center << "," << color << ")");
-   //int draw_width = glutBitmapLength(glut_bitmap_font,
-   //      (GLubyte*) textdata.c_str());
-   //int draw_height = glutBitmapLength(glut_bitmap_font);
-   cout << "here!" << endl;
-   glColor3ubv(color.ubvec);
-
-   glRasterPos2f(center.xpos, center.ypos);
-   for (auto ch:textdata) glutBitmapCharacter(glut_bitmap_font, ch);
-
+   
 }
 
 void ellipse::draw (const vertex& center, const rgbcolor& color) const {
