@@ -60,7 +60,6 @@ void interpreter::do_define (param begin, param end) {
 void interpreter::do_draw (param begin, param end) {
    DEBUGF ('f', range (begin, end));
    if (end - begin != 4) throw runtime_error ("do_draw():syntax error");
-   DEBUGF ('h', end - begin);
    string name = begin[1];
    shape_map::const_iterator itor = objmap.find (name);
    if (itor == objmap.end()) {
@@ -99,12 +98,17 @@ shape_ptr interpreter::make_text (param begin, param end) {
 
 shape_ptr interpreter::make_ellipse (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   return make_shared<ellipse> (GLfloat(), GLfloat());
+   //DEBUGF('e', "make_ellipse(): begin: " << *begin << " end: " << *end);
+   GLfloat width;
+   GLfloat height;
+   width = stod(*begin++);
+   height = stod(*begin);
+   return make_shared<ellipse> (width, height);
 }
 
 shape_ptr interpreter::make_circle (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   return make_shared<circle> (GLfloat());
+   return make_shared<circle> (GLfloat(stod(*begin)));
 }
 
 shape_ptr interpreter::make_polygon (param begin, param end) {

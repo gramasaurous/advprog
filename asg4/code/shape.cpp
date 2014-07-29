@@ -1,6 +1,7 @@
 // $Id: shape.cpp,v 1.7 2014-05-08 18:32:56-07 - - $
 
 #include <typeinfo>
+#include <cmath>
 #include <unordered_map>
 using namespace std;
 
@@ -78,6 +79,18 @@ void text::draw (const vertex& center, const rgbcolor& color) const {
 
 void ellipse::draw (const vertex& center, const rgbcolor& color) const {
    DEBUGF ('d', this << "(" << center << "," << color << ")");
+   glBegin (GL_POLYGON);
+   glEnable (GL_LINE_SMOOTH);
+   glColor3ubv (color.ubvec);
+   const float delta = 2 * M_PI / 32;
+   //float width = window.width / 3 * scale;
+   //float height = window.height / 3 * scale;
+   for (float theta = 0; theta < 2 * M_PI; theta += delta) {
+      float xpos = dimension.xpos * cos (theta) + center.xpos;
+      float ypos = dimension.ypos * sin (theta) + center.ypos;
+      glVertex2f (xpos, ypos);
+   }
+   glEnd();   
 }
 
 void polygon::draw (const vertex& center, const rgbcolor& color) const {

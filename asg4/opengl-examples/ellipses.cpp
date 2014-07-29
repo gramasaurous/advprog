@@ -46,9 +46,9 @@ void display() {
    glClear (GL_COLOR_BUFFER_BIT);
    glLineWidth (4);
    draw_ellipse (GL_POLYGON, CYAN, 1.0);
-   draw_ellipse (GL_LINE_LOOP, RED, 1.0);
-   draw_ellipse (GL_POLYGON, YELLOW, 0.5);
-   draw_ellipse (GL_LINE_LOOP, BLUE, 0.5);
+   //draw_ellipse (GL_LINE_LOOP, RED, 1.0);
+   //draw_ellipse (GL_POLYGON, YELLOW, 0.5);
+   //draw_ellipse (GL_LINE_LOOP, BLUE, 0.5);
    glutSwapBuffers();
 }
 
