@@ -47,7 +47,7 @@ class sys_info {
 
 const string datestring();
 
-
+
 //
 // split -
 //    Split a string into a vector<string>..  Any sequence
@@ -84,7 +84,6 @@ void syscall_error (const string&);
 //    defined for it.
 //
 
-
 template <typename item_t>
 ostream& operator<< (ostream& out, const vector<item_t>& vec);
 

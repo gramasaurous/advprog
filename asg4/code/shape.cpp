@@ -97,24 +97,13 @@ void ellipse::draw (const vertex& center, const rgbcolor& color) const {
 
 void polygon::draw (const vertex& center, const rgbcolor& color) const {
    DEBUGF ('d', this << "(" << center << "," << color << ")");
-   float x_avg{};
-   float y_avg{};
-   int v_count{0};
-   for (auto v : vertices) {
-      //cout << "draw: {" << v.xpos << "," << v.ypos << "}" << endl; 
-      x_avg += v.xpos;
-      y_avg += v.ypos;
-      v_count++;
-   }
-   if (v_count == 0) throw runtime_error ("syntax error");
-   x_avg /= v_count;
-   y_avg /= v_count;
    glBegin (GL_POLYGON);
    glEnable (GL_LINE_SMOOTH);
    glColor3ubv (color.ubvec);
    for (auto v : vertices) {
-      float x_draw = v.xpos - x_avg + center.xpos;
-      float y_draw = v.ypos - y_avg + center.ypos;
+      float x_draw = v.xpos + center.xpos;
+      float y_draw = v.ypos + center.ypos;
+      DEBUGF ('p', "v(" << x_draw <<"," << y_draw <<")");
       glVertex2f(x_draw, y_draw);
    }
    glEnd();

@@ -3,9 +3,11 @@
 // asg4:interp.cpp
 
 #include <map>
+#include <cmath>
 #include <memory>
 #include <string>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 #include <GL/freeglut.h>
@@ -117,22 +119,42 @@ shape_ptr interpreter::make_circle (param begin, param end) {
 
 shape_ptr interpreter::make_polygon (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   //for (auto i = begin; i != end; ++i) {
-   //   DEBUGF('p', *i);
-   //}
-   cout << end - begin << endl;
    if (((end - begin) % 2) != 0) {
-      throw runtime_error ("syntax error: missing vertice");
+      throw runtime_error ("syntax error: odd number of inputs");
    }
+   float x_avg{};
+   float y_avg{};
+   int v_count{0};
    vector<vertex> v_list;
+
    for (auto i = begin; i != end; i++) {
       GLfloat xpos = stod(*i++);
       GLfloat ypos = stod(*i);
+      x_avg += xpos;
+      y_avg += ypos;
       vertex v{xpos, ypos};
-      //cout << "new vertex: {" << xpos << ", " << ypos << "}" << endl; 
-      //cout << v << endl;
+      v_count++;
       v_list.push_back(v);
    }
+   if (v_count == 0) throw runtime_error ("syntax error: no vertices");
+   x_avg /= v_count;
+   y_avg /= v_count;
+   DEBUGF ('p', "avg: (" << x_avg << "," << y_avg << ")");
+   // Normalize the vertices (subtract avg)
+   for (auto v: v_list) {
+      v.xpos -= x_avg;
+      v.ypos -= y_avg;
+      DEBUGF ('p', "v(" << v.xpos <<"," << v.ypos <<")");
+   }
+   // Here, all vertices exist around center 0,0
+   // We will now sort them by their angle to the x-axis using
+   // atan2(ypos,xpos) from cmath
+   std::sort (v_list.begin(), v_list.end(),
+      [](const vertex &a, const vertex &b){
+      float degree_a = atan2(a.ypos, a.xpos) * 180 / M_PI;
+      float degree_b = atan2(b.ypos, b.xpos) * 180 / M_PI;
+      return (degree_a < degree_b);
+   });
    return make_shared<polygon> (vertex_list(v_list));
 }
 
