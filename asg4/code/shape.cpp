@@ -4,8 +4,11 @@
 #include <unordered_map>
 using namespace std;
 
+//#include "GL/freeglut.h"
+
 #include "shape.h"
 #include "util.h"
+#include "graphics.h"
 
 static unordered_map<void*,string> fontname {
    {GLUT_BITMAP_8_BY_13       , "Fixed-8x13"    },
@@ -36,9 +39,10 @@ shape::shape() {
    DEBUGF ('c', this);
 }
 
-text::text (void* glut_bitmap_font, const string& textdata):
-      glut_bitmap_font(glut_bitmap_font), textdata(textdata) {
+text::text (const string& font_string, const string& textdata):
+      font_string(font_string), textdata(textdata) {
    DEBUGF ('c', this);
+   glut_bitmap_font = fontcode[font_string];
 }
 
 ellipse::ellipse (GLfloat width, GLfloat height):
@@ -50,7 +54,7 @@ circle::circle (GLfloat diameter): ellipse (diameter, diameter) {
    DEBUGF ('c', this);
 }
 
-
+
 polygon::polygon (const vertex_list& vertices): vertices(vertices) {
    DEBUGF ('c', this);
 }
@@ -66,6 +70,10 @@ square::square (GLfloat width): rectangle (width, width) {
 
 void text::draw (const vertex& center, const rgbcolor& color) const {
    DEBUGF ('d', this << "(" << center << "," << color << ")");
+   glColor3ubv(color.ubvec);
+
+   glRasterPos2f(center.xpos, center.ypos);
+   for (auto ch:textdata) glutBitmapCharacter(glut_bitmap_font, ch);
 }
 
 void ellipse::draw (const vertex& center, const rgbcolor& color) const {

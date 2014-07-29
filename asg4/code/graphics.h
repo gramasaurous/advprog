@@ -19,6 +19,11 @@ class object {
       rgbcolor color;
    public:
       // Default copiers, movers, dtor all OK.
+      object(const shared_ptr<shape> &shape_ptr, const vertex &cen, const rgbcolor &col) {
+         pshape = shape_ptr;
+         center = cen;
+         color = col;
+      }
       void draw() { pshape->draw (center, color); }
       void move (GLfloat delta_x, GLfloat delta_y) {
          center.xpos += delta_x;
@@ -41,7 +46,7 @@ class mouse {
       void draw();
 };
 
-
+
 class window {
       friend class mouse;
    private:

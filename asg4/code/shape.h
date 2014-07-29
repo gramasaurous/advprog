@@ -55,13 +55,14 @@ class shape {
       virtual void show (ostream&) const;
 };
 
-
+
 //
 // Class for printing text.
 //
 
 class text: public shape {
    protected:
+      string font_string;
       void* glut_bitmap_font = nullptr;
       // GLUT_BITMAP_8_BY_13
       // GLUT_BITMAP_9_BY_15
@@ -72,7 +73,7 @@ class text: public shape {
       // GLUT_BITMAP_TIMES_ROMAN_24
       string textdata;
    public:
-      text (void* glut_bitmap_font, const string& textdata);
+      text (const string& font_string, const string& textdata);
       virtual void draw (const vertex&, const rgbcolor&) const override;
       virtual void show (ostream&) const override;
 };
