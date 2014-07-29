@@ -114,16 +114,42 @@ shape_ptr interpreter::make_circle (param begin, param end) {
 
 shape_ptr interpreter::make_polygon (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   return make_shared<polygon> (vertex_list());
+   //for (auto i = begin; i != end; ++i) {
+   //   DEBUGF('p', *i);
+   //}
+   cout << end - begin << endl;
+   if (((end - begin) % 2) != 0) {
+      throw runtime_error ("syntax error: missing vertice");
+   }
+   vector<vertex> v_list;
+   for (auto i = begin; i != end; i++) {
+      GLfloat xpos = stod(*i++);
+      GLfloat ypos = stod(*i);
+      vertex v{xpos, ypos};
+      //cout << "new vertex: {" << xpos << ", " << ypos << "}" << endl; 
+      //cout << v << endl;
+      v_list.push_back(v);
+   }
+   return make_shared<polygon> (vertex_list(v_list));
 }
 
 shape_ptr interpreter::make_rectangle (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   return make_shared<rectangle> (GLfloat(), GLfloat());
+   for (auto i = begin; i != end; ++i) {
+      DEBUGF('p', *i);
+   }
+   GLfloat width;
+   GLfloat height;
+   width = stod(*begin++);
+   height = stod(*begin);
+   return make_shared<rectangle> (width, height);
 }
 
 shape_ptr interpreter::make_square (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   return make_shared<square> (GLfloat());
+   for (auto i = begin; i != end; ++i) {
+      DEBUGF('p', *i);
+   }
+   return make_shared<square> (GLfloat(stod(*begin)));
 }
 

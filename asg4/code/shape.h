@@ -111,7 +111,7 @@ class polygon: public shape {
       virtual void show (ostream&) const override;
 };
 
-
+
 //
 // Classes rectangle, square, etc.
 //
