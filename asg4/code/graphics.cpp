@@ -1,4 +1,6 @@
-// $Id: graphics.cpp,v 1.11 2014-05-15 16:42:55-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:graphics.cpp
 
 #include <iostream>
 using namespace std;

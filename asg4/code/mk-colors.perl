@@ -1,5 +1,8 @@
 #!/usr/bin/perl
-# $Id: mk-colors.perl,v 1.3 2014-05-21 15:40:52-07 - - $
+# Graham Greving
+# ggreving@ucsc.edu
+# asg4:mk-colors.perl
+
 use strict;
 use warnings;
 

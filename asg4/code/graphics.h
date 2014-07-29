@@ -1,4 +1,6 @@
-// $Id: graphics.h,v 1.9 2014-05-15 16:42:55-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:graphics.h
 
 #ifndef __GRAPHICS_H__
 #define __GRAPHICS_H__

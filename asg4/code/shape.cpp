@@ -1,4 +1,6 @@
-// $Id: shape.cpp,v 1.7 2014-05-08 18:32:56-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:shape.cpp
 
 #include <typeinfo>
 #include <cmath>

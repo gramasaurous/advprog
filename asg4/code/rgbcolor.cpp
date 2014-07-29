@@ -1,4 +1,6 @@
-// $Id: rgbcolor.cpp,v 1.6 2014-05-21 15:44:26-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:rgbcolor.cpp
 
 #include <cctype>
 #include <iomanip>

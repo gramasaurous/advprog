@@ -1,4 +1,6 @@
-// $Id: shape.h,v 1.7 2014-06-05 16:11:09-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:shape.h
 
 #ifndef __SHAPE_H__
 #define __SHAPE_H__

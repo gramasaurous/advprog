@@ -1,4 +1,6 @@
-// $Id: interp.h,v 1.13 2014-07-22 20:03:19-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:interp.h
 
 #ifndef __INTERP_H__
 #define __INTERP_H__

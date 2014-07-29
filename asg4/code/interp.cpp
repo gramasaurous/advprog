@@ -1,4 +1,6 @@
-// $Id: interp.cpp,v 1.15 2014-07-22 20:03:19-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:interp.cpp
 
 #include <map>
 #include <memory>

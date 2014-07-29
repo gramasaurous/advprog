@@ -1,4 +1,6 @@
-// $Id: debug.h,v 1.1 2014-05-08 14:25:30-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:debug.h
 
 #ifndef __DEBUG_H__
 #define __DEBUG_H__

@@ -1,4 +1,6 @@
-// $Id: main.cpp,v 1.13 2014-05-08 18:32:56-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:main.c
 
 #include <fstream>
 #include <iostream>

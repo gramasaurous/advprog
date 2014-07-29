@@ -1,4 +1,6 @@
-// $Id: rgbcolor.h,v 1.8 2014-07-22 19:57:16-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:rgbcolor.h
 
 #ifndef __RGBCOLOR_H__
 #define __RGBCOLOR_H__
