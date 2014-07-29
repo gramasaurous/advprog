@@ -48,6 +48,9 @@ void interpreter::interpret (const parameters& params) {
    if (itor == interp_map.end()) throw runtime_error ("syntax error");
 
    interpreterfn func = itor->second;
+   for (auto i = begin; i != params.cend(); ++i) {
+      cout << *i << " ";
+   } cout << endl;
    func (++begin, params.cend());
 }
 
