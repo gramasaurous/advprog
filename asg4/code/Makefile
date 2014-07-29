@@ -23,8 +23,8 @@ LINKLIBS    = -lGL -lGLU -lglut -lm
 
 HOST 		= $(findstring ucsc,$(shell hostname))
 TARFILE		= $(PROJECT).tar.gz
-CLASS       = cmps109-wm.u13
-PROJECT     = asg3
+CLASS       = cmps109-wm.u14
+PROJECT     = asg4
 
 all : ${EXECBIN}
 ifeq ($(HOST),ucsc)
@@ -54,7 +54,7 @@ ifeq ($(HOST),ucsc)
 endif
 
 cp : tar
-	scp ${TARFILE} ggreving@unix.ucsc.edu:Private/${PROJECT}
+	scp ${TARFILE} ggreving@unix.ucsc.edu:Private/${PROJECT}/
 
 tar : 
 	tar cvf ${TARFILE} ${ALLSOURCES}

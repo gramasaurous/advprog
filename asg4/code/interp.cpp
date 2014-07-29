@@ -45,7 +45,7 @@ void interpreter::interpret (const parameters& params) {
    string command = *begin;
    DEBUGF('i', command);
    auto itor = interp_map.find (command);
-   if (itor == interp_map.end()) throw runtime_error ("interpret():syntax error");
+   if (itor == interp_map.end()) throw runtime_error ("syntax error");
 
    interpreterfn func = itor->second;
    func (++begin, params.cend());
@@ -61,7 +61,7 @@ void interpreter::do_define (param begin, param end) {
 
 void interpreter::do_draw (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   if (end - begin != 4) throw runtime_error ("do_draw():syntax error");
+   if (end - begin != 4) throw runtime_error ("syntax error");
    string name = begin[1];
    shape_map::const_iterator itor = objmap.find (name);
    if (itor == objmap.end()) {
@@ -100,7 +100,6 @@ shape_ptr interpreter::make_text (param begin, param end) {
 
 shape_ptr interpreter::make_ellipse (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   //DEBUGF('e', "make_ellipse(): begin: " << *begin << " end: " << *end);
    GLfloat width;
    GLfloat height;
    width = stod(*begin++);

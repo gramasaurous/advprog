@@ -7,8 +7,9 @@ use strict;
 use warnings;
 
 my %colors;
-my $file = "../opengl-examples/rgb.txt";
-open RGB_TXT, "<$file" or die "$0: $file: $!";
+my $f1 = "../opengl-examples/rgb.txt";
+my $f2 = "/usr/share/X11/rgb.txt";
+open RGB_TXT, "<$f1" or open RGB_TXT, "<$f2" or die "$0: $f1: $!";
 while (my $line = <RGB_TXT>) {
    $line =~ m/^\s*(\d+)\s+(\d+)\s+(\d+)\s+(.*)/
          or die "$0: invalid line: $line";
@@ -18,7 +19,7 @@ while (my $line = <RGB_TXT>) {
 }
 close RGB_TXT;
 
-print "// Data taken from source file $file\n";
+print "/* Data taken from source file $f1 or $f2.*/\n";
 print "const unordered_map<string,rgbcolor> color_names = {\n";
 printf "   {%-24s, rgbcolor (%3d, %3d, %3d)},\n",
                   "\"$_\"", @{$colors{$_}}
