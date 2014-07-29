@@ -144,17 +144,23 @@ shape_ptr interpreter::make_polygon (param begin, param end) {
    for (auto v: v_list) {
       v.xpos -= x_avg;
       v.ypos -= y_avg;
+   }
+   for (auto v : v_list ) {
       DEBUGF ('p', "v(" << v.xpos <<"," << v.ypos <<")");
    }
+   DEBUGF ('p', "do_sort");
    // Here, all vertices exist around center 0,0
    // We will now sort them by their angle to the x-axis using
    // atan2(ypos,xpos) from cmath
-   std::sort (v_list.begin(), v_list.end(),
+   /*std::sort (v_list.begin(), v_list.end(),
       [](const vertex &a, const vertex &b){
       float degree_a = atan2(a.ypos, a.xpos) * 180 / M_PI;
       float degree_b = atan2(b.ypos, b.xpos) * 180 / M_PI;
       return (degree_a < degree_b);
-   });
+   });*/
+   for (auto v : v_list ) {
+      DEBUGF ('p', "v(" << v.xpos <<"," << v.ypos <<")");
+   }
    return make_shared<polygon> (vertex_list(v_list));
 }
 

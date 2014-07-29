@@ -103,7 +103,7 @@ void polygon::draw (const vertex& center, const rgbcolor& color) const {
    for (auto v : vertices) {
       float x_draw = v.xpos + center.xpos;
       float y_draw = v.ypos + center.ypos;
-      DEBUGF ('p', "v(" << x_draw <<"," << y_draw <<")");
+      DEBUGF ('d', "v(" << x_draw <<"," << y_draw <<")");
       glVertex2f(x_draw, y_draw);
    }
    glEnd();
