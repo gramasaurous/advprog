@@ -37,6 +37,9 @@ ostream& operator<< (ostream& out, const vertex& where) {
    return out;
 }
 
+/*
+shape::shape() ctors
+*/
 shape::shape() {
    DEBUGF ('c', this);
 }
@@ -81,6 +84,14 @@ diamond::diamond (GLfloat w, GLfloat h):
    DEBUGF ('c', this << "(" << w << "," << h << ")");
 }
 
+triangle::triangle(const vertex_list& vertices): polygon(vertices) {
+   DEBUGF ('c', this);
+}
+
+/*
+shape::draw() functions
+*/
+
 void text::draw (const vertex& center, const rgbcolor& color) const {
    DEBUGF ('d', this << "(" << center << "," << color << ")");
    glColor3ubv(color.ubvec);
@@ -117,6 +128,9 @@ void polygon::draw (const vertex& center, const rgbcolor& color) const {
    glEnd();
 }
 
+/*
+shape::show() functions
+*/
 void shape::show (ostream& out) const {
    out << this << "->" << demangle (*this) << ": ";
 }
