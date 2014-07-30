@@ -30,6 +30,7 @@ map<string,interpreter::factoryfn> interpreter::factory_map {
    {"polygon"  , &interpreter::make_polygon  },
    {"rectangle", &interpreter::make_rectangle},
    {"square"   , &interpreter::make_square   },
+   {"diamond"  , &interpreter::make_diamond  },
 };
 
 interpreter::shape_map interpreter::objmap;
@@ -160,9 +161,6 @@ shape_ptr interpreter::make_polygon (param begin, param end) {
 
 shape_ptr interpreter::make_rectangle (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   for (auto i = begin; i != end; ++i) {
-      DEBUGF('p', *i);
-   }
    GLfloat width;
    GLfloat height;
    width = stod(*begin++);
@@ -172,9 +170,15 @@ shape_ptr interpreter::make_rectangle (param begin, param end) {
 
 shape_ptr interpreter::make_square (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   for (auto i = begin; i != end; ++i) {
-      DEBUGF('p', *i);
-   }
    return make_shared<square> (GLfloat(stod(*begin)));
+}
+
+shape_ptr interpreter::make_diamond (param begin, param end) {
+   DEBUGF ('f', range (begin, end));
+   GLfloat width;
+   GLfloat height;
+   width = stod(*begin++);
+   height = stod(*begin);
+   return make_shared<diamond> (width, height);
 }
 

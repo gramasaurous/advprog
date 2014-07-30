@@ -62,13 +62,23 @@ polygon::polygon (const vertex_list& vertices): vertices(vertices) {
 }
 
 rectangle::rectangle (GLfloat w, GLfloat h):
-      polygon({{w/2, -h/2},{w/2, h/2},{-w/2, h/2},{-w/2, -h/2}}){
+      polygon({{w/2, -h/2},
+               {w/2, h/2},
+               {-w/2, h/2},
+               {-w/2, -h/2}}){
    DEBUGF ('c', this << "(" << w << "," << h << ")");
-
 }
 
 square::square (GLfloat width): rectangle (width, width) {
    DEBUGF ('c', this);
+}
+
+diamond::diamond (GLfloat w, GLfloat h):
+      polygon({{w/2, 0},
+               {0, h/2},
+               {-w/2, 0},
+               {0, -h/2}}){
+   DEBUGF ('c', this << "(" << w << "," << h << ")");
 }
 
 void text::draw (const vertex& center, const rgbcolor& color) const {
