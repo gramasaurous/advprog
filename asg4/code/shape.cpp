@@ -11,7 +11,6 @@ using namespace std;
 
 #include "shape.h"
 #include "util.h"
-#include "graphics.h"
 
 static unordered_map<void*,string> fontname {
    {GLUT_BITMAP_8_BY_13       , "Fixed-8x13"    },
