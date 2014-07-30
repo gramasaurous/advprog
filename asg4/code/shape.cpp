@@ -89,6 +89,13 @@ triangle::triangle(const vertex v0, const vertex v1, const vertex v2):
    DEBUGF ('c', this);
 }
 
+right_triangle::right_triangle(GLfloat w, GLfloat h):
+      triangle({w,0},
+               {0,h},
+               {0,0}) {
+   DEBUGF ('c', this);
+}
+
 /*
 shape::draw() functions
 */

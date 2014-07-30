@@ -31,8 +31,8 @@ map<string,interpreter::factoryfn> interpreter::factory_map {
    {"rectangle"      , &interpreter::make_rectangle      },
    {"square"         , &interpreter::make_square         },
    {"diamond"        , &interpreter::make_diamond        },
-   {"triangle"       , &interpreter::make_triangle       }
-   //{"right_triangle" , &interpreter::make_right_triangle }
+   {"triangle"       , &interpreter::make_triangle       },
+   {"right_triangle" , &interpreter::make_right_triangle }
 };
 
 interpreter::shape_map interpreter::objmap;
@@ -114,6 +114,7 @@ shape_ptr interpreter::make_text (param begin, param end) {
 
 shape_ptr interpreter::make_ellipse (param begin, param end) {
    DEBUGF ('f', range (begin, end));
+   if ((end - begin) != 2) throw runtime_error("syntax error: ellipse");
    GLfloat width;
    GLfloat height;
    width = stod(*begin++);
@@ -123,13 +124,14 @@ shape_ptr interpreter::make_ellipse (param begin, param end) {
 
 shape_ptr interpreter::make_circle (param begin, param end) {
    DEBUGF ('f', range (begin, end));
+   if ((end - begin) != 2) throw runtime_error("syntax error: circle");
    return make_shared<circle> (GLfloat(stod(*begin)));
 }
 
 shape_ptr interpreter::make_polygon (param begin, param end) {
    DEBUGF ('f', range (begin, end));
    if (((end - begin) % 2) != 0) {
-      throw runtime_error ("syntax error: odd number of inputs");
+      throw runtime_error ("syntax error: polygon");
    }
    float x_avg{};
    float y_avg{};
@@ -169,6 +171,7 @@ shape_ptr interpreter::make_polygon (param begin, param end) {
 
 shape_ptr interpreter::make_rectangle (param begin, param end) {
    DEBUGF ('f', range (begin, end));
+   if ((end - begin) != 2) throw runtime_error("syntax error: rectangle");
    GLfloat width;
    GLfloat height;
    width = stod(*begin++);
@@ -178,11 +181,13 @@ shape_ptr interpreter::make_rectangle (param begin, param end) {
 
 shape_ptr interpreter::make_square (param begin, param end) {
    DEBUGF ('f', range (begin, end));
+   if ((end - begin) != 1) throw runtime_error("syntax error: square");
    return make_shared<square> (GLfloat(stod(*begin)));
 }
 
 shape_ptr interpreter::make_diamond (param begin, param end) {
    DEBUGF ('f', range (begin, end));
+   if ((end - begin) != 2) throw runtime_error("syntax error: diamond");
    GLfloat width;
    GLfloat height;
    width = stod(*begin++);
@@ -204,4 +209,13 @@ shape_ptr interpreter::make_triangle (param begin, param end) {
    y2 = stod(*begin);
    vertex v2{x2,y2};
    return (make_shared<triangle>(v0, v1,v2));
+}
+
+shape_ptr interpreter::make_right_triangle (param begin, param end) {
+   if ((end - begin) != 2) throw runtime_error("syntax error: right_triangle");
+   GLfloat width;
+   GLfloat height;
+   width = stod(*begin++);
+   height = stod(*begin);
+   return make_shared<right_triangle> (width, height);
 }

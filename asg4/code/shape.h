@@ -140,6 +140,11 @@ class triangle: public polygon {
       triangle (const vertex v0, const vertex v1, const vertex v2);
 };
 
+class right_triangle: public triangle {
+   public:
+      right_triangle (GLfloat width, GLfloat height);
+};
+
 ostream& operator<< (ostream& out, const shape&);
 
 #endif

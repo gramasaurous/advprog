@@ -47,7 +47,7 @@ class interpreter {
       static shape_ptr make_square (param begin, param end);
       static shape_ptr make_diamond (param begin, param end);
       static shape_ptr make_triangle (param begin, param end);
-      //static shape_ptr make_right_triangle (param begin, param end);
+      static shape_ptr make_right_triangle (param begin, param end);
       static shape_ptr make_line (param begin, param end);
 };
 
