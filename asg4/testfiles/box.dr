@@ -1,9 +1,0 @@
-# $Id: box.dr,v 1.1 2013-02-01 17:00:06-08 - - $
-define sq square green 3
-define rec rectangle cyan 2 3
-draw sq 10 10
-draw sq 15 25
-draw sq 20 20
-draw rec 00 40
-draw rec 10 50
-draw rec 20 60
