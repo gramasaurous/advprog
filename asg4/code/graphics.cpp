@@ -37,7 +37,16 @@ void window::entry (int mouse_entered) {
 // Called to display the objects in the window.
 void window::display() {
    glClear (GL_COLOR_BUFFER_BIT);
+   glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
    for (auto& object: window::objects) object.draw();
+   //glClear (GL_COLOR_BUFFER_BIT);
+   glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+   window::objects[selected_obj].draw();
+   static size_t obj_old = selected_obj;
+   if (selected_obj != obj_old) {
+      cout << "selected object:" << selected_obj << endl;
+      obj_old = selected_obj;
+   }
    mus.draw();
    glutSwapBuffers();
 }
@@ -82,7 +91,7 @@ void window::keyboard (GLubyte key, int x, int y) {
       case 'P': case 'p': case BS:
          break;
       case '0'...'9':
-         //select_object (key - '0');
+         window::select_object (key - '0');
          break;
       default:
          cerr << (unsigned)key << ": invalid keystroke" << endl;
@@ -161,7 +170,6 @@ void window::main () {
    glutMainLoop();
 }
 
-
 void mouse::state (int button, int state) {
    switch (button) {
       case GLUT_LEFT_BUTTON: left_state = state; break;

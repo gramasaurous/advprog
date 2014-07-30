@@ -134,7 +134,7 @@ void ellipse::draw (const vertex& center, const rgbcolor& color) const {
 void polygon::draw (const vertex& center, const rgbcolor& color) const {
    DEBUGF ('d', this << "(" << center << "," << color << ")");
    glBegin (GL_POLYGON);
-   //glEnable (GL_LINE_SMOOTH);
+   glEnable (GL_LINE_SMOOTH);
    glColor3ubv (color.ubvec);
    for (auto v : vertices) {
       float x_draw = v.xpos + center.xpos;

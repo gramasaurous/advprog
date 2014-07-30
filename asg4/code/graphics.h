@@ -58,6 +58,8 @@ class window {
       static vector<object> objects;
       static size_t selected_obj;
       static mouse mus;
+      static int border_thickness;
+      static rgbcolor border_color;
    private:
       static void close();
       static void entry (int mouse_entered);
@@ -68,11 +70,13 @@ class window {
       static void motion (int x, int y);
       static void passivemotion (int x, int y);
       static void mousefn (int button, int state, int x, int y);
+      static void select_object (int obj) {selected_obj = obj;};
    public:
       static void push_back (const object& obj) {
                   objects.push_back (obj); }
       static void setwidth (int width_) { width = width_; }
       static void setheight (int height_) { height = height_; }
+      static void set_border(int thick, const rgbcolor& color);
       static void main();
 };
 
