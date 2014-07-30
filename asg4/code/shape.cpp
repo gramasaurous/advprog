@@ -101,6 +101,10 @@ isosceles::isosceles(GLfloat w, GLfloat h):
                {-w/2,0}) {
    DEBUGF ('c', this);
 }
+equilateral::equilateral(GLfloat width):
+      isosceles(width, width) {
+   DEBUGF ('c', this);
+}
 /*
 shape::draw() functions
 */

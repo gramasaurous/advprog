@@ -150,6 +150,11 @@ class isosceles: public triangle {
       isosceles (GLfloat width, GLfloat height);
 };
 
+class equilateral: public isosceles {
+   public:
+      equilateral (GLfloat width);
+};
+
 ostream& operator<< (ostream& out, const shape&);
 
 #endif

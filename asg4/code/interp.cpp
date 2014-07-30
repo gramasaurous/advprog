@@ -33,7 +33,8 @@ map<string,interpreter::factoryfn> interpreter::factory_map {
    {"diamond"        , &interpreter::make_diamond        },
    {"triangle"       , &interpreter::make_triangle       },
    {"right_triangle" , &interpreter::make_right_triangle },
-   {"isosceles"      , &interpreter::make_isosceles      }
+   {"isosceles"      , &interpreter::make_isosceles      },
+   {"equilateral"    , &interpreter::make_equilateral    }   
 };
 
 interpreter::shape_map interpreter::objmap;
@@ -227,4 +228,10 @@ shape_ptr interpreter::make_isosceles (param begin, param end) {
    width = stod(*begin++);
    height = stod(*begin);
    return make_shared<isosceles> (width, height);
+}
+shape_ptr interpreter::make_equilateral (param begin, param end) {
+   if ((end - begin) != 1) throw runtime_error("syntax error: equilateral");
+   GLfloat width;
+   width = stod(*begin++);
+   return make_shared<equilateral> (width);
 }
