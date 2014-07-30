@@ -24,14 +24,15 @@ map<string,interpreter::interpreterfn> interpreter::interp_map {
 };
 
 map<string,interpreter::factoryfn> interpreter::factory_map {
-   {"text"     , &interpreter::make_text     },
-   {"ellipse"  , &interpreter::make_ellipse  },
-   {"circle"   , &interpreter::make_circle   },
-   {"polygon"  , &interpreter::make_polygon  },
-   {"rectangle", &interpreter::make_rectangle},
-   {"square"   , &interpreter::make_square   },
-   {"diamond"  , &interpreter::make_diamond  },
-   {"triangle" , &interpreter::make_triangle },
+   {"text"           , &interpreter::make_text           },
+   {"ellipse"        , &interpreter::make_ellipse        },
+   {"circle"         , &interpreter::make_circle         },
+   {"polygon"        , &interpreter::make_polygon        },
+   {"rectangle"      , &interpreter::make_rectangle      },
+   {"square"         , &interpreter::make_square         },
+   {"diamond"        , &interpreter::make_diamond        },
+   {"triangle"       , &interpreter::make_triangle       }
+   //{"right_triangle" , &interpreter::make_right_triangle }
 };
 
 interpreter::shape_map interpreter::objmap;
@@ -191,30 +192,8 @@ shape_ptr interpreter::make_diamond (param begin, param end) {
 
 shape_ptr interpreter::make_triangle (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   if ((end - begin) != 6) throw runtime_error("syntax error:triangle");
-   float x_avg{};
-   float y_avg{};
-   int v_count{0};
-   vector<vertex> v_list;
-
-   for (auto i = begin; i != end; i++) {
-      GLfloat xpos = stod(*i++);
-      GLfloat ypos = stod(*i);
-      x_avg += xpos;
-      y_avg += ypos;
-      vertex v{xpos, ypos};
-      v_count++;
-      v_list.push_back(v);
-   }
-   if (v_count == 0) throw runtime_error ("syntax error: no vertices");
-   x_avg /= v_count;
-   y_avg /= v_count;
-   DEBUGF ('t', "avg: (" << x_avg << "," << y_avg << ")");
-   // Normalize the vertices (subtract avg)
-   for (auto v = v_list.begin(); v != v_list.end(); ++v) {
-      v->xpos -= x_avg;
-      v->ypos -= y_avg;
-   }
-   return make_shared<triangle> (vertex_list(v_list));
-   //return ((interpreter::make_polygon(begin, end)));
+   if ((end - begin) != 6) throw runtime_error("syntax error: triangle");
+   return make_shared<triangle> (vertex{stod(*begin++),stod(*begin++)},
+                                 vertex{stod(*begin++),stod(*begin++)},
+                                 vertex{stod(*begin++),stod(*begin)});
 }

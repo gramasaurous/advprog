@@ -137,7 +137,7 @@ class diamond: public polygon {
 
 class triangle: public polygon {
    public:
-      triangle (const vertex_list& vertices);
+      triangle (const vertex v1, const vertex v2, const vertex v3);
 };
 
 ostream& operator<< (ostream& out, const shape&);
