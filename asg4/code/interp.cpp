@@ -126,7 +126,7 @@ shape_ptr interpreter::make_ellipse (param begin, param end) {
 
 shape_ptr interpreter::make_circle (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   if ((end - begin) != 2) throw runtime_error("syntax error: circle");
+   if ((end - begin) != 1) throw runtime_error("syntax error: circle");
    return make_shared<circle> (GLfloat(stod(*begin)));
 }
 
@@ -168,6 +168,11 @@ shape_ptr interpreter::make_polygon (param begin, param end) {
       //if (degree_a == degree_b) return (a.ypos < b.ypos);
       return (degree_a < degree_b);
    });
+   cout << "v_list sorted." << endl;
+   for (auto v: v_list) {
+      cout << "v: {" << v.xpos << "," << v.ypos << "}, ";
+   }
+   cout << endl;
    return make_shared<polygon> (vertex_list(v_list));
 }
 
