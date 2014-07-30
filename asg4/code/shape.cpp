@@ -61,9 +61,10 @@ polygon::polygon (const vertex_list& vertices): vertices(vertices) {
    DEBUGF ('c', this);
 }
 
-rectangle::rectangle (GLfloat width, GLfloat height):
-            polygon({}) {
-   DEBUGF ('c', this << "(" << width << "," << height << ")");
+rectangle::rectangle (GLfloat w, GLfloat h):
+      polygon({{w/2, -h/2},{w/2, h/2},{-w/2, h/2},{-w/2, -h/2}}){
+   DEBUGF ('c', this << "(" << w << "," << h << ")");
+
 }
 
 square::square (GLfloat width): rectangle (width, width) {
@@ -84,8 +85,6 @@ void ellipse::draw (const vertex& center, const rgbcolor& color) const {
    glEnable (GL_LINE_SMOOTH);
    glColor3ubv (color.ubvec);
    const float delta = 2 * M_PI / 32;
-   //float width = window.width / 3 * scale;
-   //float height = window.height / 3 * scale;
    for (float theta = 0; theta < 2 * M_PI; theta += delta) {
       float xpos = dimension.xpos * cos (theta) + center.xpos;
       float ypos = dimension.ypos * sin (theta) + center.ypos;
@@ -97,7 +96,7 @@ void ellipse::draw (const vertex& center, const rgbcolor& color) const {
 void polygon::draw (const vertex& center, const rgbcolor& color) const {
    DEBUGF ('d', this << "(" << center << "," << color << ")");
    glBegin (GL_POLYGON);
-   glEnable (GL_LINE_SMOOTH);
+   //glEnable (GL_LINE_SMOOTH);
    glColor3ubv (color.ubvec);
    for (auto v : vertices) {
       float x_draw = v.xpos + center.xpos;

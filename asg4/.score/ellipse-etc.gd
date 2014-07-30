@@ -10,5 +10,3 @@ draw cyan first 300 300
 draw yellow second 300 300
 draw black third 300 300
 draw red ss 100 100
-
-
