@@ -95,7 +95,12 @@ right_triangle::right_triangle(GLfloat w, GLfloat h):
                {0,0}) {
    DEBUGF ('c', this);
 }
-
+isosceles::isosceles(GLfloat w, GLfloat h):
+      triangle({w/2,0},
+               {0,h},
+               {-w/2,0}) {
+   DEBUGF ('c', this);
+}
 /*
 shape::draw() functions
 */

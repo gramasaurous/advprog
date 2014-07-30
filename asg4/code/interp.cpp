@@ -32,7 +32,8 @@ map<string,interpreter::factoryfn> interpreter::factory_map {
    {"square"         , &interpreter::make_square         },
    {"diamond"        , &interpreter::make_diamond        },
    {"triangle"       , &interpreter::make_triangle       },
-   {"right_triangle" , &interpreter::make_right_triangle }
+   {"right_triangle" , &interpreter::make_right_triangle },
+   {"isosceles"      , &interpreter::make_isosceles      }
 };
 
 interpreter::shape_map interpreter::objmap;
@@ -218,4 +219,12 @@ shape_ptr interpreter::make_right_triangle (param begin, param end) {
    width = stod(*begin++);
    height = stod(*begin);
    return make_shared<right_triangle> (width, height);
+}
+shape_ptr interpreter::make_isosceles (param begin, param end) {
+   if ((end - begin) != 2) throw runtime_error("syntax error: isosceles");
+   GLfloat width;
+   GLfloat height;
+   width = stod(*begin++);
+   height = stod(*begin);
+   return make_shared<isosceles> (width, height);
 }

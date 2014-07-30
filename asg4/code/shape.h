@@ -145,6 +145,11 @@ class right_triangle: public triangle {
       right_triangle (GLfloat width, GLfloat height);
 };
 
+class isosceles: public triangle {
+   public:
+      isosceles (GLfloat width, GLfloat height);
+};
+
 ostream& operator<< (ostream& out, const shape&);
 
 #endif
