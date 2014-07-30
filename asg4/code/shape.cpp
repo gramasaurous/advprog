@@ -84,8 +84,8 @@ diamond::diamond (GLfloat w, GLfloat h):
    DEBUGF ('c', this << "(" << w << "," << h << ")");
 }
 
-triangle::triangle(const vertex v1, const vertex v2, const vertex v3):
-      polygon({v1,v2,v3}) {
+triangle::triangle(const vertex v0, const vertex v1, const vertex v2):
+      polygon({v0,v1,v2}) {
    DEBUGF ('c', this);
 }
 

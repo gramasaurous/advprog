@@ -193,7 +193,15 @@ shape_ptr interpreter::make_diamond (param begin, param end) {
 shape_ptr interpreter::make_triangle (param begin, param end) {
    DEBUGF ('f', range (begin, end));
    if ((end - begin) != 6) throw runtime_error("syntax error: triangle");
-   return make_shared<triangle> (vertex{stod(*begin++),stod(*begin++)},
-                                 vertex{stod(*begin++),stod(*begin++)},
-                                 vertex{stod(*begin++),stod(*begin)});
+   GLfloat x0,y0,x1,y1,x2,y2;
+   x0 = stod(*begin++);
+   y0 = stod(*begin++);
+   vertex v0{x0,y0};
+   x1 = stod(*begin++);
+   y1 = stod(*begin++);
+   vertex v1{x1,y1};
+   x2 = stod(*begin++);
+   y2 = stod(*begin);
+   vertex v2{x2,y2};
+   return (make_shared<triangle>(v0, v1,v2));
 }
