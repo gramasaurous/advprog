@@ -1,4 +1,6 @@
-// $Id: main.cpp,v 1.13 2014-05-08 18:32:56-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:main.c
 
 #include <fstream>
 #include <iostream>
@@ -39,7 +41,7 @@ void parsefile (const string& infilename, istream& infile) {
          if (words.size() == 0 or words.front()[0] == '#') continue;
          DEBUGF ('m', words);
          interp.interpret (words);
-      }catch (runtime_error error) {
+      } catch (runtime_error error) {
          complain() << infilename << ":" << linenr << ": "
                     << error.what() << endl;
       }
@@ -47,7 +49,7 @@ void parsefile (const string& infilename, istream& infile) {
    DEBUGF ('m', infilename << " EOF");
 }
 
-
+
 //
 // Scan the option -@ and check for operands.
 //
@@ -84,15 +86,15 @@ int main (int argc, char** argv) {
    vector<string> args (&argv[optind], &argv[argc]);
    if (args.size() == 0) {
       parsefile ("-", cin);
-   }else if (args.size() > 1) {
+   } else if (args.size() > 1) {
       cerr << "Usage: " << sys_info::execname() << "-@flags"
            << "[filename]" << endl;
-   }else {
+   } else {
       const string infilename = args[0];
       ifstream infile (infilename.c_str());
       if (infile.fail()) {
          syscall_error (infilename);
-      }else {
+      } else {
          DEBUGF ('m', infilename << "(opened OK)");
          parsefile (infilename, infile);
          // fstream objects auto closed when destroyed

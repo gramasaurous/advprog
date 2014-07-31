@@ -1,4 +1,6 @@
-# $Id: Makefile,v 1.12 2014-05-08 18:32:56-07 - - $
+# Graham Greving
+# ggreving@ucsc.edu
+# asg4: Makefile
 
 MKFILE      = Makefile
 DEPFILE     = ${MKFILE}.dep
@@ -19,12 +21,15 @@ EXECBIN     = gdraw
 OBJECTS     = ${CPPSOURCE:.cpp=.o}
 LINKLIBS    = -lGL -lGLU -lglut -lm
 
-LISTING     = Listing.ps
-CLASS       = cmps109-wm.u13
-PROJECT     = asg3
+HOST 		= $(findstring ucsc,$(shell hostname))
+TARFILE		= $(PROJECT).tar.gz
+CLASS       = cmps109-wm.u14
+PROJECT     = asg4
 
 all : ${EXECBIN}
+ifeq ($(HOST),ucsc)
 	- checksource ${ALLSOURCES}
+endif
 
 ${EXECBIN} : ${OBJECTS}
 	${COMPILECPP} -o $@ ${OBJECTS} ${LINKLIBS}
@@ -35,23 +40,24 @@ ${EXECBIN} : ${OBJECTS}
 colors.cppgen: mk-colors.perl
 	mk-colors.perl >colors.cppgen
 
-ci : ${ALLSOURCES}
-	- checksource ${ALLSOURCES}
-	cid + ${ALLSOURCES}
-
-lis : ${ALLSOURCES}
-	mkpspdf ${LISTING} ${ALLSOURCES} ${DEPFILE}
-
 clean :
 	- rm ${OBJECTS} ${DEPFILE} core ${GENFILES}
 
 spotless : clean
 	- rm ${EXECBIN} ${LISTING} ${LISTING:.ps=.pdf}
 
-
+
 submit : ${ALLSOURCES}
+ifeq ($(HOST),ucsc)
 	- checksource ${ALLSOURCES}
 	submit ${CLASS} ${PROJECT} ${ALLSOURCES}
+endif
+
+cp : tar
+	scp ${TARFILE} ggreving@unix.ucsc.edu:Private/${PROJECT}/
+
+tar : 
+	tar cvf ${TARFILE} ${ALLSOURCES}
 
 dep : ${CPPSOURCE} ${CPPHEADER} ${GENFILES}
 	@ echo "# ${DEPFILE} created `LC_TIME=C date`" >${DEPFILE}
@@ -62,7 +68,10 @@ ${DEPFILE} :
 	${GMAKE} dep
 
 again :
-	${GMAKE} spotless dep ci all lis
+	${GMAKE} spotless dep all
+
+man :
+	man ../asg4-oop-inheritance.tt
 
 ifeq (${NEEDINCL}, )
 include ${DEPFILE}

@@ -1,4 +1,6 @@
-// $Id: shape.h,v 1.7 2014-06-05 16:11:09-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:shape.h
 
 #ifndef __SHAPE_H__
 #define __SHAPE_H__
@@ -55,13 +57,14 @@ class shape {
       virtual void show (ostream&) const;
 };
 
-
+
 //
 // Class for printing text.
 //
 
 class text: public shape {
    protected:
+      string font_string;
       void* glut_bitmap_font = nullptr;
       // GLUT_BITMAP_8_BY_13
       // GLUT_BITMAP_9_BY_15
@@ -72,7 +75,7 @@ class text: public shape {
       // GLUT_BITMAP_TIMES_ROMAN_24
       string textdata;
    public:
-      text (void* glut_bitmap_font, const string& textdata);
+      text (const string& font_string, const string& textdata);
       virtual void draw (const vertex&, const rgbcolor&) const override;
       virtual void show (ostream&) const override;
 };
@@ -108,7 +111,7 @@ class polygon: public shape {
       virtual void show (ostream&) const override;
 };
 
-
+
 //
 // Classes rectangle, square, etc.
 //
@@ -126,6 +129,30 @@ class square: public rectangle {
 class diamond: public polygon {
    public:
       diamond (const GLfloat width, const GLfloat height);
+};
+
+//
+// Class Triangle
+//
+
+class triangle: public polygon {
+   public:
+      triangle (const vertex v0, const vertex v1, const vertex v2);
+};
+
+class right_triangle: public triangle {
+   public:
+      right_triangle (GLfloat width, GLfloat height);
+};
+
+class isosceles: public triangle {
+   public:
+      isosceles (GLfloat width, GLfloat height);
+};
+
+class equilateral: public isosceles {
+   public:
+      equilateral (GLfloat width);
 };
 
 ostream& operator<< (ostream& out, const shape&);

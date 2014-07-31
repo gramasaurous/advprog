@@ -1,4 +1,6 @@
-// $Id: rgbcolor.cpp,v 1.6 2014-05-21 15:44:26-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:rgbcolor.cpp
 
 #include <cctype>
 #include <iomanip>
@@ -17,7 +19,7 @@ rgbcolor::rgbcolor (const string& name) {
    auto entry = color_names.find (name);
    if (entry != color_names.end()) {
       *this = entry->second;
-   }else {
+   } else {
       invalid_argument error ("rgbcolor::rgbcolor(" + name + ")");
       if (name.size() != 8) throw error;
       string prefix = name.substr (0, 2);

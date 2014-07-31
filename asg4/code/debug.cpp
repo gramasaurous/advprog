@@ -1,4 +1,6 @@
-// $Id: debug.cpp,v 1.2 2014-05-08 18:07:04-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:debug.cpp
 
 #include <cassert>
 #include <climits>

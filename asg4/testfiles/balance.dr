@@ -1,5 +1,0 @@
-# $Id: balance.dr,v 1.1 2013-02-01 17:00:06-08 - - $
-define Lefty text 36 Times-Bold ((((((((((
-define Righty text 36 Times-Bold ))))))))))
-draw Lefty 2 8
-draw Righty 2 6

@@ -1,4 +1,6 @@
-// $Id: interp.h,v 1.13 2014-07-22 20:03:19-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:interp.h
 
 #ifndef __INTERP_H__
 #define __INTERP_H__
@@ -35,6 +37,8 @@ class interpreter {
 
       static void do_define (param begin, param end);
       static void do_draw (param begin, param end);
+      static void do_border (param begin, param end);
+      static void do_moveby (param begin, param end);
 
       static shape_ptr make_shape (param begin, param end);
       static shape_ptr make_text (param begin, param end);
@@ -43,6 +47,11 @@ class interpreter {
       static shape_ptr make_polygon (param begin, param end);
       static shape_ptr make_rectangle (param begin, param end);
       static shape_ptr make_square (param begin, param end);
+      static shape_ptr make_diamond (param begin, param end);
+      static shape_ptr make_triangle (param begin, param end);
+      static shape_ptr make_right_triangle (param begin, param end);
+      static shape_ptr make_isosceles (param begin, param end);
+      static shape_ptr make_equilateral (param begin, param end);
       static shape_ptr make_line (param begin, param end);
 };
 

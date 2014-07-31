@@ -1,4 +1,6 @@
-// $Id: util.cpp,v 1.8 2014-05-08 18:32:56-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:util.cpp
 
 #include <cerrno>
 #include <cstdlib>
@@ -53,7 +55,6 @@ const string datestring() {
    return timebuf;
 }
 
-
 vector<string> split (const string& line, const string& delimiters) {
    vector<string> words;
    int end = 0;

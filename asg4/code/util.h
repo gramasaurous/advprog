@@ -1,4 +1,6 @@
-// $Id: util.h,v 1.8 2014-05-08 18:32:56-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg4:util.h
 
 //
 // util -
@@ -45,7 +47,7 @@ class sys_info {
 
 const string datestring();
 
-
+
 //
 // split -
 //    Split a string into a vector<string>..  Any sequence
@@ -82,7 +84,6 @@ void syscall_error (const string&);
 //    defined for it.
 //
 
-
 template <typename item_t>
 ostream& operator<< (ostream& out, const vector<item_t>& vec);
 
