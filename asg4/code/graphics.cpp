@@ -20,9 +20,13 @@ float window::move_by{4};
 mouse window::mus;
 
 // Used to move shapes around
-//void window::move_selected_object(float change_x, float change_y) {
-//
-//}
+void window::move_selected_object(float change_x, float change_y) {
+   if (selected_obj < objects.size()) {
+      float delta_x = change_x * window::move_by;
+      float delta_y = change_y * window::move_by;
+      window::objects[selected_obj].move(delta_x, delta_y);
+   }
+}
 
 // Executed when window system signals to shut down.
 void window::close() {
@@ -115,10 +119,10 @@ void window::special (int key, int x, int y) {
    DEBUGF ('g', "key=" << key << ", x=" << x << ", y=" << y);
    window::mus.set (x, y);
    switch (key) {
-      case GLUT_KEY_LEFT: //move_selected_object (-1, 0); break;
-      case GLUT_KEY_DOWN: //move_selected_object (0, -1); break;
-      case GLUT_KEY_UP: //move_selected_object (0, +1); break;
-      case GLUT_KEY_RIGHT: //move_selected_object (+1, 0); break;
+      case GLUT_KEY_LEFT: move_selected_object (-1, 0); break;
+      case GLUT_KEY_DOWN: move_selected_object (0, -1); break;
+      case GLUT_KEY_UP: move_selected_object (0, +1); break;
+      case GLUT_KEY_RIGHT: move_selected_object (+1, 0); break;
       case GLUT_KEY_F1: //select_object (1); break;
       case GLUT_KEY_F2: //select_object (2); break;
       case GLUT_KEY_F3: //select_object (3); break;
