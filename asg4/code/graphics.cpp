@@ -14,7 +14,10 @@ int window::width = 640; // in pixels
 int window::height = 480; // in pixels
 vector<object> window::objects;
 size_t window::selected_obj = 0;
+float window::border_thickness = 4;
+rgbcolor window::border_color = rgbcolor{255,0,0};
 mouse window::mus;
+
 
 // Executed when window system signals to shut down.
 void window::close() {
@@ -40,13 +43,10 @@ void window::display() {
    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
    for (auto& object: window::objects) object.draw();
    //glClear (GL_COLOR_BUFFER_BIT);
+   glLineWidth(window::border_thickness);
    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-   window::objects[selected_obj].draw();
-   static size_t obj_old = selected_obj;
-   if (selected_obj != obj_old) {
-      cout << "selected object:" << selected_obj << endl;
-      obj_old = selected_obj;
-   }
+
+   window::objects[selected_obj].draw(window::border_color);
    mus.draw();
    glutSwapBuffers();
 }
