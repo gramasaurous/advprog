@@ -27,6 +27,7 @@ define it isosceles		 	150 300.1
 define et equilateral	 	150
 
 border LemonChiffon 1
+moveby 10
 
 draw NavajoWhite 		title 270 460
 draw MintCream 		p 		320 240

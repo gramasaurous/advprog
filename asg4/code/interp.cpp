@@ -21,6 +21,7 @@ map<string,interpreter::interpreterfn> interpreter::interp_map {
    {"define" , &interpreter::do_define },
    {"draw"   , &interpreter::do_draw   },
    {"border" , &interpreter::do_border },
+   {"moveby" , &interpreter::do_moveby },
 };
 
 map<string,interpreter::factoryfn> interpreter::factory_map {
@@ -75,6 +76,10 @@ void interpreter::do_define (param begin, param end) {
    objmap.insert ({name, make_shape (++begin, end)});
 }
 
+void interpreter::do_moveby (param begin, param end) {
+   if ((end - begin) != 1) throw runtime_error("syntax error");
+   window::set_moveby(float(stod(*begin)));
+}
 
 void interpreter::do_draw (param begin, param end) {
    DEBUGF ('f', range (begin, end));

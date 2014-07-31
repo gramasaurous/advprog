@@ -16,8 +16,13 @@ vector<object> window::objects;
 size_t window::selected_obj = 0;
 float window::border_thickness = 4;
 rgbcolor window::border_color = rgbcolor{255,0,0};
+float window::move_by{4};
 mouse window::mus;
 
+// Used to move shapes around
+//void window::move_selected_object(float change_x, float change_y) {
+//
+//}
 
 // Executed when window system signals to shut down.
 void window::close() {
@@ -40,11 +45,17 @@ void window::entry (int mouse_entered) {
 // Called to display the objects in the window.
 void window::display() {
    glClear (GL_COLOR_BUFFER_BIT);
+   /* Draw all of the objects*/
    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
    for (auto& object: window::objects) object.draw();
+   /*Draw the selected object again, then draw the border around it*/
+   window::objects[selected_obj].draw();
    glLineWidth(window::border_thickness);
    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-   window::objects[selected_obj].draw(window::border_color);
+   if (selected_obj < objects.size()) {
+      window::objects[selected_obj].draw(window::border_color);
+   }
+   cout << "move by:" << window::move_by << endl;
    mus.draw();
    glutSwapBuffers();
 }
