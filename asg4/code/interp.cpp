@@ -20,6 +20,7 @@ using namespace std;
 map<string,interpreter::interpreterfn> interpreter::interp_map {
    {"define" , &interpreter::do_define },
    {"draw"   , &interpreter::do_draw   },
+   {"border" , &interpreter::do_border },
 };
 
 map<string,interpreter::factoryfn> interpreter::factory_map {
@@ -58,6 +59,13 @@ void interpreter::interpret (const parameters& params) {
       cout << *i << " ";
    } cout << endl;
    func (++begin, params.cend());
+}
+
+void interpreter::do_border (param begin, param end) {
+   if ((end - begin) != 2) throw runtime_error("syntax error");
+   rgbcolor color{*begin++};
+   float thickness = stod(*begin);
+   window::set_border(color,thickness);
 }
 
 void interpreter::do_define (param begin, param end) {

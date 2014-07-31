@@ -42,10 +42,8 @@ void window::display() {
    glClear (GL_COLOR_BUFFER_BIT);
    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
    for (auto& object: window::objects) object.draw();
-   //glClear (GL_COLOR_BUFFER_BIT);
    glLineWidth(window::border_thickness);
    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
    window::objects[selected_obj].draw(window::border_color);
    mus.draw();
    glutSwapBuffers();

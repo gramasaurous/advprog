@@ -77,7 +77,10 @@ class window {
                   objects.push_back (obj); }
       static void setwidth (int width_) { width = width_; }
       static void setheight (int height_) { height = height_; }
-      static void set_border(float thick, const rgbcolor& color);
+      static void set_border(const rgbcolor& color, float thick) {
+         border_thickness = thick;
+         border_color = color;
+      }
       static void main();
 };
 
