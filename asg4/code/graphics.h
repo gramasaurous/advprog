@@ -72,7 +72,7 @@ class window {
       static void motion (int x, int y);
       static void passivemotion (int x, int y);
       static void mousefn (int button, int state, int x, int y);
-      static void select_object (int obj) {selected_obj = obj;};
+      static void select_object (size_t obj);
       static void move_selected_object (float change_x, float change_y);
    public:
       static void push_back (const object& obj) {
