@@ -28,6 +28,7 @@ class object {
          color = col;
       }
       void draw() { pshape->draw (center, color); }
+      void draw(const rgbcolor &col) { pshape->draw (center, col); }
       void move (GLfloat delta_x, GLfloat delta_y) {
          center.xpos += delta_x;
          center.ypos += delta_y;
@@ -58,6 +59,9 @@ class window {
       static vector<object> objects;
       static size_t selected_obj;
       static mouse mus;
+      static float border_thickness;
+      static rgbcolor border_color;
+      static float move_by;
    private:
       static void close();
       static void entry (int mouse_entered);
@@ -68,11 +72,18 @@ class window {
       static void motion (int x, int y);
       static void passivemotion (int x, int y);
       static void mousefn (int button, int state, int x, int y);
+      static void select_object (size_t obj);
+      static void move_selected_object (float change_x, float change_y);
    public:
       static void push_back (const object& obj) {
                   objects.push_back (obj); }
+      static void set_moveby(float move_by_) {move_by = move_by_;}
       static void setwidth (int width_) { width = width_; }
       static void setheight (int height_) { height = height_; }
+      static void set_border(const rgbcolor& color, float thick) {
+         border_thickness = thick;
+         border_color = color;
+      }
       static void main();
 };
 

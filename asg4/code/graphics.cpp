@@ -14,7 +14,25 @@ int window::width = 640; // in pixels
 int window::height = 480; // in pixels
 vector<object> window::objects;
 size_t window::selected_obj = 0;
+float window::border_thickness = 4;
+rgbcolor window::border_color = rgbcolor{255,0,0};
+float window::move_by{4};
 mouse window::mus;
+
+void window::select_object (size_t obj) {
+   if (window::objects.size() <= obj) return;
+   window::selected_obj = obj;
+}
+
+// Used to move shapes around
+void window::move_selected_object(float change_x, float change_y) {
+   if (selected_obj < objects.size()) {
+      float delta_x = change_x * window::move_by;
+      float delta_y = change_y * window::move_by;
+      if (window::selected_obj >= window::objects.size()) return;
+      window::objects[window::selected_obj].move(delta_x, delta_y);
+   }
+}
 
 // Executed when window system signals to shut down.
 void window::close() {
@@ -37,7 +55,16 @@ void window::entry (int mouse_entered) {
 // Called to display the objects in the window.
 void window::display() {
    glClear (GL_COLOR_BUFFER_BIT);
+   /* Draw all of the objects*/
+   glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
    for (auto& object: window::objects) object.draw();
+   /*Draw the selected object again, then draw the border around it*/
+   if (window::selected_obj < window::objects.size()) {
+      window::objects[selected_obj].draw();
+      glLineWidth(window::border_thickness);
+      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+      window::objects[selected_obj].draw(window::border_color);
+   }
    mus.draw();
    glutSwapBuffers();
 }
@@ -65,24 +92,26 @@ void window::keyboard (GLubyte key, int x, int y) {
       case 'Q': case 'q': case ESC:
          window::close();
          break;
-      case 'H': case 'h':
-         //move_selected_object (
+      case 'H': case 'h': //left
+         move_selected_object (-1, 0);
          break;
-      case 'J': case 'j':
-         //move_selected_object (
+      case 'J': case 'j':  //down
+         move_selected_object (0, -1);
          break;
-      case 'K': case 'k':
-         //move_selected_object (
+      case 'K': case 'k':  //up
+         move_selected_object (0, +1);
          break;
-      case 'L': case 'l':
-         //move_selected_object (
+      case 'L': case 'l':  //right
+         move_selected_object (+1, 0);
          break;
       case 'N': case 'n': case SPACE: case TAB:
+         window::select_object((window::selected_obj + 1) % window::objects.size());
          break;
       case 'P': case 'p': case BS:
+         window::select_object((window::selected_obj - 1) % window::objects.size());
          break;
       case '0'...'9':
-         //select_object (key - '0');
+         window::select_object (key - '0');
          break;
       default:
          cerr << (unsigned)key << ": invalid keystroke" << endl;
@@ -97,22 +126,22 @@ void window::special (int key, int x, int y) {
    DEBUGF ('g', "key=" << key << ", x=" << x << ", y=" << y);
    window::mus.set (x, y);
    switch (key) {
-      case GLUT_KEY_LEFT: //move_selected_object (-1, 0); break;
-      case GLUT_KEY_DOWN: //move_selected_object (0, -1); break;
-      case GLUT_KEY_UP: //move_selected_object (0, +1); break;
-      case GLUT_KEY_RIGHT: //move_selected_object (+1, 0); break;
-      case GLUT_KEY_F1: //select_object (1); break;
-      case GLUT_KEY_F2: //select_object (2); break;
-      case GLUT_KEY_F3: //select_object (3); break;
-      case GLUT_KEY_F4: //select_object (4); break;
-      case GLUT_KEY_F5: //select_object (5); break;
-      case GLUT_KEY_F6: //select_object (6); break;
-      case GLUT_KEY_F7: //select_object (7); break;
-      case GLUT_KEY_F8: //select_object (8); break;
-      case GLUT_KEY_F9: //select_object (9); break;
-      case GLUT_KEY_F10: //select_object (10); break;
-      case GLUT_KEY_F11: //select_object (11); break;
-      case GLUT_KEY_F12: //select_object (12); break;
+      case GLUT_KEY_LEFT: move_selected_object (-1, 0); break;
+      case GLUT_KEY_DOWN: move_selected_object (0, -1); break;
+      case GLUT_KEY_UP: move_selected_object (0, +1); break;
+      case GLUT_KEY_RIGHT: move_selected_object (+1, 0); break;
+      case GLUT_KEY_F1: select_object (1); break;
+      case GLUT_KEY_F2: select_object (2); break;
+      case GLUT_KEY_F3: select_object (3); break;
+      case GLUT_KEY_F4: select_object (4); break;
+      case GLUT_KEY_F5: select_object (5); break;
+      case GLUT_KEY_F6: select_object (6); break;
+      case GLUT_KEY_F7: select_object (7); break;
+      case GLUT_KEY_F8: select_object (8); break;
+      case GLUT_KEY_F9: select_object (9); break;
+      case GLUT_KEY_F10: select_object (10); break;
+      case GLUT_KEY_F11: select_object (11); break;
+      case GLUT_KEY_F12: select_object (12); break;
       default:
          cerr << (unsigned)key << ": invalid function key" << endl;
          break;
@@ -161,7 +190,6 @@ void window::main () {
    glutMainLoop();
 }
 
-
 void mouse::state (int button, int state) {
    switch (button) {
       case GLUT_LEFT_BUTTON: left_state = state; break;

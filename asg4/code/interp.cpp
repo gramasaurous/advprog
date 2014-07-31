@@ -16,11 +16,12 @@ using namespace std;
 #include "interp.h"
 #include "shape.h"
 #include "util.h"
-#include "graphics.h"
 
 map<string,interpreter::interpreterfn> interpreter::interp_map {
    {"define" , &interpreter::do_define },
    {"draw"   , &interpreter::do_draw   },
+   {"border" , &interpreter::do_border },
+   {"moveby" , &interpreter::do_moveby },
 };
 
 map<string,interpreter::factoryfn> interpreter::factory_map {
@@ -61,6 +62,13 @@ void interpreter::interpret (const parameters& params) {
    func (++begin, params.cend());
 }
 
+void interpreter::do_border (param begin, param end) {
+   if ((end - begin) != 2) throw runtime_error("syntax error");
+   rgbcolor color{*begin++};
+   float thickness = stod(*begin);
+   window::set_border(color,thickness);
+}
+
 void interpreter::do_define (param begin, param end) {
    DEBUGF ('f', range (begin, end));
    string name = *begin;
@@ -68,6 +76,10 @@ void interpreter::do_define (param begin, param end) {
    objmap.insert ({name, make_shape (++begin, end)});
 }
 
+void interpreter::do_moveby (param begin, param end) {
+   if ((end - begin) != 1) throw runtime_error("syntax error");
+   window::set_moveby(float(stod(*begin)));
+}
 
 void interpreter::do_draw (param begin, param end) {
    DEBUGF ('f', range (begin, end));
@@ -178,7 +190,9 @@ shape_ptr interpreter::make_polygon (param begin, param end) {
 
 shape_ptr interpreter::make_rectangle (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   if ((end - begin) != 2) throw runtime_error("syntax error: rectangle");
+   if ((end - begin) != 2) {
+      throw runtime_error("syntax error: rectangle");
+   }
    GLfloat width;
    GLfloat height;
    width = stod(*begin++);
@@ -194,7 +208,9 @@ shape_ptr interpreter::make_square (param begin, param end) {
 
 shape_ptr interpreter::make_diamond (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   if ((end - begin) != 2) throw runtime_error("syntax error: diamond");
+   if ((end - begin) != 2) {
+      throw runtime_error("syntax error: diamond");
+   }
    GLfloat width;
    GLfloat height;
    width = stod(*begin++);
@@ -204,7 +220,9 @@ shape_ptr interpreter::make_diamond (param begin, param end) {
 
 shape_ptr interpreter::make_triangle (param begin, param end) {
    DEBUGF ('f', range (begin, end));
-   if ((end - begin) != 6) throw runtime_error("syntax error: triangle");
+   if ((end - begin) != 6) {
+      throw runtime_error("syntax error: triangle");
+   }
    GLfloat x0,y0,x1,y1,x2,y2;
    x0 = stod(*begin++);
    y0 = stod(*begin++);
@@ -219,7 +237,9 @@ shape_ptr interpreter::make_triangle (param begin, param end) {
 }
 
 shape_ptr interpreter::make_right_triangle (param begin, param end) {
-   if ((end - begin) != 2) throw runtime_error("syntax error: right_triangle");
+   if ((end - begin) != 2) {
+      throw runtime_error("syntax error: right_triangle");
+   }
    GLfloat width;
    GLfloat height;
    width = stod(*begin++);
@@ -227,7 +247,9 @@ shape_ptr interpreter::make_right_triangle (param begin, param end) {
    return make_shared<right_triangle> (width, height);
 }
 shape_ptr interpreter::make_isosceles (param begin, param end) {
-   if ((end - begin) != 2) throw runtime_error("syntax error: isosceles");
+   if ((end - begin) != 2) { 
+      throw runtime_error("syntax error: isosceles");
+   }
    GLfloat width;
    GLfloat height;
    width = stod(*begin++);
@@ -235,7 +257,9 @@ shape_ptr interpreter::make_isosceles (param begin, param end) {
    return make_shared<isosceles> (width, height);
 }
 shape_ptr interpreter::make_equilateral (param begin, param end) {
-   if ((end - begin) != 1) throw runtime_error("syntax error: equilateral");
+   if ((end - begin) != 1) {
+      throw runtime_error("syntax error: equilateral");
+   }
    GLfloat width;
    width = stod(*begin++);
    return make_shared<equilateral> (width);

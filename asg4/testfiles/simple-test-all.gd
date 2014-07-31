@@ -26,6 +26,9 @@ define rt right_triangle 	150 300.1
 define it isosceles		 	150 300.1
 define et equilateral	 	150
 
+border LemonChiffon 1
+moveby 10
+
 draw NavajoWhite 		title 270 460
 draw MintCream 		p 		320 240
 draw cornsilk3 		e 		530 200
