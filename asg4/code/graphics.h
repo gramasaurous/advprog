@@ -32,9 +32,12 @@ class object {
       void draw(const rgbcolor &col) { pshape->draw (center, col); }
       void move (GLfloat delta_x, GLfloat delta_y,
                     float w_width, float w_height) {
-         center.xpos = fmod(delta_x + center.xpos, w_width);
+         center.xpos = (fmod(delta_x + center.xpos, w_width));
+         if (center.xpos < 0) center.xpos += w_width;
+         //cout << "center (" << center.xpos << ",";
          center.ypos = fmod(delta_y + center.ypos, w_height);
-      }
+         if (center.ypos < 0) center.ypos += w_height;
+     }
 };
 
 class mouse {
