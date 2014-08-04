@@ -29,8 +29,11 @@ void window::move_selected_object(float change_x, float change_y) {
    if (selected_obj < objects.size()) {
       float delta_x = change_x * window::move_by;
       float delta_y = change_y * window::move_by;
+      float w_width = window::width;
+      float w_height = window::height;
       if (window::selected_obj >= window::objects.size()) return;
-      window::objects[window::selected_obj].move(delta_x, delta_y);
+      window::objects[window::selected_obj].move(delta_x, delta_y,
+          w_width, w_height);
    }
 }
 

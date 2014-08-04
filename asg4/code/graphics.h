@@ -7,6 +7,7 @@
 
 #include <memory>
 #include <vector>
+#include <cmath>
 using namespace std;
 
 #include <GL/freeglut.h>
@@ -29,9 +30,10 @@ class object {
       }
       void draw() { pshape->draw (center, color); }
       void draw(const rgbcolor &col) { pshape->draw (center, col); }
-      void move (GLfloat delta_x, GLfloat delta_y) {
-         center.xpos += delta_x;
-         center.ypos += delta_y;
+      void move (GLfloat delta_x, GLfloat delta_y,
+                    float w_width, float w_height) {
+         center.xpos = fmod(delta_x + center.xpos, w_width);
+         center.ypos = fmod(delta_y + center.ypos, w_height);
       }
 };
 
