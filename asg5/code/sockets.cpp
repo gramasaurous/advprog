@@ -21,7 +21,7 @@ base_socket::~base_socket() {
 }
 
 void base_socket::close() {
-   int status = ::close (socket_fd);
+   int status = ::close (socket_fd); // ::close() refers to global fn
    if (status < 0) throw socket_sys_error ("close("
                          + to_string(socket_fd) + ")");
    socket_fd = CLOSED_FD;
