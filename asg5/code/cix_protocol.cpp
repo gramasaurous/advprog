@@ -55,7 +55,7 @@ ostream& operator<< (ostream& out, const cix_header& header) {
    return out;
 }    
 
-
+
 string get_cix_server_host (const vector<string>& args, size_t index) {
    if (index < args.size()) return args[index];
    char* host = getenv ("CIX_SERVER_HOST");

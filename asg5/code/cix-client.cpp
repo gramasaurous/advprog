@@ -1,5 +1,6 @@
 // $Id: cix-client.cpp,v 1.7 2014-07-25 12:12:51-07 - - $
 
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -14,6 +15,7 @@ using namespace std;
 #include "logstream.h"
 #include "signal_action.h"
 #include "sockets.h"
+#include "util.h"
 
 logstream log (cout);
 
@@ -21,7 +23,29 @@ unordered_map<string,cix_command> command_map {
    {"exit", CIX_EXIT},
    {"help", CIX_HELP},
    {"ls"  , CIX_LS  },
+   {"put" , CIX_PUT },
 };
+
+void cix_put(client_socket& server, const string& filename) {
+   //log << "put: " << filename << endl;
+   ifstream infile(filename);
+   if (infile.fail()) {
+      log << "Error: file " << filename << "does not exist." << endl;
+      return;
+   }
+   vector<string> path = split(filename, "/");
+   for (auto f:path) log << "path:" << f << endl;
+   const char *file = path.back().c_str();
+   log << "f: " << file << endl;
+   cix_header header;
+   memset(&header, 0, sizeof(header));
+   header.cix_command =  CIX_PUT;
+   header.cix_filename = file;
+   log << "sending header " << header << endl;
+   send_packet (server, &header, sizeof(header));
+   log << "received header " << header << endl;
+   return;
+}
 
 void cix_help() {
    static vector<string> help = {
@@ -54,7 +78,6 @@ void cix_ls (client_socket& server) {
    }
 }
 
-
 void usage() {
    cerr << "Usage: " << log.execname() << " [host] [port]" << endl;
    throw cix_exit();
@@ -89,7 +112,8 @@ int main (int argc, char** argv) {
          if (cin.eof()) throw cix_exit();
          if (SIGINT_throw_cix_exit) throw cix_exit();
          log << "command " << line << endl;
-         const auto& itor = command_map.find (line);
+         vector<string> wordvec = split(line, " \t");
+         const auto& itor = command_map.find (wordvec[0]);
          cix_command cmd = itor == command_map.end()
                          ? CIX_ERROR : itor->second;
          switch (cmd) {
@@ -101,6 +125,13 @@ int main (int argc, char** argv) {
                break;
             case CIX_LS:
                cix_ls (server);
+               break;
+            case CIX_PUT:
+               if (wordvec.size() != 2) {
+                  log << "error: put useage." << endl;
+                  break;
+               }
+               cix_put(server, wordvec[1]);
                break;
             default:
                log << line << ": invalid command" << endl;

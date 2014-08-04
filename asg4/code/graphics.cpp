@@ -19,6 +19,13 @@ rgbcolor window::border_color = rgbcolor{255,0,0};
 float window::move_by{4};
 mouse window::mus;
 
+void object::move (GLfloat delta_x, GLfloat delta_y) {
+   center.xpos += delta_x;
+   center.xpos %= window::width;
+   center.ypos += delta_y;
+   center.ypos %= window::height;
+}
+
 void window::select_object (size_t obj) {
    if (window::objects.size() <= obj) return;
    window::selected_obj = obj;

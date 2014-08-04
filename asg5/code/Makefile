@@ -3,8 +3,8 @@
 GPP        = g++ -g -O0 -Wall -Wextra -std=gnu++11
 
 DEPFILE    = Makefile.dep
-HEADERS    = sockets.h signal_action.h cix_protocol.h logstream.h
-CPPLIBS    = sockets.cpp signal_action.cpp cix_protocol.cpp 
+HEADERS    = sockets.h signal_action.h cix_protocol.h logstream.h util.h
+CPPLIBS    = sockets.cpp signal_action.cpp cix_protocol.cpp util.cpp
 CPPSRCS    = ${CPPLIBS} cix-daemon.cpp cix-client.cpp cix-server.cpp
 LIBOBJS    = ${CPPLIBS:.cpp=.o}
 CLIENTOBJS = cix-client.o ${LIBOBJS}

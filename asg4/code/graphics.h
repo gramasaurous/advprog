@@ -29,10 +29,12 @@ class object {
       }
       void draw() { pshape->draw (center, color); }
       void draw(const rgbcolor &col) { pshape->draw (center, col); }
-      void move (GLfloat delta_x, GLfloat delta_y) {
-         center.xpos += delta_x;
+      void move (GLfloat delta_x, GLfloat delta_y);// {
+/*         center.xpos += delta_x;
+         center.xpos %= window::width;
          center.ypos += delta_y;
-      }
+         center.ypos %= window::height;
+      }*/
 };
 
 class mouse {

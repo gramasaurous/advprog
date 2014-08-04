@@ -52,7 +52,6 @@ void base_socket::listen() const {
    if (status < 0) throw socket_sys_error ("listen");
 }
 
-
 void base_socket::accept (base_socket& socket) const {
    int addr_length = sizeof socket.socket_addr;
    socket.socket_fd = ::accept (socket_fd,
@@ -108,7 +107,6 @@ void base_socket::set_non_blocking (const bool blocking) {
    if (opts < 0) throw socket_sys_error ("fcntl");
 }
 
-
 client_socket::client_socket (string host, in_port_t port) {
    base_socket::create();
    base_socket::connect (host, port);
@@ -138,7 +136,6 @@ string to_string (const base_socket& sock) {
           + ") port " + to_string (ntohs (sock.socket_addr.sin_port));
 }
 
-
 string init_hostname (hostent* host) {
    if (host == nullptr) throw socket_h_error ("gethostbyname");
    return host->h_name;

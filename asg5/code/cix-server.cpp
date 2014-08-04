@@ -12,6 +12,11 @@ using namespace std;
 
 logstream log (cout);
 
+void reply_put (accepted_socket& client_sock, cix_header& header) {
+   header.cix_command = CIX_ACK;
+   
+}
+
 void reply_ls (accepted_socket& client_sock, cix_header& header) {
    FILE* ls_pipe = popen ("ls -l", "r");
    if (ls_pipe == NULL) {
@@ -36,7 +41,6 @@ void reply_ls (accepted_socket& client_sock, cix_header& header) {
    log << "sent " << ls_output.size() << " bytes" << endl;
 }
 
-
 bool SIGINT_throw_cix_exit = false;
 void signal_handler (int signal) {
    log << "signal_handler: caught " << strsignal (signal) << endl;
@@ -65,6 +69,9 @@ int main (int argc, char** argv) {
          switch (header.cix_command) {
             case CIX_LS:
                reply_ls (client_sock, header);
+               break;
+            case CIX_PUT:
+               reply_put (client_sock, header);
                break;
             default:
                log << "invalid header from client" << endl;

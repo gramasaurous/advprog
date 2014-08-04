@@ -48,8 +48,6 @@ void reap_zombies() {
    }
 }
 
-
-
 bool SIGINT_throw_cix_exit {false};
 void signal_handler (int signal) {
    log << "signal_handler: caught " << strsignal (signal) << endl;
@@ -94,6 +92,7 @@ int main (int argc, char** argv) {
          log << "accepted " << to_string (client_sock) << endl;
          try {
             fork_cixserver (listener, client_sock);
+            cout << "here1" << endl;
             reap_zombies();
          }catch (socket_error& error) {
             log << error.what() << endl;
