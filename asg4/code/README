@@ -10,28 +10,18 @@ This will parse the input file for available commands, if successful,
 will create a new gdraw window with width WIDTH and height HEIGHT (if
 specified).
 
-Available commands for input files are as follows from the asg spec:
+Available commands for input files and for keyboard input are as defined
+in the assignment specification. Ambiguities and implementation options
+not specified are documented here.
 
-   # '...'
-      a comment line is ignored, as are empty lines and lines 
-      consisting of only whitespace
-   define 'name' text 'font' 'words ...'
-      Create a text object with identifier 'name' and font 'font' from
-      the available GLUT bitmap fonts:
-         - Fixed-8x13
-         - Fixed-9x15
-         - Helvetica-10,12,18
-         - Times-Roman-10,24  
-      The text objects dispayed contents are defined as 'words...'
-   define 'name' ellipse 'width' 'height'
-      Create an ellpitical shape with base 'width', height 'height' and
-      identifier 'name'.
-   define 'name' circle 'diameter'
-      Create a circle object with diameter and name.
-   define 'name' polygon 'coordinates'
-      Create a polygon object with name and coordinates specified.
-      If odd number of coordinates are specified, an error is thrown.
-      Vertices are normalized so their center is at (0,0) and then
-      sorted in order of their angle with the x-axis to ensure that
-      a convex and properly printed polygon.
-   
+While defining any shape, if the number of required arguments is not as
+specified, a runtime_error is thrown and an error message is printed.
+For polygon, which can take a *infinite* (theoretically) number of
+arguments, an error is thrown if the arguments cannot be evenly divided
+into x-coordinates and y-coordinates. More on polygons: in order to 
+correctly draw a polygon shape, and to try to be as user-friendly as
+possible, the vertices given are normalized (as per the spec) so that 
+they are concentric around (0,0). After this, they are sorted by their
+angle with the x-axis. This ensures that OpenGL can easily draw each 
+vertex in a clockwise or counter-clockwise manner (and no weird things
+will happen). This is done using the atan2(y, x) call from <cmath>.
