@@ -1,3 +1,37 @@
 # Graham Greving
 # ggreving@ucsc.edu
 # asg4:README
+
+CMPS 109 - Assignment 4:gdraw
+
+Run make to compile the source. Run the program as follows:
+ $ ./gdraw -h HEIGHT -w WIDTH path/to/inputfile
+This will parse the input file for available commands, if successful,
+will create a new gdraw window with width WIDTH and height HEIGHT (if
+specified).
+
+Available commands for input files are as follows from the asg spec:
+
+   # '...'
+      a comment line is ignored, as are empty lines and lines 
+      consisting of only whitespace
+   define 'name' text 'font' 'words ...'
+      Create a text object with identifier 'name' and font 'font' from
+      the available GLUT bitmap fonts:
+         - Fixed-8x13
+         - Fixed-9x15
+         - Helvetica-10,12,18
+         - Times-Roman-10,24  
+      The text objects dispayed contents are defined as 'words...'
+   define 'name' ellipse 'width' 'height'
+      Create an ellpitical shape with base 'width', height 'height' and
+      identifier 'name'.
+   define 'name' circle 'diameter'
+      Create a circle object with diameter and name.
+   define 'name' polygon 'coordinates'
+      Create a polygon object with name and coordinates specified.
+      If odd number of coordinates are specified, an error is thrown.
+      Vertices are normalized so their center is at (0,0) and then
+      sorted in order of their angle with the x-axis to ensure that
+      a convex and properly printed polygon.
+   
