@@ -180,11 +180,6 @@ shape_ptr interpreter::make_polygon (param begin, param end) {
       //if (degree_a == degree_b) return (a.ypos < b.ypos);
       return (degree_a < degree_b);
    });
-   cout << "v_list sorted." << endl;
-   for (auto v: v_list) {
-      cout << "v: {" << v.xpos << "," << v.ypos << "}, ";
-   }
-   cout << endl;
    return make_shared<polygon> (vertex_list(v_list));
 }
 

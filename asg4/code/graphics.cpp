@@ -112,8 +112,13 @@ void window::keyboard (GLubyte key, int x, int y) {
             (window::selected_obj + 1) % window::objects.size());
          break;
       case 'P': case 'p': case BS:
-         window::select_object(
-            (window::selected_obj - 1) % window::objects.size());
+         size_t new_pos;
+         if (window::selected_obj == 0) {
+            new_pos = window::objects.size() - 1; 
+         } else {
+            new_pos = window::selected_obj - 1;
+         }
+         window::select_object(new_pos);
          break;
       case '0'...'9':
          window::select_object (key - '0');
