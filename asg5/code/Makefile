@@ -13,7 +13,10 @@ DAEMONOBJS = cix-daemon.o ${LIBOBJS}
 OBJECTS    = ${CLIENTOBJS} ${SERVEROBJS} ${DAEMONOBJS}
 EXECBINS   = cix-client cix-server cix-daemon
 LISTING    = Listing.ps
-SOURCES    = ${HEADERS} ${CPPSRCS} Makefile
+SOURCES    = ${HEADERS} ${CPPSRCS} Makefile README
+
+CLASS       = cmps109-wm.u14
+PROJECT     = asg5
 
 all: ${DEPFILE} ${EXECBINS}
 
@@ -29,18 +32,15 @@ cix-daemon: ${DAEMONOBJS}
 %.o: %.cpp
 	${GPP} -c $<
 
-ci:
-	- checksource ${SOURCES}
-	- cid + ${SOURCES}
-
-lis: all ${SOURCES} ${DEPFILE}
-	mkpspdf ${LISTING} ${SOURCES} ${DEPFILE}
-
 clean:
 	- rm ${LISTING} ${LISTING:.ps=.pdf} ${OBJECTS}
 
 spotless: clean
 	- rm ${EXECBINS}
+
+submit : ${SOURCES}
+	- checksource ${SOURCES}
+	submit ${CLASS} ${PROJECT} ${SOURCES}
 
 dep:
 	- rm ${DEPFILE}
@@ -50,7 +50,7 @@ ${DEPFILE}:
 	${GPP} -MM ${CPPSRCS} >${DEPFILE}
 
 again: ${SOURCES}
-	make --no-print-directory spotless ci all lis
+	make --no-print-directory spotless all
 
 include ${DEPFILE}
 
