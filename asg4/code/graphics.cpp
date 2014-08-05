@@ -62,8 +62,12 @@ void window::display() {
    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
    for (auto& object: window::objects) object.draw();
    /*Draw the selected object again, then draw the border around it*/
-   if (window::selected_obj < window::objects.size()) {
-      window::objects[selected_obj].draw();
+   if (window::selected_obj < window::objects.size()) {  
+      //window::objects[selected_obj].draw();
+      // this line causes problems for .score/nested.gd
+      // as it draws the first (selected) object again before drawing
+      // the border, thus ruining the "nested" effect.
+      // I have omitted it solely for display output purposes
       glLineWidth(window::border_thickness);
       glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
       window::objects[selected_obj].draw(window::border_color);

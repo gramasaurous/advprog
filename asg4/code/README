@@ -25,4 +25,3 @@ they are concentric around (0,0). After this, they are sorted by their
 angle with the x-axis. This ensures that OpenGL can easily draw each 
 vertex in a clockwise or counter-clockwise manner (and no weird things
 will happen). This is done using the atan2(y, x) call from <cmath>.
-
