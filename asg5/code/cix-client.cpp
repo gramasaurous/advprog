@@ -29,27 +29,35 @@ unordered_map<string,cix_command> command_map {
    {"get" , CIX_GET },
 };
 
-// Deal with put later...
-// void cix_put(client_socket& server, const string& filename) {
-//    //log << "put: " << filename << endl;
-//    ifstream infile(filename);
-//    if (infile.fail()) {
-//       log << "Error: file " << filename << "does not exist." << endl;
-//       return;
-//    }
-//    vector<string> path = split(filename, "/");
-//    for (auto f:path) log << "path:" << f << endl;
-//    const char *file = path.back().c_str();
-//    log << "f: " << file << endl;
-//    cix_header header;
-//    memset(&header, 0, sizeof(header));
-//    header.cix_command =  CIX_PUT;
-//    //header.cix_filename = file;
-//    log << "sending header " << header << endl;
-//    send_packet (server, &header, sizeof(header));
-//    log << "received header " << header << endl;
-//    return;
-// }
+//Deal with put later...
+void cix_put(client_socket& server, const string& filename) {
+   //log << "put: " << filename << endl;
+   ifstream infile(filename);
+   if (infile.fail()) {
+      log << "Error: file " << filename << "does not exist." << endl;
+      return;
+   }
+   // populate header items
+   cix_header header;
+   header.cix_command =  CIX_PUT;
+   filename.copy(header.cix_filename, sizeof(header.cix_filename));
+   header.cix_filename[filename.size()] = '\0';
+   // get and populate file size
+   infile.seekg(0,infile.end);
+   int len = infile.tellg();
+   infile.seekg(0,infile.beg);
+   header.cix_nbytes = len;
+   // create and populate file buffer 
+   char *buf = new char[len];
+   infile.read(buf, len);
+   log << "sending header " << header << endl;
+   send_packet (server, &header, sizeof(header));
+   log << "sending payload" << buf << endl;
+   send_packet (server, buf, len);
+   recv_packet(server, &header, len);
+   log << "received header " << header << endl;
+   return;
+}
 
 void cix_get(client_socket& server, string filename) {
    // check filename for slashes

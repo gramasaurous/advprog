@@ -19,9 +19,6 @@ void reply_get (accepted_socket& client_sock, cix_header& header) {
    ifstream infile(header.cix_filename);
    if (infile.fail()) {
       log << "Error: file " << header.cix_filename << " does not exist" << endl;
-      header.cix_command = CIX_NAK;
-      header.cix_nbytes = errno;
-      send_packet(client_sock, &header, sizeof header);
       throw cix_exit();
    }
    infile.seekg(0, infile.end);
