@@ -34,7 +34,7 @@ void cix_put(client_socket& server, const string& filename) {
    //log << "put: " << filename << endl;
    ifstream infile(filename);
    if (infile.fail()) {
-      log << "Error: file " << filename << "does not exist." << endl;
+     log << "Error: file " << filename << "does not exist." << endl;
       return;
    }
    // populate header items
@@ -169,6 +169,11 @@ int main (int argc, char** argv) {
                }
                cix_get(server, wordvec[1]);
                break;
+            case CIX_PUT:
+               if (wordvec.size() != 2) {
+                  log << "error: get useage." << endl;
+               }
+               cix_get(server, wordvec[1]);
             default:
                log << line << ": invalid command" << endl;
                break;

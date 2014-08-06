@@ -32,6 +32,12 @@ cix-daemon: ${DAEMONOBJS}
 %.o: %.cpp
 	${GPP} -c $<
 
+test : ${EXECBINS}
+	cp cix-server ../test/remote
+	cp cix-daemon ../test/remote
+	cp cix-client ../test/local1
+	cp cix-client ../test/local2
+
 clean:
 	- rm ${OBJECTS}
 
