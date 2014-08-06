@@ -1,5 +1,8 @@
-// $Id: cix-server.cpp,v 1.7 2014-07-25 12:12:51-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg5:cix-server.cpp
 
+#include <fstream>
 #include <iostream>
 using namespace std;
 
@@ -12,9 +15,25 @@ using namespace std;
 
 logstream log (cout);
 
-void reply_put (accepted_socket& client_sock, cix_header& header) {
+void reply_get (accepted_socket& client_sock, cix_header& header) {
+   ifstream infile(header.cix_filename);
+   if (infile.fail()) {
+      log << "Error: file " << header.cix_filename << " does not exist" << endl;
+      header.cix_command = CIX_NAK;
+      header.cix_nbytes = errno;
+      send_packet(client_sock, &header, sizeof header);
+      throw cix_exit();
+   }
+   infile.seekg(0, infile.end);
+   int len = infile.tellg();
+   infile.seekg(0,infile.beg);
    header.cix_command = CIX_ACK;
-   
+   header.cix_nbytes = len;
+   send_packet(client_sock, &header, sizeof header);
+   char *buf = new char[len];
+   infile.read(buf, len);
+   cout << buf;
+   send_packet(client_sock, buf, len);
 }
 
 void reply_ls (accepted_socket& client_sock, cix_header& header) {
@@ -24,6 +43,7 @@ void reply_ls (accepted_socket& client_sock, cix_header& header) {
       header.cix_command = CIX_NAK;
       header.cix_nbytes = errno;
       send_packet (client_sock, &header, sizeof header);
+      //ethrow cix_exit();
    }
    string ls_output;
    char buffer[0x1000];
@@ -70,8 +90,8 @@ int main (int argc, char** argv) {
             case CIX_LS:
                reply_ls (client_sock, header);
                break;
-            case CIX_PUT:
-               reply_put (client_sock, header);
+            case CIX_GET:
+               reply_get (client_sock, header);
                break;
             default:
                log << "invalid header from client" << endl;

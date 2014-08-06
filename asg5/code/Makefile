@@ -33,7 +33,7 @@ cix-daemon: ${DAEMONOBJS}
 	${GPP} -c $<
 
 clean:
-	- rm ${LISTING} ${LISTING:.ps=.pdf} ${OBJECTS}
+	- rm ${OBJECTS}
 
 spotless: clean
 	- rm ${EXECBINS}

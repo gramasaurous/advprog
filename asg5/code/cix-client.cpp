@@ -1,4 +1,6 @@
-// $Id: cix-client.cpp,v 1.7 2014-07-25 12:12:51-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg5:cix-client.cpp
 
 #include <fstream>
 #include <iostream>
@@ -24,27 +26,52 @@ unordered_map<string,cix_command> command_map {
    {"help", CIX_HELP},
    {"ls"  , CIX_LS  },
    {"put" , CIX_PUT },
+   {"get" , CIX_GET },
 };
 
-void cix_put(client_socket& server, const string& filename) {
-   //log << "put: " << filename << endl;
-   ifstream infile(filename);
-   if (infile.fail()) {
-      log << "Error: file " << filename << "does not exist." << endl;
-      return;
-   }
-   vector<string> path = split(filename, "/");
-   for (auto f:path) log << "path:" << f << endl;
-   const char *file = path.back().c_str();
-   log << "f: " << file << endl;
+// Deal with put later...
+// void cix_put(client_socket& server, const string& filename) {
+//    //log << "put: " << filename << endl;
+//    ifstream infile(filename);
+//    if (infile.fail()) {
+//       log << "Error: file " << filename << "does not exist." << endl;
+//       return;
+//    }
+//    vector<string> path = split(filename, "/");
+//    for (auto f:path) log << "path:" << f << endl;
+//    const char *file = path.back().c_str();
+//    log << "f: " << file << endl;
+//    cix_header header;
+//    memset(&header, 0, sizeof(header));
+//    header.cix_command =  CIX_PUT;
+//    //header.cix_filename = file;
+//    log << "sending header " << header << endl;
+//    send_packet (server, &header, sizeof(header));
+//    log << "received header " << header << endl;
+//    return;
+// }
+
+void cix_get(client_socket& server, string filename) {
+   // check filename for slashes
    cix_header header;
-   memset(&header, 0, sizeof(header));
-   header.cix_command =  CIX_PUT;
-   header.cix_filename = file;
+   header.cix_command = CIX_GET;
+   filename.copy(header.cix_filename, sizeof(header.cix_filename));
+   header.cix_filename[filename.size()] = '\0';
    log << "sending header " << header << endl;
-   send_packet (server, &header, sizeof(header));
-   log << "received header " << header << endl;
-   return;
+   send_packet(server, &header, sizeof header);
+   recv_packet(server, &header, sizeof header);
+   log << "received header" << header << endl;
+   if (header.cix_command != CIX_ACK) {
+      log << "sent CIX_GET, server did not return CIX_ACK" << endl;
+      log << "server returned " << header << endl;
+   } else {
+     char * buffer = new char[header.cix_nbytes];
+     recv_packet (server, buffer, header.cix_nbytes);
+     log << "received " << header.cix_nbytes << " bytes" << endl;
+     //buffer[header.cix_nbytes] = '\0';
+     ofstream out (filename);
+     out.write(buffer, header.cix_nbytes);
+   }
 }
 
 void cix_help() {
@@ -111,6 +138,7 @@ int main (int argc, char** argv) {
          getline (cin, line);
          if (cin.eof()) throw cix_exit();
          if (SIGINT_throw_cix_exit) throw cix_exit();
+         if (line.size() == 0) continue;
          log << "command " << line << endl;
          vector<string> wordvec = split(line, " \t");
          const auto& itor = command_map.find (wordvec[0]);
@@ -126,12 +154,12 @@ int main (int argc, char** argv) {
             case CIX_LS:
                cix_ls (server);
                break;
-            case CIX_PUT:
+            case CIX_GET:
                if (wordvec.size() != 2) {
                   log << "error: put useage." << endl;
                   break;
                }
-               cix_put(server, wordvec[1]);
+               cix_get(server, wordvec[1]);
                break;
             default:
                log << line << ": invalid command" << endl;
