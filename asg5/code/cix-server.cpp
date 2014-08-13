@@ -15,6 +15,21 @@ using namespace std;
 
 logstream log (cout);
 
+void reply_put (accepted_socket& client_sock, cix_header& header) {
+   ofstream outfile(header.cix_filename);
+   if (outfile.fail()) {
+      log << "Error: cannot open/create file " << header.cix_filename << endl;
+      header.cix_command = CIX_NAK;
+   } else {
+      size_t len = header.cix_nbytes;
+      char *buf = new char[len];
+      recv_packet(client_sock, buf, len);
+      outfile.write(buf, len);
+      header.cix_command = CIX_ACK;
+   }
+   send_packet(client_sock, &header, sizeof header);
+}
+
 void reply_get (accepted_socket& client_sock, cix_header& header) {
    ifstream infile(header.cix_filename);
    if (infile.fail()) {
@@ -90,6 +105,9 @@ int main (int argc, char** argv) {
             case CIX_GET:
                reply_get (client_sock, header);
                break;
+            case CIX_PUT:
+               reply_put (client_sock, header);
+               break;
             default:
                log << "invalid header from client" << endl;
                log << "cix_nbytes = " << header.cix_nbytes << endl;
@@ -98,9 +116,9 @@ int main (int argc, char** argv) {
                break;
          }
       }
-   }catch (socket_error& error) {
+   } catch (socket_error& error) {
       log << error.what() << endl;
-   }catch (cix_exit& error) {
+   } catch (cix_exit& error) {
       log << "caught cix_exit" << endl;
    }
    log << "finishing" << endl;

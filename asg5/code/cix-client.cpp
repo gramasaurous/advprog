@@ -172,8 +172,10 @@ int main (int argc, char** argv) {
             case CIX_PUT:
                if (wordvec.size() != 2) {
                   log << "error: get useage." << endl;
+                  break;
                }
-               cix_get(server, wordvec[1]);
+               cix_put(server, wordvec[1]);
+               break;
             default:
                log << line << ": invalid command" << endl;
                break;
