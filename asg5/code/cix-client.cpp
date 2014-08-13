@@ -52,11 +52,15 @@ void cix_put(client_socket& server, const string& filename) {
    infile.read(buf, len);
    log << "sending header " << header << endl;
    send_packet (server, &header, sizeof(header));
-   log << "sending payload" << buf << endl;
+   log << "sending payload" << endl;
    send_packet (server, buf, len);
-   recv_packet(server, &header, len);
-   log << "received header " << header << endl;
-   return;
+   recv_packet(server, &header, sizeof header);
+   log << "received header " << endl;
+   if (header.cix_command == CIX_NAK) {
+      log << "error putting file." << endl;
+   } else {
+      log << "put file successfully." << endl;
+   }
 }
 
 void cix_get(client_socket& server, string filename) {
@@ -181,9 +185,9 @@ int main (int argc, char** argv) {
                break;
          }
       }
-   }catch (socket_error& error) {
+   } catch (socket_error& error) {
       log << error.what() << endl;
-   }catch (cix_exit& error) {
+   } catch (cix_exit& error) {
       log << "caught cix_exit" << endl;
    }
    log << "finishing" << endl;
