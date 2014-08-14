@@ -138,15 +138,10 @@ int main (int argc, char** argv) {
    signal_action (SIGINT, signal_handler);
    signal_action (SIGTERM, signal_handler);
    if (args.size() > 2) usage();
-   // Need to figure out if args[0] is host or port
-   // If args[0] contains any instances of '.' it 
-   // is probably an address.
-   // Additionally, if args[0] correctly resolves to an int
-   // it is most likely a port
    string host;
    in_port_t port;
    if (args.size() == 1) {
-      // need to determine if arg passed in is a host or a port
+      // need to determine if argument passed in is a host or a port
       // stoi() in get_cix_server_port will throw an invalid_argument
       // exception if it is passed in a non-integer string
       // at that point, we can assume that the argument passed is 
