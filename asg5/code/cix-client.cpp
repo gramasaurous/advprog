@@ -138,8 +138,30 @@ int main (int argc, char** argv) {
    signal_action (SIGINT, signal_handler);
    signal_action (SIGTERM, signal_handler);
    if (args.size() > 2) usage();
-   string host = get_cix_server_host (args, 0);
-   in_port_t port = get_cix_server_port (args, 1);
+   // Need to figure out if args[0] is host or port
+   // If args[0] contains any instances of '.' it 
+   // is probably an address.
+   // Additionally, if args[0] correctly resolves to an int
+   // it is most likely a port
+   string host;
+   in_port_t port;
+   if (args.size() == 1) {
+      // need to determine if arg passed in is a host or a port
+      // stoi() in get_cix_server_port will throw an invalid_argument
+      // exception if it is passed in a non-integer string
+      // at that point, we can assume that the argument passed is 
+      // actually a hostname
+      try {
+         port = get_cix_server_port(args, 0);
+         host = get_cix_server_host(args, 1);
+      } catch (const invalid_argument& ia) {
+         port = get_cix_server_port(args, 1);
+         host = get_cix_server_host(args, 0);
+      }
+   } else {
+      host = get_cix_server_host(args, 0);
+      port = get_cix_server_port(args, 1);
+   }
    log << to_string (hostinfo()) << endl;
    try {
       log << "connecting to " << host << " port " << port << endl;
