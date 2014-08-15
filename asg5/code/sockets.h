@@ -1,4 +1,6 @@
-// $Id: sockets.h,v 1.2 2014-05-23 22:17:25-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg5: sockets.h
 
 #ifndef __SOCKET_H__
 #define __SOCKET_H__

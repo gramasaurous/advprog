@@ -1,4 +1,6 @@
-// $Id: cix_protocol.h,v 1.4 2014-05-28 12:23:46-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg5: cix-protocol.h
 
 #ifndef __CIX_PROTOCOL__H__
 #define __CIX_PROTOCOL__H__

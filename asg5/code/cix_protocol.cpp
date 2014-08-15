@@ -1,4 +1,6 @@
-// $Id: cix_protocol.cpp,v 1.7 2014-07-24 20:24:51-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg5: cix-protocol.cpp
 
 #include <unordered_map>
 #include <string>

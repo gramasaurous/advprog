@@ -1,4 +1,6 @@
-// $Id: signal_action.h,v 1.5 2014-05-27 17:16:42-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg5: signal_action.h
 
 #ifndef __SIGNAL_ACTION_H__
 #define __SIGNAL_ACTION_H__

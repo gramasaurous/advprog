@@ -1,4 +1,6 @@
-// $Id: cix-daemon.cpp,v 1.7 2014-07-25 12:12:51-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg5: cix-daemon.cpp
 
 #include <iostream>
 #include <string>

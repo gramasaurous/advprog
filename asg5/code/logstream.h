@@ -1,5 +1,6 @@
-// $Id: logstream.h,v 1.3 2014-05-30 12:47:58-07 - - $
-
+// Graham Greving
+// ggreving@ucsc.edu
+// asg5: logstream.h
 //
 // class logstream
 // replacement for initial cout so that each call to a logstream

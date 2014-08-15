@@ -1,4 +1,6 @@
-// $Id: sockets.cpp,v 1.6 2014-07-25 11:54:44-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg5: sockets.cpp
 
 #include <cerrno>
 #include <cstring>

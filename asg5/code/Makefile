@@ -1,4 +1,6 @@
-# $Id: Makefile,v 1.5 2014-05-27 15:55:33-07 - - $
+# Graham Greving
+# ggreving@ucsc.edu
+# asg5: Makefile
 
 GPP        = g++ -g -O0 -Wall -Wextra -std=gnu++11
 

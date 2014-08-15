@@ -1,4 +1,6 @@
-// $Id: signal_action.cpp,v 1.6 2014-05-27 17:16:42-07 - - $
+// Graham Greving
+// ggreving@ucsc.edu
+// asg5: signal_action.cpp
 
 #include <cstring>
 #include <string>
