@@ -27,6 +27,7 @@ unordered_map<string,cix_command> command_map {
    {"ls"  , CIX_LS  },
    {"put" , CIX_PUT },
    {"get" , CIX_GET },
+   {"rm" , CIX_RM  },
 };
 
 //Deal with put later...
@@ -96,6 +97,22 @@ void cix_help() {
       "rm filename  - Remove file from remote server.",
    };
    for (const auto& line: help) cout << line << endl;
+}
+
+void cix_rm (client_socket& server, string filename) {
+   cix_header header;
+   header.cix_command = CIX_RM;
+   filename.copy(header.cix_filename, sizeof(header.cix_filename));
+   log << "sending header " << header << endl;
+   send_packet (server, &header, sizeof header);
+   recv_packet (server, &header, sizeof header);
+   log << "received header " << header << endl;
+   if (header.cix_command != CIX_ACK) {
+      log << "sent CIX_RM, server did not return CIX_LSOUT" << endl;
+      log << "server returned " << header << endl;
+   } else {
+      log << "successfully removed file" << filename;
+   }
 }
 
 void cix_ls (client_socket& server) {
@@ -186,16 +203,23 @@ int main (int argc, char** argv) {
             case CIX_GET:
                if (wordvec.size() != 2) {
                   log << "error: put useage." << endl;
-                  break;
+               } else {
+                  cix_get(server, wordvec[1]);
                }
-               cix_get(server, wordvec[1]);
                break;
             case CIX_PUT:
                if (wordvec.size() != 2) {
                   log << "error: get useage." << endl;
-                  break;
+               } else {
+                  cix_put(server, wordvec[1]);
                }
-               cix_put(server, wordvec[1]);
+               break;
+            case CIX_RM:
+               if (wordvec.size() != 2) {
+                  log << "error: rm useage." << endl;
+               } else {
+                  cix_rm(server, wordvec[1]);
+               }
                break;
             default:
                log << line << ": invalid command" << endl;

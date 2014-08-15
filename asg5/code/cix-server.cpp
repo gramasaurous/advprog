@@ -15,6 +15,18 @@ using namespace std;
 
 logstream log (cout);
 
+void reply_rm (accepted_socket& client_sock, cix_header& header) {
+   int rm = unlink(header.cix_filename);
+   if (rm == -1) {
+      log << "unable to remove " << header.cix_filename << endl;
+      header.cix_command = CIX_NAK;
+      header.cix_nbytes = errno;
+   } else {
+      header.cix_command = CIX_ACK;
+   }
+   send_packet(client_sock, &header, sizeof header);
+}
+
 void reply_put (accepted_socket& client_sock, cix_header& header) {
    ofstream outfile(header.cix_filename);
    if (outfile.fail()) {
@@ -110,6 +122,9 @@ int main (int argc, char** argv) {
                break;
             case CIX_PUT:
                reply_put (client_sock, header);
+               break;
+            case CIX_RM:
+               reply_rm (client_sock, header);
                break;
             default:
                log << "invalid header from client" << endl;
