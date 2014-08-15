@@ -20,6 +20,7 @@ void reply_put (accepted_socket& client_sock, cix_header& header) {
    if (outfile.fail()) {
       log << "Error: cannot open/create file " << header.cix_filename << endl;
       header.cix_command = CIX_NAK;
+      header.cix_nbytes = errno;
    } else {
       size_t len = header.cix_nbytes;
       char *buf = new char[len];
@@ -34,17 +35,19 @@ void reply_get (accepted_socket& client_sock, cix_header& header) {
    ifstream infile(header.cix_filename);
    if (infile.fail()) {
       log << "Error: file " << header.cix_filename << " does not exist" << endl;
+      header.cix_command = CIX_NAK;
+      header.cix_nbytes = errno;
+      send_packet(client_sock, &header, sizeof header);
       throw cix_exit();
    }
    infile.seekg(0, infile.end);
    int len = infile.tellg();
    infile.seekg(0,infile.beg);
-   header.cix_command = CIX_ACK;
+   header.cix_command = CIX_FILE;
    header.cix_nbytes = len;
    send_packet(client_sock, &header, sizeof header);
    char *buf = new char[len];
    infile.read(buf, len);
-   cout << buf;
    send_packet(client_sock, buf, len);
 }
 
