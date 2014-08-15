@@ -32,6 +32,10 @@ unordered_map<string,cix_command> command_map {
 
 //Deal with put later...
 void cix_put(client_socket& server, const string& filename) {
+   if (filename.find_first_of('/') != string::npos) {
+      log << "error: get: filename cannot contain slashes" << endl;
+      return;
+   }
    //log << "put: " << filename << endl;
    ifstream infile(filename);
    if (infile.fail()) {
@@ -66,6 +70,10 @@ void cix_put(client_socket& server, const string& filename) {
 
 void cix_get(client_socket& server, string filename) {
    // check filename for slashes
+   if (filename.find_first_of('/') != string::npos) {
+      log << "error: get: filename cannot contain slashes" << endl;
+      return;
+   }
    cix_header header;
    header.cix_command = CIX_GET;
    filename.copy(header.cix_filename, sizeof(header.cix_filename));
@@ -100,6 +108,10 @@ void cix_help() {
 }
 
 void cix_rm (client_socket& server, string filename) {
+   if (filename.find_first_of('/') != string::npos) {
+      log << "error: get: filename cannot contain slashes" << endl;
+      return;
+   }
    cix_header header;
    header.cix_command = CIX_RM;
    filename.copy(header.cix_filename, sizeof(header.cix_filename));
@@ -111,7 +123,7 @@ void cix_rm (client_socket& server, string filename) {
       log << "sent CIX_RM, server did not return CIX_LSOUT" << endl;
       log << "server returned " << header << endl;
    } else {
-      log << "successfully removed file" << filename << endl;
+      log << "successfully removed file " << filename << endl;
    }
 }
 
