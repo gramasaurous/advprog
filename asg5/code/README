@@ -10,3 +10,4 @@ program I call get_cix_server_port() with the argument, and catch an
 invalid_argument which will be thrown by stoi() in case a non-integer
 string was passed. If this is the case, I can assume that the argument
 passed in is a server host, and not a port.
+

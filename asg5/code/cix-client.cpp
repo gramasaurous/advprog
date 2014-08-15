@@ -111,7 +111,7 @@ void cix_rm (client_socket& server, string filename) {
       log << "sent CIX_RM, server did not return CIX_LSOUT" << endl;
       log << "server returned " << header << endl;
    } else {
-      log << "successfully removed file" << filename;
+      log << "successfully removed file" << filename << endl;
    }
 }
 

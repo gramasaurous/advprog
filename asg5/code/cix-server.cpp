@@ -30,7 +30,8 @@ void reply_rm (accepted_socket& client_sock, cix_header& header) {
 void reply_put (accepted_socket& client_sock, cix_header& header) {
    ofstream outfile(header.cix_filename);
    if (outfile.fail()) {
-      log << "Error: cannot open/create file " << header.cix_filename << endl;
+      log << "Error: cannot open/create file ";
+      log << header.cix_filename << endl;
       header.cix_command = CIX_NAK;
       header.cix_nbytes = errno;
    } else {
@@ -46,7 +47,8 @@ void reply_put (accepted_socket& client_sock, cix_header& header) {
 void reply_get (accepted_socket& client_sock, cix_header& header) {
    ifstream infile(header.cix_filename);
    if (infile.fail()) {
-      log << "Error: file " << header.cix_filename << " does not exist" << endl;
+      log << "Error: file " << header.cix_filename;
+      log << "does not exist" << endl;
       header.cix_command = CIX_NAK;
       header.cix_nbytes = errno;
       send_packet(client_sock, &header, sizeof header);
@@ -70,7 +72,7 @@ void reply_ls (accepted_socket& client_sock, cix_header& header) {
       header.cix_command = CIX_NAK;
       header.cix_nbytes = errno;
       send_packet (client_sock, &header, sizeof header);
-      //ethrow cix_exit();
+      throw cix_exit();
    }
    string ls_output;
    char buffer[0x1000];
