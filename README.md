@@ -1,4 +1,4 @@
-cmps109
+advprog
 =======
 
-advanced programming
+advanced programming coursework
